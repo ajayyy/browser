@@ -47,6 +47,8 @@ export class SettingsComponent implements OnInit {
     @ViewChild('lockOptionsSelect', { read: ElementRef }) lockOptionsSelectRef: ElementRef;
     lockOptions: any[];
     lockOption: number = null;
+    lockAfterIdle = false;
+    lockOnSystemLock = false;
     pin: boolean = null;
     previousLockOption: number = null;
 
@@ -89,6 +91,9 @@ export class SettingsComponent implements OnInit {
         }
         this.previousLockOption = this.lockOption;
 
+        this.lockAfterIdle = await this.storageService.get<boolean>(ConstantsService.lockAfterIdleKey);
+        this.lockOnSystemLock = await this.storageService.get<boolean>(ConstantsService.lockOnSystemLockKey);
+
         const pinSet = await this.lockService.isPinLockSet();
         this.pin = pinSet[0] || pinSet[1];
     }
@@ -113,6 +118,13 @@ export class SettingsComponent implements OnInit {
         if (this.previousLockOption == null) {
             this.messagingService.send('bgReseedStorage');
         }
+    }
+
+    updateLockAfterIdle() {
+        this.storageService.save(ConstantsService.lockAfterIdleKey, this.lockAfterIdle);
+    }
+    updateLockOnSystemLock() {
+        this.storageService.save(ConstantsService.lockOnSystemLockKey, this.lockOnSystemLock);
     }
 
     async updatePin() {
@@ -245,7 +257,7 @@ export class SettingsComponent implements OnInit {
             this.i18nService.t('version') + ': ' + BrowserApi.getApplicationVersion());
         const div = document.createElement('div');
         div.innerHTML = `<p class="text-center"><i class="fa fa-shield fa-3x" aria-hidden="true"></i></p>
-            <p class="text-center"><b>Bitwarden</b><br>&copy; 8bit Solutions LLC 2015-` + year + `</p>`;
+            <p class="text-center"><b>Bitwarden</b><br>&copy; Bitwarden Inc. 2015-` + year + `</p>`;
         div.appendChild(versionText);
 
         swal({
