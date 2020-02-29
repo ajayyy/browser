@@ -19,7 +19,15 @@ Make sure node.js and npm are installed.
 
 `git clone https://github.com/ajayyy/browser`
 
+`cd browser`
+
 `git checkout origin/custom-build`
+
+`git clone https://github.com/ajayyy/jslib jslib`
+
+`git checkout origin/custom-build`
+
+`cd ..`
 
 `npm install`
 
