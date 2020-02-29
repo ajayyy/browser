@@ -2,7 +2,7 @@
 
 THIS IS AN UNOFFICIAL FORK!
 
-The fork is available in the `custom-build`(https://github.com/ajayyy/browser/tree/custom-build) branch. This the following features:
+The fork is available in the `custom-build`(https://github.com/ajayyy/browser/tree/custom-build) branch.
 
 This version has:
 
