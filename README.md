@@ -23,7 +23,9 @@ Make sure node.js and npm are installed.
 
 `git checkout origin/custom-build`
 
-`git clone https://github.com/ajayyy/jslib jslib`
+`git clone https://github.com/ajayyy/jslib`
+
+`cd jslib`
 
 `git checkout origin/custom-build`
 
