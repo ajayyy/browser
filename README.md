@@ -11,7 +11,11 @@ This version has:
 
 These have been added in PRs, but have not been merged.
 
-# Use
+# Download
+
+You can download a build version from [the releases list](https://github.com/ajayyy/browser/releases).
+
+# Build
 
 Make sure node.js and npm are installed.
 
@@ -19,15 +23,7 @@ Make sure node.js and npm are installed.
 
 `cd browser`
 
-`git checkout origin/custom-build`
-
 `git clone https://github.com/ajayyy/jslib`
-
-`cd jslib`
-
-`git checkout origin/custom-build`
-
-`cd ..`
 
 `npm install`
 
