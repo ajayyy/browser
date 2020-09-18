@@ -19,6 +19,9 @@
   "login": {
     "message": "Inicia sessió"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Inici de sessió únic d'empresa"
+  },
   "cancel": {
     "message": "Cancel·la"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "La caixa forta està bloquejada."
+  },
+  "vaultLoggedOut": {
+    "message": "La caixa forta està desconnectada."
   },
   "autoFillInfo": {
     "message": "No hi ha cap inici de sessió disponible per omplir automàticament la pestanya del navegador actual."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Contrasenya mestra no vàlida"
   },
-  "lockOptions": {
-    "message": "Opcions de bloqueig"
+  "vaultTimeout": {
+    "message": "Temps d'espera de la caixa forta"
   },
   "lockNow": {
     "message": "Bloqueja ara"
@@ -876,6 +882,12 @@
   "experimentalFeature": {
     "message": "Actualment és una característica experimental. Utilitzeu sota el vostre propi risc."
   },
+  "commandOpenPopup": {
+    "message": "Obri l'emergent de la caixa forta"
+  },
+  "commandOpenSidebar": {
+    "message": "Obri la caixa forta a la barra lateral"
+  },
   "commandAutofillDesc": {
     "message": "Ompliu automàticament amb l'últim accés utilitzat per al lloc web actual."
   },
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Commuta opcions"
   },
+  "toggleCurrentUris": {
+    "message": "Commuta URI actuals",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "URI actual",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organització",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Heu d'escollir com a mínim una col·lecció."
+  },
+  "cloneItem": {
+    "message": "Clona l'element"
+  },
+  "clone": {
+    "message": "Clona"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Una o més polítiques d’organització afecten la configuració del generador."
+  },
+  "vaultTimeoutAction": {
+    "message": "Acció del temps d'espera de la caixa forta"
+  },
+  "lock": {
+    "message": "Bloqueja",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Paperera",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Cerca a la paperera"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Element suprimit definitivament"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Esteu segur que voleu suprimir aquest element definitivament?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Element suprimit definitivament"
+  },
+  "restoreItem": {
+    "message": "Restaura l'element"
+  },
+  "restoreItemConfirmation": {
+    "message": "Esteu segur que voleu restaurar aquest element?"
+  },
+  "restoredItem": {
+    "message": "Element restaurat"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "En tancar la sessió s'eliminarà tot l'accés a la vostra caixa forta i es requerirà una autenticació en línia després del període de temps d'espera. Esteu segur que voleu utilitzar aquesta configuració?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Confirmació de l’acció de temps d'espera de la caixa forta"
+  },
+  "autoFillAndSave": {
+    "message": "Ompli automàticament i guarda"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Element emplenat automàticament i URI guardat"
+  },
+  "autoFillSuccess": {
+    "message": "Element emplenat automàticament "
+  },
+  "setMasterPassword": {
+    "message": "Estableix la contrasenya mestra"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Una o més polítiques d’organització requereixen que la vostra contrasenya principal complisca els requisits següents:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Puntuació mínima de complexitat de $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Longitud mínima de $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Conté un o més caràcters en majúscula"
+  },
+  "policyInEffectLowercase": {
+    "message": "Conté un o més caràcters en minúscula"
+  },
+  "policyInEffectNumbers": {
+    "message": "Conté un o més números"
+  },
+  "policyInEffectSpecial": {
+    "message": "Conté un o més dels següents caràcters especials $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "La nova contrasenya principal no compleix els requisits de la política."
   }
 }

@@ -19,6 +19,9 @@
   "login": {
     "message": "Bejelentkezés"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Vállalati önálló bejelentkezés"
+  },
   "cancel": {
     "message": "Mégse"
   },
@@ -65,7 +68,7 @@
     "message": "Jelszó másolása"
   },
   "copyNote": {
-    "message": "Megjegyzés másolása"
+    "message": "Jegyzet másolása"
   },
   "copyUri": {
     "message": "URI másolása"
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "A széf zárolva van."
+  },
+  "vaultLoggedOut": {
+    "message": "A széf kijelentkezésre került."
   },
   "autoFillInfo": {
     "message": "Nincsenek elérhető bejelentkezések ehhez a fülhöz ezért az automatikus kitöltés nem működik."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Hibás mesterjelszó"
   },
-  "lockOptions": {
-    "message": "Zárolási opciók"
+  "vaultTimeout": {
+    "message": "Széf időkifutás"
   },
   "lockNow": {
     "message": "Zárolás most"
@@ -495,7 +501,7 @@
     "message": "Biztosan törlöd ezt az elemet?"
   },
   "deletedItem": {
-    "message": "Törölt elem"
+    "message": "Az elem törlésre került."
   },
   "overwritePassword": {
     "message": "Jelszó felülírása"
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "Ez jelenleg egy kísérleti funkció. Csak saját felelősségedre használd."
   },
+  "commandOpenPopup": {
+    "message": "Széf megnyitása ablakban"
+  },
+  "commandOpenSidebar": {
+    "message": "Széf megnyitása oldalsávon"
+  },
   "commandAutofillDesc": {
-    "message": "Automatikusan töltse ki az utólag használt bejelentkezést ezen a weboldalon."
+    "message": "Az aktuális webhelynél az utoljára használt bejelentkezés automatikus kitöltése."
   },
   "commandGeneratePasswordDesc": {
-    "message": "Generálj és másolj egy új véletlenszerű jelszót a vágólapra."
+    "message": "Új véletlenszerű jelszó generálása ás másolása a vágólapra."
   },
   "privateModeMessage": {
     "message": "Ebben a böngészőben ez az ablak sajnos nem érhető el privát módban."
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Opciók megnyitása"
   },
+  "toggleCurrentUris": {
+    "message": "Aktuális URI elemek váltása",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Aktuális URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Szervezet",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Legalább egy gyűjteményt ki kell választani."
+  },
+  "cloneItem": {
+    "message": "Tétel klónozása"
+  },
+  "clone": {
+    "message": "Klónozás"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Egy vagy több szervezeti szabály érinti a generátor beállításokat."
+  },
+  "vaultTimeoutAction": {
+    "message": "Széf időkifutás művelet"
+  },
+  "lock": {
+    "message": "Lezárás",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Lomtár",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Keresés a lomtárban"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Az elem végleges törlése"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Biztosan véglegesen törlésre kerüljön ez az elem?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Véglegesen törölt elem"
+  },
+  "restoreItem": {
+    "message": "Elem visszaállítása"
+  },
+  "restoreItemConfirmation": {
+    "message": "Biztosan visszaállításra kerüljön ezt az elem?"
+  },
+  "restoredItem": {
+    "message": "Visszaállított elem"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Kijelentkezve az összes széf elérés eltávolításra kerül és webes hitelesítésre van szükség az időkifutás után. Biztosan szeretnénk használni ezt a beállítást?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Időkifutás művelet megerősítés"
+  },
+  "autoFillAndSave": {
+    "message": "Automatikus kitöltés és mentés"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Automatikusan kitöltött elem és mentett URI"
+  },
+  "autoFillSuccess": {
+    "message": "Automatikusan kitöltött elem"
+  },
+  "setMasterPassword": {
+    "message": "Mesterjelszó beállítása"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Egy vagy több szervezeti rendszabályhoz mesterjelszó szükséges a következő követelmények megfeleléséhez:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minimális összetettségi pontszám $SCORE$ értékhez",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minimális hossz $LENGTH$ értékből",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Egy vagy több nagybetűs karaktert tartalmaz"
+  },
+  "policyInEffectLowercase": {
+    "message": "Egy vagy több kisbetűs karaktert tartalmaz"
+  },
+  "policyInEffectNumbers": {
+    "message": "Egy vagy több számot tartalmaz"
+  },
+  "policyInEffectSpecial": {
+    "message": "$CHARS$ speciális karakterekből egyet vagy többet tartalmaz",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Az új mesterjelszó nem felel meg a szabály követelményeknek."
   }
 }

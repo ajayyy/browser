@@ -19,6 +19,9 @@
   "login": {
     "message": "Iniciar Sessão"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Início de Sessão Único Empresarial"
+  },
   "cancel": {
     "message": "Cancelar"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "O cofre está trancado."
+  },
+  "vaultLoggedOut": {
+    "message": "O cofre está encerrado."
   },
   "autoFillInfo": {
     "message": "Não há credenciais disponíveis para autopreenchimento para a aba do navegador atual."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Senha mestra inválida"
   },
-  "lockOptions": {
-    "message": "Opções de Bloqueio"
+  "vaultTimeout": {
+    "message": "Tempo Limite do Cofre"
   },
   "lockNow": {
     "message": "Bloquear Agora"
@@ -876,6 +882,12 @@
   "experimentalFeature": {
     "message": "Atualmente, este é um recurso experimental. Utilize por sua conta e risco."
   },
+  "commandOpenPopup": {
+    "message": "Abrir pop-up do cofre"
+  },
+  "commandOpenSidebar": {
+    "message": "Abrir cofre na barra lateral"
+  },
   "commandAutofillDesc": {
     "message": "Autopreencher o último login utilizado para o site atual."
   },
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Alternar Opções"
   },
+  "toggleCurrentUris": {
+    "message": "Alternar URIs atuais",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "URI atual",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organização",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Você deve selecionar pelo menos uma coleção."
+  },
+  "cloneItem": {
+    "message": "Clonar Item"
+  },
+  "clone": {
+    "message": "Clonar"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Uma ou mais políticas da organização estão afetando as suas configurações do gerador."
+  },
+  "vaultTimeoutAction": {
+    "message": "Ação de Tempo Limite do Cofre"
+  },
+  "lock": {
+    "message": "Bloquear",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Lixeira",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Pesquisar na lixeira"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Excluir o Item Permanentemente"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Você tem certeza que deseja excluir permanentemente esse item?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Item Permanentemente Excluído"
+  },
+  "restoreItem": {
+    "message": "Restaurar Item"
+  },
+  "restoreItemConfirmation": {
+    "message": "Você tem certeza que deseja restaurar esse item?"
+  },
+  "restoredItem": {
+    "message": "Item Restaurado"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Sair irá remover todo o acesso ao seu cofre e requer autenticação online após o período de tempo limite. Tem certeza de que deseja usar esta configuração?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Confirmação de Ação de Tempo Limite"
+  },
+  "autoFillAndSave": {
+    "message": "Autopreencher e Salvar"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Item Auto-Preenchido e URI Salvo"
+  },
+  "autoFillSuccess": {
+    "message": "Item Auto-Preenchido"
+  },
+  "setMasterPassword": {
+    "message": "Definir Senha Mestra"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Uma ou mais políticas da organização exigem que a sua senha mestra cumpra aos seguintes requisitos:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Pontuação mínima de complexidade de $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Comprimento mínimo de $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Contém um ou mais caracteres em maiúsculo"
+  },
+  "policyInEffectLowercase": {
+    "message": "Contém um ou mais caracteres em minúsculo"
+  },
+  "policyInEffectNumbers": {
+    "message": "Contém um ou mais números"
+  },
+  "policyInEffectSpecial": {
+    "message": "Contém um ou mais dos seguintes caracteres especiais $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "A sua nova senha mestra não cumpre aos requisitos da política."
   }
 }

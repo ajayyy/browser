@@ -20,13 +20,13 @@ import { AuditService } from 'jslib/abstractions/audit.service';
 import { AuthService as AuthServiceAbstraction } from 'jslib/abstractions/auth.service';
 import { CipherService } from 'jslib/abstractions/cipher.service';
 import { CollectionService } from 'jslib/abstractions/collection.service';
+import { CryptoFunctionService } from 'jslib/abstractions/cryptoFunction.service';
 import { CryptoService } from 'jslib/abstractions/crypto.service';
 import { EnvironmentService } from 'jslib/abstractions/environment.service';
 import { EventService } from 'jslib/abstractions/event.service';
 import { ExportService } from 'jslib/abstractions/export.service';
 import { FolderService } from 'jslib/abstractions/folder.service';
 import { I18nService } from 'jslib/abstractions/i18n.service';
-import { LockService } from 'jslib/abstractions/lock.service';
 import { MessagingService } from 'jslib/abstractions/messaging.service';
 import { NotificationsService } from 'jslib/abstractions/notifications.service';
 import { PasswordGenerationService } from 'jslib/abstractions/passwordGeneration.service';
@@ -40,6 +40,7 @@ import { SyncService } from 'jslib/abstractions/sync.service';
 import { TokenService } from 'jslib/abstractions/token.service';
 import { TotpService } from 'jslib/abstractions/totp.service';
 import { UserService } from 'jslib/abstractions/user.service';
+import { VaultTimeoutService } from 'jslib/abstractions/vaultTimeout.service';
 
 import { AutofillService } from '../../services/abstractions/autofill.service';
 import BrowserMessagingService from '../../services/browserMessaging.service';
@@ -67,9 +68,9 @@ export const authService = new AuthService(getBgService<CryptoService>('cryptoSe
     getBgService<ApiService>('apiService')(), getBgService<UserService>('userService')(),
     getBgService<TokenService>('tokenService')(), getBgService<AppIdService>('appIdService')(),
     getBgService<I18nService>('i18nService')(), getBgService<PlatformUtilsService>('platformUtilsService')(),
-    messagingService);
+    messagingService, getBgService<VaultTimeoutService>('vaultTimeoutService')());
 export const searchService = new PopupSearchService(getBgService<SearchService>('searchService')(),
-    getBgService<CipherService>('cipherService')(), getBgService<PlatformUtilsService>('platformUtilsService')());
+    getBgService<CipherService>('cipherService')());
 
 export function initFactory(i18nService: I18nService, storageService: StorageService,
     popupUtilsService: PopupUtilsService): Function {
@@ -126,6 +127,11 @@ export function initFactory(i18nService: I18nService, storageService: StorageSer
         { provide: SearchServiceAbstraction, useValue: searchService },
         { provide: AuditService, useFactory: getBgService<AuditService>('auditService'), deps: [] },
         { provide: CipherService, useFactory: getBgService<CipherService>('cipherService'), deps: [] },
+        {
+            provide: CryptoFunctionService,
+            useFactory: getBgService<CryptoFunctionService>('cryptoFunctionService'),
+            deps: [],
+        },
         { provide: FolderService, useFactory: getBgService<FolderService>('folderService'), deps: [] },
         { provide: CollectionService, useFactory: getBgService<CollectionService>('collectionService'), deps: [] },
         { provide: EnvironmentService, useFactory: getBgService<EnvironmentService>('environmentService'), deps: [] },
@@ -149,11 +155,15 @@ export function initFactory(i18nService: I18nService, storageService: StorageSer
         { provide: SyncService, useFactory: getBgService<SyncService>('syncService'), deps: [] },
         { provide: UserService, useFactory: getBgService<UserService>('userService'), deps: [] },
         { provide: SettingsService, useFactory: getBgService<SettingsService>('settingsService'), deps: [] },
-        { provide: LockService, useFactory: getBgService<LockService>('lockService'), deps: [] },
         { provide: StorageService, useFactory: getBgService<StorageService>('storageService'), deps: [] },
         { provide: AppIdService, useFactory: getBgService<AppIdService>('appIdService'), deps: [] },
         { provide: AutofillService, useFactory: getBgService<AutofillService>('autofillService'), deps: [] },
         { provide: ExportService, useFactory: getBgService<ExportService>('exportService'), deps: [] },
+        {
+            provide: VaultTimeoutService,
+            useFactory: getBgService<VaultTimeoutService>('vaultTimeoutService'),
+            deps: [],
+        },
         {
             provide: NotificationsService,
             useFactory: getBgService<NotificationsService>('notificationsService'),

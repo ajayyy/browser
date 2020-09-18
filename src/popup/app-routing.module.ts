@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import {
     ActivatedRouteSnapshot,
     RouteReuseStrategy,
@@ -16,8 +16,10 @@ import { HomeComponent } from './accounts/home.component';
 import { LockComponent } from './accounts/lock.component';
 import { LoginComponent } from './accounts/login.component';
 import { RegisterComponent } from './accounts/register.component';
+import { SetPasswordComponent } from './accounts/set-password.component';
 import { TwoFactorOptionsComponent } from './accounts/two-factor-options.component';
 import { TwoFactorComponent } from './accounts/two-factor.component';
+import { SsoComponent } from './accounts/sso.component';
 import { PasswordGeneratorHistoryComponent } from './generator/password-generator-history.component';
 import { PasswordGeneratorComponent } from './generator/password-generator.component';
 import { PrivateModeComponent } from './private-mode.component';
@@ -78,6 +80,17 @@ const routes: Routes = [
         component: TwoFactorOptionsComponent,
         canActivate: [LaunchGuardService],
         data: { state: '2fa-options' },
+    },
+    {
+        path: 'sso',
+        component: SsoComponent,
+        canActivate: [LaunchGuardService],
+        data: { state: 'sso' },
+    },
+    {
+        path: 'set-password',
+        component: SetPasswordComponent,
+        data: { state: 'set-password' },
     },
     {
         path: 'register',
@@ -249,6 +262,7 @@ const routes: Routes = [
     },
 ];
 
+@Injectable()
 export class NoRouteReuseStrategy implements RouteReuseStrategy {
     shouldDetach(route: ActivatedRouteSnapshot) {
         return false;

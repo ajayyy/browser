@@ -19,6 +19,9 @@
   "login": {
     "message": "Masuk"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Enterprise Single Sign-On"
+  },
   "cancel": {
     "message": "Batal"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "Brankas terkunci."
+  },
+  "vaultLoggedOut": {
+    "message": "Vault is logged out."
   },
   "autoFillInfo": {
     "message": "Tidak ada info masuk yang tersedia untuk mengisi secara otomatis tab peramban saat ini."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Sandi utama tidak valid"
   },
-  "lockOptions": {
-    "message": "Pilihan Penguncian"
+  "vaultTimeout": {
+    "message": "Vault Timeout"
   },
   "lockNow": {
     "message": "Kunci Sekarang"
@@ -876,6 +882,12 @@
   "experimentalFeature": {
     "message": "Saat ini Anda pada lingkungan sementara. Gunakanlah dengan resiko yang ditanggung sendiri."
   },
+  "commandOpenPopup": {
+    "message": "Open vault popup"
+  },
+  "commandOpenSidebar": {
+    "message": "Open vault in sidebar"
+  },
   "commandAutofillDesc": {
     "message": "Isi otomatis info masuk yang digunakan terakhir untuk situs ini."
   },
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Ubah Opsi"
   },
+  "toggleCurrentUris": {
+    "message": "Toggle Current URIs",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Current URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organisasi",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "You must select at least one collection."
+  },
+  "cloneItem": {
+    "message": "Clone Item"
+  },
+  "clone": {
+    "message": "Clone"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "One or more organization policies are affecting your generator settings."
+  },
+  "vaultTimeoutAction": {
+    "message": "Vault Timeout Action"
+  },
+  "lock": {
+    "message": "Lock",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Trash",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Search trash"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Permanently Delete Item"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Are you sure you want to permanently delete this item?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Permanently Deleted item"
+  },
+  "restoreItem": {
+    "message": "Restore Item"
+  },
+  "restoreItemConfirmation": {
+    "message": "Are you sure you want to restore this item?"
+  },
+  "restoredItem": {
+    "message": "Restored Item"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Logging out will remove all access to your vault and requires online authentication after the timeout period. Are you sure you want to use this setting?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Timeout Action Confirmation"
+  },
+  "autoFillAndSave": {
+    "message": "Auto-fill and Save"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Auto-filled Item and Saved URI"
+  },
+  "autoFillSuccess": {
+    "message": "Auto-filled Item"
+  },
+  "setMasterPassword": {
+    "message": "Set Master Password"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "One or more organization policies require your master password to meet the following requirements:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minimum complexity score of $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minimum length of $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Contain one or more uppercase characters"
+  },
+  "policyInEffectLowercase": {
+    "message": "Contain one or more lowercase characters"
+  },
+  "policyInEffectNumbers": {
+    "message": "Contain one or more numbers"
+  },
+  "policyInEffectSpecial": {
+    "message": "Contain one or more of the following special characters $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Your new master password does not meet the policy requirements."
   }
 }

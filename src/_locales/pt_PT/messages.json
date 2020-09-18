@@ -19,6 +19,9 @@
   "login": {
     "message": "Iniciar sessão"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Início de Sessão Único da Empresa"
+  },
   "cancel": {
     "message": "Cancelar"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "O cofre está bloqueado."
+  },
+  "vaultLoggedOut": {
+    "message": "Sessão terminada no cofre."
   },
   "autoFillInfo": {
     "message": "Não existem credenciais disponíveis para auto-preencher para o separador de navegador atual."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Palavra-passe mestra inválida"
   },
-  "lockOptions": {
-    "message": "Opções de bloqueio"
+  "vaultTimeout": {
+    "message": "Expiração do cofre"
   },
   "lockNow": {
     "message": "Bloquear agora"
@@ -449,7 +455,7 @@
     "message": "Pasta editada"
   },
   "deleteFolderConfirmation": {
-    "message": "Tem certeza de que pretende eliminar esta pasta?"
+    "message": "Tem a certeza de que pretende eliminar esta pasta?"
   },
   "deletedFolder": {
     "message": "Pasta eliminada"
@@ -495,7 +501,7 @@
     "message": "Tem a certeza de que pretende eliminar este item?"
   },
   "deletedItem": {
-    "message": "Item eliminado"
+    "message": "Item enviado para o lixo"
   },
   "overwritePassword": {
     "message": "Sobreescrever palavra-passe"
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "Esta é atualmente uma funcionalidade experimental. Utilize por sua conta e risco."
   },
+  "commandOpenPopup": {
+    "message": "Abrir popup do cofre"
+  },
+  "commandOpenSidebar": {
+    "message": "Abrir cofre na barra lateral"
+  },
   "commandAutofillDesc": {
-    "message": "Auto-preencher o último início de sessão utilizado para o website atual."
+    "message": "Auto-preencher o último início de sessão utilizado para o website atual"
   },
   "commandGeneratePasswordDesc": {
-    "message": "Gerar e copiar uma nova palavra-passe aleatória para a área de transferência."
+    "message": "Gerar e copiar uma nova palavra-passe aleatória para a área de transferência"
   },
   "privateModeMessage": {
     "message": "Infelizmente esta janela não está disponível no modo privado para este navegador."
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Alternar opções"
   },
+  "toggleCurrentUris": {
+    "message": "Alternar URIs atuais",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "URI atual",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organização",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Tem de selecionar pelo menos uma coleção."
+  },
+  "cloneItem": {
+    "message": "Clonar item"
+  },
+  "clone": {
+    "message": "Clonar"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Uma ou mais políticas de organização estão a afetar as suas definições do gerador."
+  },
+  "vaultTimeoutAction": {
+    "message": "Ação de expiração do cofre"
+  },
+  "lock": {
+    "message": "Bloquear",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Lixo",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Pesquisar lixo"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Eliminar item permanentemente"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Tem a certeza de que pretende eliminar este item permanentemente?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Item eliminado permanentemente"
+  },
+  "restoreItem": {
+    "message": "Restaurar item"
+  },
+  "restoreItemConfirmation": {
+    "message": "Tem a certeza de que pretende restaurar este item?"
+  },
+  "restoredItem": {
+    "message": "Item restaurado"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Terminar sessão irá remover todos os acessos ao seu cofre e requer autenticação online após o período de expiração. Tem a certeza de que pretende utilizar esta definição?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Confirmação de expiração do cofre"
+  },
+  "autoFillAndSave": {
+    "message": "Auto-preencher e guardar"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Item auto-preenchido e URI guardado"
+  },
+  "autoFillSuccess": {
+    "message": "Item auto-preenchido"
+  },
+  "setMasterPassword": {
+    "message": "Definir palavra-passe mestra"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Uma ou mais políticas da organização requerem que a sua palavra-passe mestra cumpra aos seguintes requisitos:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Pontuação mínima de complexidade de $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Comprimento mínimo de $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Contém um ou mais caracteres em maiúsculas"
+  },
+  "policyInEffectLowercase": {
+    "message": "Contém um ou mais caracteres em minúsculas"
+  },
+  "policyInEffectNumbers": {
+    "message": "Contém um ou mais números"
+  },
+  "policyInEffectSpecial": {
+    "message": "Contém um ou mais dos seguintes caracteres especiais $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "A sua nova palavra-passe mestra não cumpre os requisitos da política."
   }
 }

@@ -19,6 +19,9 @@
   "login": {
     "message": "Log ind"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Virksomheds Single Sign On"
+  },
   "cancel": {
     "message": "Annullér"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "Boksen er låst."
+  },
+  "vaultLoggedOut": {
+    "message": "Boksen er logget ud."
   },
   "autoFillInfo": {
     "message": "Der findes ingen login til at auto-udfylde i den nuværende browserfane."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Ugyldig hovedadgangskode"
   },
-  "lockOptions": {
-    "message": "Låseindstillinger"
+  "vaultTimeout": {
+    "message": "Boks timeout"
   },
   "lockNow": {
     "message": "Lås nu"
@@ -495,7 +501,7 @@
     "message": "Er du sikker på, at du vil slette dette element?"
   },
   "deletedItem": {
-    "message": "Slettede element"
+    "message": "Element sendt til papirkurven"
   },
   "overwritePassword": {
     "message": "Overskriv adgangskode"
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "Dette er i øjeblikket en eksperimentel funktion. Brug på egen risiko."
   },
+  "commandOpenPopup": {
+    "message": "Åbn boks popup"
+  },
+  "commandOpenSidebar": {
+    "message": "Åbn boks i sidebjælken"
+  },
   "commandAutofillDesc": {
-    "message": "Auto-udfyld det sidste anvendte login for den aktuelle hjemmeside."
+    "message": "Auto-udfyld det sidste anvendte login for den aktuelle hjemmeside"
   },
   "commandGeneratePasswordDesc": {
-    "message": "Generér og kopiér en ny tilfældig adgangskode til udklipsholderen."
+    "message": "Generér en ny tilfældig adgangskode og kopiér den til udklipsholderen"
   },
   "privateModeMessage": {
     "message": "Desværre er dette vindue ikke tilgængelig i privat modus i denne browser."
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Skift indstillinger"
   },
+  "toggleCurrentUris": {
+    "message": "Skift aktuelle URI'er",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Aktuel URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organisation",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Du skal vælge minimum én samling."
+  },
+  "cloneItem": {
+    "message": "Klon element"
+  },
+  "clone": {
+    "message": "Klon"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Én eller flere organisationspolitikker påvirker dine generatorindstillinger."
+  },
+  "vaultTimeoutAction": {
+    "message": "Boks timeout-handling"
+  },
+  "lock": {
+    "message": "Lås",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Papirkurv",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Søg i papirkurven"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Slet element permanent"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Er du sikker på, at du vil slette dette element permanent?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Element slettet permanent"
+  },
+  "restoreItem": {
+    "message": "Gendan element"
+  },
+  "restoreItemConfirmation": {
+    "message": "Er du sikker på, at du vil gendanne dette element?"
+  },
+  "restoredItem": {
+    "message": "Element gendannet"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Ved at logge ud fjernes al adgang til din boks og kræver online-godkendelse efter timeout-perioden. Er du sikker på, at du vil bruge denne indstilling?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Bekræft timeout-handling"
+  },
+  "autoFillAndSave": {
+    "message": "Autoudfyld og gem"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Autoudfyldte element og URI gemt"
+  },
+  "autoFillSuccess": {
+    "message": "Autoudfyldte element"
+  },
+  "setMasterPassword": {
+    "message": "Indstil hovedadgangskode"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Én eller flere organisationspolitikker kræver, at din hovedadgangskode opfylder flg. krav:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minimum kompleksitetsscore på $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minimumslængde på $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Indeholder ét eller flere store bogstaver"
+  },
+  "policyInEffectLowercase": {
+    "message": "Indeholder ét eller flere små bogstaver"
+  },
+  "policyInEffectNumbers": {
+    "message": "Indeholder ét eller flere cifre"
+  },
+  "policyInEffectSpecial": {
+    "message": "Indeholder ét eller flere af følgende specialtegn $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Din nye hovedadgangskode opfylder ikke politikkravene."
   }
 }

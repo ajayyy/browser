@@ -19,6 +19,9 @@
   "login": {
     "message": "Prihlásiť sa"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Prihlásenie cez prihlasovací formulár spoločnosti (SSO)"
+  },
   "cancel": {
     "message": "Zrušiť"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "Trezor je zamknutý."
+  },
+  "vaultLoggedOut": {
+    "message": "Trezor je odhlásený"
   },
   "autoFillInfo": {
     "message": "Nie sú prístupné žiadne prihlasovacie údaje na automatické vyplnenie pre aktuálnu kartu."
@@ -212,11 +218,11 @@
     "message": "Oddeľovač slov"
   },
   "capitalize": {
-    "message": "Capitalize",
+    "message": "Prvé písmeno veľkým",
     "description": "Make the first letter of a work uppercase."
   },
   "includeNumber": {
-    "message": "Include Number"
+    "message": "Zahrnúť číslo"
   },
   "minNumbers": {
     "message": "Minimum číslic"
@@ -306,7 +312,7 @@
     "message": "Odomknúť"
   },
   "loggedInAsOn": {
-    "message": "Logged in as $EMAIL$ on $HOSTNAME$.",
+    "message": "Prihlásený ako $EMAIL$ na $HOSTNAME$.",
     "placeholders": {
       "email": {
         "content": "$1",
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Neplatné hlavné heslo"
   },
-  "lockOptions": {
-    "message": "Možnosti uzamknutia"
+  "vaultTimeout": {
+    "message": "Časový limit pre trezor vypršal"
   },
   "lockNow": {
     "message": "Uzamknúť teraz"
@@ -495,7 +501,7 @@
     "message": "Naozaj chcete odstrániť túto položku?"
   },
   "deletedItem": {
-    "message": "Položka odstránená"
+    "message": "Položka odstránená do koša"
   },
   "overwritePassword": {
     "message": "Prepísať heslo"
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "Toto je zatiaľ experimentálna funkcia. Použite na vlastné riziko."
   },
+  "commandOpenPopup": {
+    "message": "Otvoriť vyskakovacie okno trezora"
+  },
+  "commandOpenSidebar": {
+    "message": "Otvoriť trezor v bočnom paneli"
+  },
   "commandAutofillDesc": {
-    "message": "Automaticky vyplniť naposledy použité prihlasovacie údaje pre túto stránku."
+    "message": "Automaticky vyplniť naposledy použité prihlasovacie údaje pre túto stránku"
   },
   "commandGeneratePasswordDesc": {
-    "message": "Vygenerovať a skopírovať nové náhodné heslo do schránky."
+    "message": "Vygenerovať a skopírovať nové náhodné heslo do schránky"
   },
   "privateModeMessage": {
     "message": "Bohužiaľ, toto okno nie je dostupné v privátnom režime prehliadača."
@@ -898,7 +910,7 @@
     "message": "Nové vlastné pole"
   },
   "dragToSort": {
-    "message": "Drag to sort"
+    "message": "Zoradiť presúvaním"
   },
   "cfTypeText": {
     "message": "Text"
@@ -913,7 +925,7 @@
     "message": "Kliknutie mimo popup okna na prezretie vášho emailu pre overovací kód spôsobí zavretie tohto popupu. Chcete otvoriť tento popup v novom okne tak, aby sa nezavrel?"
   },
   "popupU2fCloseMessage": {
-    "message": "This browser cannot process U2F requests in this popup window. Do you want to open this popup in a new window so that you can log in using U2F?"
+    "message": "Tento prehliadač nedokáže spracovať U2F požiadavku v popup okne. Chcete ho otvoriť v novom okne aby ste sa mohli prihlásiť pomocou U2F?"
   },
   "disableFavicon": {
     "message": "Nezobrazovať ikony stránok"
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Voľby prepínača"
   },
+  "toggleCurrentUris": {
+    "message": "Prepnúť zobrazovanie aktuálnej URI",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Aktuálna URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organizácia",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1231,6 +1251,107 @@
     "message": "Pri reštarte prehliadača zamknúť s hlavným heslom"
   },
   "selectOneCollection": {
-    "message": "You must select at least one collection."
+    "message": "Musíte vybrať aspoň jednu zbierku."
+  },
+  "cloneItem": {
+    "message": "Klonovať položku"
+  },
+  "clone": {
+    "message": "Klonovať"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Jedno alebo viac nastavení organizácie ovplyvňujú vaše nastavenia generátora."
+  },
+  "vaultTimeoutAction": {
+    "message": "Akcia pri vypršaní času pre trezor"
+  },
+  "lock": {
+    "message": "Uzamknúť",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Kôš",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Hľadať v koši"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Natrvalo odstrániť položku"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Naozaj chcete narvalo odstrániť túto položku?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Natrvalo odstrániť položku"
+  },
+  "restoreItem": {
+    "message": "Obnoviť položku"
+  },
+  "restoreItemConfirmation": {
+    "message": "Naozaj chcete obnoviť túto položku?"
+  },
+  "restoredItem": {
+    "message": "Obnovená položka"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Odhlásenie bude vyžadovať online prihlásenie po vypršaní časového limitu. Naozaj chcete použiť toto nastavenie?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Potvrdenie akcie pre vypršaný časový limit"
+  },
+  "autoFillAndSave": {
+    "message": "Auto-vyplniť a Uložiť"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Automatické vypĺnenie a uloženie úspešné"
+  },
+  "autoFillSuccess": {
+    "message": "Automaticky vypĺnené"
+  },
+  "setMasterPassword": {
+    "message": "Nastaviť hlavné heslo"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Jedno alebo viac pravidiel organizácie požadujú aby vaše hlavné heslo spĺňalo nasledujúce požiadavky:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minimálna úroveň zložitosti $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minimálna dĺžka $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Obsahuje aspoň jedno veľké písmeno"
+  },
+  "policyInEffectLowercase": {
+    "message": "Obsahuje aspoň jedno malé písmeno"
+  },
+  "policyInEffectNumbers": {
+    "message": "Obsahuje aspoň jednu číslicu"
+  },
+  "policyInEffectSpecial": {
+    "message": "Obsahuje aspoň jeden z následujúcich špeciálnych znakov $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Vaše nové heslo nespĺňa pravidlá."
   }
 }

@@ -3,19 +3,13 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
 if (process.env.NODE_ENV == null) {
     process.env.NODE_ENV = 'development';
 }
 const ENV = process.env.ENV = process.env.NODE_ENV;
-
-const extractCss = new ExtractTextPlugin({
-    filename: '[name].css',
-    disable: false,
-    allChunks: true,
-});
 
 const moduleRules = [
     {
@@ -53,17 +47,16 @@ const moduleRules = [
     },
     {
         test: /\.scss$/,
-        use: extractCss.extract({
-            use: [
-                {
-                    loader: 'css-loader',
-                },
-                {
-                    loader: 'sass-loader',
-                },
-            ],
-            publicPath: '../',
-        }),
+        use: [
+            {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../',
+                }
+            },
+            'css-loader',
+            'sass-loader',
+        ],
     },
     // Hide System.import warnings. ref: https://github.com/angular/angular/issues/21560
     {
@@ -82,7 +75,7 @@ const plugins = [
     new HtmlWebpackPlugin({
         template: './src/popup/index.html',
         filename: 'popup/index.html',
-        chunks: ['popup/vendor', 'popup/main'],
+        chunks: ['popup/vendor-angular', 'popup/vendor', 'popup/main'],
     }),
     new HtmlWebpackPlugin({
         template: './src/background.html',
@@ -97,7 +90,6 @@ const plugins = [
     new CopyWebpackPlugin([
         './src/manifest.json',
         { from: './src/_locales', to: '_locales' },
-        { from: './src/edge', to: 'edge' },
         { from: './src/images', to: 'images' },
         { from: './src/popup/images', to: 'popup/images' },
         { from: './src/content/autofill.css', to: 'content' },
@@ -105,7 +97,10 @@ const plugins = [
     new webpack.SourceMapDevToolPlugin({
         include: ['popup/main.js', 'background.js'],
     }),
-    extractCss,
+    new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: 'chunk-[id].css',
+    }),
     new webpack.DefinePlugin({
         'process.env': {
             'ENV': JSON.stringify(ENV)
@@ -141,6 +136,7 @@ const config = {
         'content/autofiller': './src/content/autofiller.ts',
         'content/notificationBar': './src/content/notificationBar.ts',
         'content/shortcuts': './src/content/shortcuts.ts',
+        'content/sso': './src/content/sso.ts',
         'notification/bar': './src/notification/bar.js',
     },
     optimization: {
@@ -148,8 +144,22 @@ const config = {
         splitChunks: {
             cacheGroups: {
                 commons: {
-                    test: /[\\/]node_modules[\\/]/,
+                    test(module, chunks) {
+                        return module.resource != null &&
+                            module.resource.includes(`${path.sep}node_modules${path.sep}`) &&
+                            !module.resource.includes(`${path.sep}node_modules${path.sep}@angular${path.sep}`);
+                    },
                     name: 'popup/vendor',
+                    chunks: (chunk) => {
+                        return chunk.name === 'popup/main';
+                    },
+                },
+                angular: {
+                    test(module, chunks) {
+                        return module.resource != null &&
+                            module.resource.includes(`${path.sep}node_modules${path.sep}@angular${path.sep}`);
+                    },
+                    name: 'popup/vendor-angular',
                     chunks: (chunk) => {
                         return chunk.name === 'popup/main';
                     },

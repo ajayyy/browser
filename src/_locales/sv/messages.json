@@ -19,6 +19,9 @@
   "login": {
     "message": "Logga in"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Single Sign-On för företag"
+  },
   "cancel": {
     "message": "Avbryt"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "Valvet är låst."
+  },
+  "vaultLoggedOut": {
+    "message": "Valvet är utloggat."
   },
   "autoFillInfo": {
     "message": "Det finns inga inloggningar tillgängliga för automatisk ifyllnad på den nuvarande fliken."
@@ -212,11 +218,11 @@
     "message": "Ordseparator"
   },
   "capitalize": {
-    "message": "Capitalize",
+    "message": "Versalisera",
     "description": "Make the first letter of a work uppercase."
   },
   "includeNumber": {
-    "message": "Include Number"
+    "message": "Inkludera siffra"
   },
   "minNumbers": {
     "message": "Minst antal nummer"
@@ -306,7 +312,7 @@
     "message": "Lås upp"
   },
   "loggedInAsOn": {
-    "message": "Logged in as $EMAIL$ on $HOSTNAME$.",
+    "message": "Inloggad som $EMAIL$ på $HOSTNAME$.",
     "placeholders": {
       "email": {
         "content": "$1",
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Felaktigt huvudlösenord"
   },
-  "lockOptions": {
-    "message": "Låsalternativ"
+  "vaultTimeout": {
+    "message": "Valvets tidsgräns"
   },
   "lockNow": {
     "message": "Lås nu"
@@ -495,7 +501,7 @@
     "message": "Är du säker på att du vill ta bort detta objekt?"
   },
   "deletedItem": {
-    "message": "Tog bort objekt"
+    "message": "Raderade objekt"
   },
   "overwritePassword": {
     "message": "Skriv över lösenord"
@@ -691,7 +697,7 @@
     "message": "Du är för närvarande inte en premium-medlem."
   },
   "premiumSignUpAndGet": {
-    "message": "Registrera dig för premium-medlemskap och få:"
+    "message": "Registrera dig för ett premium-medlemskap och få:"
   },
   "ppremiumSignUpStorage": {
     "message": "1 GB lagring av krypterade filer."
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "Detta är för närvarande en experimentell funktion. Använd på egen risk."
   },
+  "commandOpenPopup": {
+    "message": "Öppna valvet i ett popupfönster"
+  },
+  "commandOpenSidebar": {
+    "message": "Öppna valvet i sidofältet"
+  },
   "commandAutofillDesc": {
-    "message": "Fyll automatiskt i den senast använda inloggningen för aktuell sida."
+    "message": "Fyll automatiskt i den senast använda inloggningen för den aktuella webbsidan"
   },
   "commandGeneratePasswordDesc": {
-    "message": "Generera och kopiera ett nytt slumpmässigt lösenord till Urklipp."
+    "message": "Skapa och kopiera ett nytt slumpmässigt lösenord till urklipp."
   },
   "privateModeMessage": {
     "message": "Det här fönstret är tyvärr inte tillgängligt i privat läge för denna webbläsare."
@@ -913,7 +925,7 @@
     "message": "Om du klickar utanför popup-fönstret för att kontrollera din email efter din verifieringskod så stängs popup-fönstret. Vill du öppna popup-fönstret i ett nytt fönster, så att det inte stängs?"
   },
   "popupU2fCloseMessage": {
-    "message": "This browser cannot process U2F requests in this popup window. Do you want to open this popup in a new window so that you can log in using U2F?"
+    "message": "Den här webbläsaren kan inte bearbeta U2F-förfrågningar i detta popup-fönster. Vill du öppna ett nytt fönster så att du kan logga in med U2F?"
   },
   "disableFavicon": {
     "message": "Inaktivera webbplatsikoner"
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Växla alternativ"
   },
+  "toggleCurrentUris": {
+    "message": "Växla nuvarande URI",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Nuvarande URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organisation",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1216,7 +1236,7 @@
     "message": "Ange en PIN-kod för att låsa upp Bitwarden. Dina PIN-inställningar återställs om du någonsin loggar ut helt från programmet."
   },
   "pinRequired": {
-    "message": "PIN-kod behövs."
+    "message": "PIN-kod krävs."
   },
   "invalidPin": {
     "message": "Ogiltig PIN-kod."
@@ -1231,6 +1251,107 @@
     "message": "Lås med huvudlösenordet vid omstart av webbläsaren"
   },
   "selectOneCollection": {
-    "message": "You must select at least one collection."
+    "message": "Du måste markera minst en samling."
+  },
+  "cloneItem": {
+    "message": "Klona objekt"
+  },
+  "clone": {
+    "message": "Klona"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "En eller flera organisationspolicyer påverkar dina generatorinställningar."
+  },
+  "vaultTimeoutAction": {
+    "message": "Åtgärd när valvets tidsgräns överskrids"
+  },
+  "lock": {
+    "message": "Lås",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Papperskorgen",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Sök i papperskorgen"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Radera objekt permanent"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Är du säker på att du vill radera detta objekt permanent?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Raderade objekt permanent"
+  },
+  "restoreItem": {
+    "message": "Återställ objekt"
+  },
+  "restoreItemConfirmation": {
+    "message": "Är du säker på att du vill återställa detta objekt?"
+  },
+  "restoredItem": {
+    "message": "Återställde objekt"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Genom att logga ut upphör all åtkomst till valvet och onlineautentisering krävs efter att tidsgränsen överskridits. Är du säker på att du vill använda denna inställning?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Bekräftelse av åtgärd när valvets tidsgräns överskrids"
+  },
+  "autoFillAndSave": {
+    "message": "Fyll i automatiskt och spara"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Fyllde i objektet automatiskt och sparade URI:n"
+  },
+  "autoFillSuccess": {
+    "message": "Fyllde i objektet automatiskt"
+  },
+  "setMasterPassword": {
+    "message": "Ange huvudlösenord"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "En eller flera organisationspolicyer kräver att ditt huvudlösenord uppfyller följande krav:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minsta komplexitetspoäng på $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minsta längd på $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Innehålla en eller flera versaler"
+  },
+  "policyInEffectLowercase": {
+    "message": "Innehålla en eller flera gemener"
+  },
+  "policyInEffectNumbers": {
+    "message": "Innehålla en eller flera siffror"
+  },
+  "policyInEffectSpecial": {
+    "message": "Innehålla ett eller flera av följande specialtecken: $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Ditt nya huvudlösenord uppfyller inte kraven i policyn."
   }
 }

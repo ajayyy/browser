@@ -21,8 +21,10 @@ import { HomeComponent } from './accounts/home.component';
 import { LockComponent } from './accounts/lock.component';
 import { LoginComponent } from './accounts/login.component';
 import { RegisterComponent } from './accounts/register.component';
+import { SetPasswordComponent } from './accounts/set-password.component';
 import { TwoFactorOptionsComponent } from './accounts/two-factor-options.component';
 import { TwoFactorComponent } from './accounts/two-factor.component';
+import { SsoComponent } from './accounts/sso.component';
 import { AppComponent } from './app.component';
 import { PasswordGeneratorHistoryComponent } from './generator/password-generator-history.component';
 import { PasswordGeneratorComponent } from './generator/password-generator.component';
@@ -72,11 +74,13 @@ import {
     CurrencyPipe,
     registerLocaleData,
 } from '@angular/common';
+import localeBe from '@angular/common/locales/be';
 import localeBg from '@angular/common/locales/bg';
 import localeCa from '@angular/common/locales/ca';
 import localeCs from '@angular/common/locales/cs';
 import localeDa from '@angular/common/locales/da';
 import localeDe from '@angular/common/locales/de';
+import localeEl from '@angular/common/locales/el';
 import localeEnGb from '@angular/common/locales/en-GB';
 import localeEs from '@angular/common/locales/es';
 import localeEt from '@angular/common/locales/et';
@@ -106,11 +110,13 @@ import localeVi from '@angular/common/locales/vi';
 import localeZhCn from '@angular/common/locales/zh-Hans';
 import localeZhTw from '@angular/common/locales/zh-Hant';
 
+registerLocaleData(localeBe, 'be');
 registerLocaleData(localeBg, 'bg');
 registerLocaleData(localeCa, 'ca');
 registerLocaleData(localeCs, 'cs');
 registerLocaleData(localeDa, 'da');
 registerLocaleData(localeDe, 'de');
+registerLocaleData(localeEl, 'el');
 registerLocaleData(localeEnGb, 'en-GB');
 registerLocaleData(localeEs, 'es');
 registerLocaleData(localeEt, 'et');
@@ -147,7 +153,7 @@ registerLocaleData(localeZhTw, 'zh-TW');
         FormsModule,
         AppRoutingModule,
         ServicesModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot({
             pageTracking: {
                 clearQueryParams: true,
             },
@@ -204,7 +210,9 @@ registerLocaleData(localeZhTw, 'zh-TW');
         TrueFalseValueDirective,
         TwoFactorOptionsComponent,
         TwoFactorComponent,
+        SsoComponent,
         ViewComponent,
+        SetPasswordComponent
     ],
     entryComponents: [],
     providers: [
