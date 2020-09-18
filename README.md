@@ -31,6 +31,6 @@ Make sure node.js and npm are installed.
 
 `npm install`
 
-`npm run build:dist`
+`npm run build:prod`
 
 The extension will be available in the `dist` folder.
