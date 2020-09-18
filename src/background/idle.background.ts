@@ -55,7 +55,7 @@ export default class IdleBackground {
 
                     const lockOnSystemLock = await this.storageService.get<boolean>(ConstantsService.lockOnSystemLockKey);
                     if (lockOnSystemLock) {
-                        this.lockServvaultTimeoutServiceice.lock(true);
+                        this.vaultTimeoutService.lock(true);
                     }
                 } else if (newState === 'idle') {
                     const lockAfterIdle = await this.storageService.get<boolean>(ConstantsService.lockAfterIdleKey);
