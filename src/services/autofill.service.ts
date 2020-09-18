@@ -3,6 +3,8 @@ import {
     FieldType,
 } from 'jslib/enums';
 
+import { CipherView } from 'jslib/models/view';
+
 import AutofillField from '../models/autofillField';
 import AutofillPageDetails from '../models/autofillPageDetails';
 import AutofillScript from '../models/autofillScript';
@@ -42,6 +44,10 @@ const ExcludedAutofillTypes: string[] = ['radio', 'checkbox', 'hidden', 'file', 
 const MonthAbbr = ['mm', 'mm', 'mm', 'mm', 'mm', 'mm'];
 const YearAbbrShort = ['yy', 'åå', 'jj', 'aa', 'гг', 'rr'];
 const YearAbbrLong = ['yyyy', 'åååå', 'jjjj', 'aa', 'гггг', 'rrrr'];
+
+const OperationDelays = new Map<string, number>([
+    ['buzzsprout.com', 100],
+]);
 
 /* tslint:disable */
 const IsoCountries: { [id: string]: string; } = {
@@ -113,6 +119,7 @@ var IsoProvinces: { [id: string]: string; } = {
 /* tslint:enable */
 
 export default class AutofillService implements AutofillServiceInterface {
+
     constructor(private cipherService: CipherService, private userService: UserService,
         private totpService: TotpService, private eventService: EventService) { }
 
@@ -174,6 +181,9 @@ export default class AutofillService implements AutofillServiceInterface {
                 return;
             }
 
+            // Add a small delay between operations
+            fillScript.properties.delay_between_operations = 20;
+
             didAutofill = true;
             if (!options.skipLastUsed) {
                 this.cipherService.updateLastUsedDate(options.cipher.id);
@@ -210,23 +220,24 @@ export default class AutofillService implements AutofillServiceInterface {
         }
     }
 
-    async doAutoFillForLastUsedLogin(pageDetails: any, fromCommand: boolean) {
+    async doAutoFillActiveTab(pageDetails: any, fromCommand: boolean) {
         const tab = await this.getActiveTab();
         if (!tab || !tab.url) {
             return;
         }
 
-        const lastUsedCipher = await this.cipherService.getLastUsedForUrl(tab.url);
-        if (!lastUsedCipher) {
-            return;
+        let cipher: CipherView;
+        if (fromCommand) {
+            cipher = await this.cipherService.getNextCipherForUrl(tab.url);
+        } else {
+            cipher = await this.cipherService.getLastUsedForUrl(tab.url);
         }
 
         return await this.doAutoFill({
-            cipher: lastUsedCipher,
-            // tslint:disable-next-line
+            cipher: cipher,
             pageDetails: pageDetails,
             skipTotp: !fromCommand,
-            skipLastUsed: true,
+            skipLastUsed: !fromCommand,
             skipUsernameOnlyFill: !fromCommand,
             onlyEmptyFields: !fromCommand,
             onlyVisibleFields: !fromCommand,
@@ -889,6 +900,9 @@ export default class AutofillService implements AutofillServiceInterface {
                     return false;
                 }
                 const lowerValue = value.toLowerCase();
+                if (lowerValue.indexOf('onetimepassword') >= 0) {
+                    return false;
+                }
                 if (lowerValue.indexOf('password') < 0) {
                     return false;
                 }

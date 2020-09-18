@@ -5,6 +5,8 @@ import {
     Router,
 } from '@angular/router';
 
+import { BrowserApi } from '../../browser/browserApi';
+
 import { AuditService } from 'jslib/abstractions/audit.service';
 import { CipherService } from 'jslib/abstractions/cipher.service';
 import { CollectionService } from 'jslib/abstractions/collection.service';
@@ -16,6 +18,8 @@ import { PlatformUtilsService } from 'jslib/abstractions/platformUtils.service';
 import { StateService } from 'jslib/abstractions/state.service';
 import { UserService } from 'jslib/abstractions/user.service';
 
+import { LoginUriView } from 'jslib/models/view/loginUriView';
+
 import { AddEditComponent as BaseAddEditComponent } from 'jslib/angular/components/add-edit.component';
 
 @Component({
@@ -23,6 +27,7 @@ import { AddEditComponent as BaseAddEditComponent } from 'jslib/angular/componen
     templateUrl: 'add-edit.component.html',
 })
 export class AddEditComponent extends BaseAddEditComponent {
+    currentUris: string[];
     showAttachments = true;
 
     constructor(cipherService: CipherService, folderService: FolderService,
@@ -38,7 +43,7 @@ export class AddEditComponent extends BaseAddEditComponent {
 
     async ngOnInit() {
         await super.ngOnInit();
-        this.showAttachments = !this.platformUtilsService.isEdge();
+
         const queryParamsSub = this.route.queryParams.subscribe(async (params) => {
             if (params.cipherId) {
                 this.cipherId = params.cipherId;
@@ -76,6 +81,12 @@ export class AddEditComponent extends BaseAddEditComponent {
                 queryParamsSub.unsubscribe();
             }
         });
+
+        if (!this.editMode) {
+            const tabs = await BrowserApi.tabsQuery({ windowType: 'normal' });
+            this.currentUris = tabs == null ? null :
+                tabs.filter((tab) => tab.url != null && tab.url !== '').map((tab) => tab.url);
+        }
 
         window.setTimeout(() => {
             if (!this.editMode) {
@@ -144,5 +155,10 @@ export class AddEditComponent extends BaseAddEditComponent {
             this.router.navigate(['/tabs/vault']);
         }
         return confirmed;
+    }
+
+    toggleUriInput(uri: LoginUriView) {
+        const u = (uri as any);
+        u.showCurrentUris = !u.showCurrentUris;
     }
 }

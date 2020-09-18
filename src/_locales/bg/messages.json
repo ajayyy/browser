@@ -1,13 +1,13 @@
 {
   "appName": {
-    "message": "Битуорден"
+    "message": "Битуорден (Bitwarden)"
   },
   "extName": {
     "message": "Bitwarden — безплатен управител на пароли",
     "description": "Extension name"
   },
   "extDesc": {
-    "message": "Безопасно и безплатно управление за всички ваши устройства.",
+    "message": "Безопасно и безплатно управление за всичките ви устройства.",
     "description": "Extension description"
   },
   "loginOrCreateNewAccount": {
@@ -18,6 +18,9 @@
   },
   "login": {
     "message": "Вписване"
+  },
+  "enterpriseSingleSignOn": {
+    "message": "Еднократна идентификация (SSO)"
   },
   "cancel": {
     "message": "Отказ"
@@ -53,7 +56,7 @@
     "message": "Моят трезор"
   },
   "tools": {
-    "message": "Инструменти"
+    "message": "Средства"
   },
   "settings": {
     "message": "Настройки"
@@ -83,13 +86,16 @@
     "message": "Автоматично попълване"
   },
   "generatePasswordCopied": {
-    "message": "Нова парола (и копиране)"
+    "message": "Генериране на парола (копирана)"
   },
   "noMatchingLogins": {
     "message": "Няма съвпадащи записи."
   },
   "vaultLocked": {
     "message": "Трезорът е заключен."
+  },
+  "vaultLoggedOut": {
+    "message": "Излезли сте от трезора."
   },
   "autoFillInfo": {
     "message": "В текущия раздел няма записи, които да бъдат попълнени."
@@ -104,7 +110,7 @@
     "message": "Подсказка за паролата"
   },
   "enterEmailToGetHint": {
-    "message": "Въведете адреса на е-пощата си, за да получите подсказка за главната парола."
+    "message": "Въведете адреса на имейла си, за да получите подсказка за главната си парола."
   },
   "getMasterPasswordHint": {
     "message": "Подсказка за главната парола"
@@ -148,7 +154,7 @@
     "message": "Добавяне на папка"
   },
   "name": {
-    "message": "Наименование"
+    "message": "Име"
   },
   "editFolder": {
     "message": "Редактиране на папка"
@@ -175,7 +181,7 @@
     "message": "Последно синхронизиране:"
   },
   "passGen": {
-    "message": "Създаване на пароли"
+    "message": "Генератор на пароли"
   },
   "generator": {
     "message": "Генератор",
@@ -185,7 +191,7 @@
     "message": "Автоматично създаване на силни и неповторими пароли."
   },
   "bitWebVault": {
-    "message": "Интернетен трезор"
+    "message": "Уебтрезорът на Bitwarden"
   },
   "importItems": {
     "message": "Внасяне на елементи"
@@ -194,13 +200,13 @@
     "message": "Избор"
   },
   "generatePassword": {
-    "message": "Нова парола"
+    "message": "Генериране на парола"
   },
   "regeneratePassword": {
-    "message": "Друга парола"
+    "message": "Регенериране на паролата"
   },
   "options": {
-    "message": "Настройки"
+    "message": "Опции"
   },
   "length": {
     "message": "Дължина"
@@ -249,7 +255,7 @@
     "message": "Парола"
   },
   "passphrase": {
-    "message": "Парола-фраза"
+    "message": "Парола за преминаване"
   },
   "favorite": {
     "message": "Любими"
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Грешна главна парола"
   },
-  "lockOptions": {
-    "message": "Заключване"
+  "vaultTimeout": {
+    "message": "Време за достъп"
   },
   "lockNow": {
     "message": "Заключване сега"
@@ -331,19 +337,19 @@
     "message": "Незабавно"
   },
   "tenSeconds": {
-    "message": "10 сек."
+    "message": "10 секунди"
   },
   "twentySeconds": {
-    "message": "20 сек."
+    "message": "20 секунди"
   },
   "thirtySeconds": {
-    "message": "30 сек."
+    "message": "30 секунди"
   },
   "oneMinute": {
     "message": "1 минута"
   },
   "twoMinutes": {
-    "message": "2 мин."
+    "message": "2 минути"
   },
   "fiveMinutes": {
     "message": "5 минути"
@@ -431,7 +437,7 @@
     "message": "Възникна неочаквана грешка."
   },
   "nameRequired": {
-    "message": "Името е задължително."
+    "message": "Изисква се име."
   },
   "addedFolder": {
     "message": "Добавена папка"
@@ -464,7 +470,7 @@
     "message": "Синхронизацията завърши"
   },
   "syncingFailed": {
-    "message": "Неуспешна синхронизация"
+    "message": "Неуспешно синхронизиране"
   },
   "passwordCopied": {
     "message": "Копирана парола"
@@ -492,7 +498,7 @@
     "message": "Елементът е редактиран"
   },
   "deleteItemConfirmation": {
-    "message": "Сигурни ли сте, че искате да изтриете елемента?"
+    "message": "Наистина ли искате да изтриете елемента?"
   },
   "deletedItem": {
     "message": "Елементът е изтрит"
@@ -501,7 +507,7 @@
     "message": "Презаписване на паролата"
   },
   "overwritePasswordConfirmation": {
-    "message": "Сигурни ли сте, че искате да обновите текущата парола?"
+    "message": "Наистина ли искате да презапишете текущата парола?"
   },
   "searchFolder": {
     "message": "Търсене в папката"
@@ -640,7 +646,7 @@
     "message": "Копиране на кода за потвърждаване"
   },
   "attachments": {
-    "message": "Прикачени файлове"
+    "message": "Прикачвания"
   },
   "deleteAttachment": {
     "message": "Изтриване на прикачения файл"
@@ -876,6 +882,12 @@
   "experimentalFeature": {
     "message": "Това все още е в експериментална фаза, ползвате го на собствена глава."
   },
+  "commandOpenPopup": {
+    "message": "Отваряне на трезора в изскачащ прозорец"
+  },
+  "commandOpenSidebar": {
+    "message": "Отваряне на трезора в страничната лента"
+  },
   "commandAutofillDesc": {
     "message": "Автоматично попълване на последно използвания запис в текущия сайт."
   },
@@ -982,7 +994,7 @@
     "message": "напр."
   },
   "title": {
-    "message": "Обръщение"
+    "message": "Заглавие"
   },
   "mr": {
     "message": "Г-н"
@@ -1042,7 +1054,7 @@
     "message": "Населено място"
   },
   "stateProvince": {
-    "message": "Област"
+    "message": "Област / щат / провинция"
   },
   "zipPostalCode": {
     "message": "Пощенски код"
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Настройки на превключване"
   },
+  "toggleCurrentUris": {
+    "message": "Превключване на текущите адреси",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Текущ адрес",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Организация",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1165,7 +1185,7 @@
     "message": "Стандартно"
   },
   "dateUpdated": {
-    "message": "Обновено",
+    "message": "Осъвременено",
     "description": "ex. Date this item was updated"
   },
   "datePasswordUpdated": {
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Изберете поне една колекция."
+  },
+  "cloneItem": {
+    "message": "Дублирате на елемент"
+  },
+  "clone": {
+    "message": "Клониране"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Поне една политика на организация влияе на настройките на генерирането на паролите."
+  },
+  "vaultTimeoutAction": {
+    "message": "Действие при изтичане на времето"
+  },
+  "lock": {
+    "message": "Заключване",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Кошче",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Търсене в кошчето"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Окончателно изтриване на запис"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Сигурни ли сте, че искате да изтриете записа окончателно?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Записът е изтрит окончателно"
+  },
+  "restoreItem": {
+    "message": "Възстановяване на запис"
+  },
+  "restoreItemConfirmation": {
+    "message": "Сигурни ли сте, че искате да възстановите записа?"
+  },
+  "restoredItem": {
+    "message": "Записът е възстановен"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Излизането от трезора изцяло спира достъпа до него след изтичане на времето. Ще ви се наложи отново да се идентифицирате, за да го достъпите. Сигурни ли сте, че искате това действие?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Потвърждаване на действието"
+  },
+  "autoFillAndSave": {
+    "message": "Дописване и обновяване"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Автоматично дописан запис и адрес"
+  },
+  "autoFillSuccess": {
+    "message": "Автоматично дописан запис"
+  },
+  "setMasterPassword": {
+    "message": "Задаване на главна парола"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Поне една политика на организация има следните изисквания към главната ви парола:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Минимална сложност от $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Минимална дължина: $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Поне една главна буква"
+  },
+  "policyInEffectLowercase": {
+    "message": "Поне една малка буква"
+  },
+  "policyInEffectNumbers": {
+    "message": "Поне една цифра"
+  },
+  "policyInEffectSpecial": {
+    "message": "Поне един от следните специални знаци: $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Паролата ви не отговаря на политиките."
   }
 }

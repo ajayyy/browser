@@ -4,26 +4,26 @@ import { CipherView } from 'jslib/models/view/cipherView';
 import { LoginUriView } from 'jslib/models/view/loginUriView';
 import { LoginView } from 'jslib/models/view/loginView';
 
-import { ConstantsService } from 'jslib/services/constants.service';
-
-import { I18nService } from 'jslib/abstractions/i18n.service';
-
-import { Analytics } from 'jslib/misc';
-
+import { AuthService } from 'jslib/abstractions/auth.service';
+import { AutofillService } from '../services/abstractions/autofill.service';
+import BrowserPlatformUtilsService from '../services/browserPlatformUtils.service';
 import { CipherService } from 'jslib/abstractions/cipher.service';
-import { LockService } from 'jslib/abstractions/lock.service';
+import { ConstantsService } from 'jslib/services/constants.service';
+import { EnvironmentService } from 'jslib/abstractions/environment.service';
+import { I18nService } from 'jslib/abstractions/i18n.service';
+import { NotificationsService } from 'jslib/abstractions/notifications.service';
+import { PopupUtilsService } from '../popup/services/popup-utils.service';
+import { StateService } from 'jslib/abstractions/state.service';
 import { StorageService } from 'jslib/abstractions/storage.service';
+import { SyncService } from 'jslib/abstractions/sync.service';
 import { SystemService } from 'jslib/abstractions/system.service';
+import { VaultTimeoutService } from 'jslib/abstractions/vaultTimeout.service';
 
 import { BrowserApi } from '../browser/browserApi';
 
 import MainBackground from './main.background';
 
-import { AutofillService } from '../services/abstractions/autofill.service';
-import BrowserPlatformUtilsService from '../services/browserPlatformUtils.service';
-
-import { NotificationsService } from 'jslib/abstractions/notifications.service';
-
+import { Analytics } from 'jslib/misc';
 import { Utils } from 'jslib/misc/utils';
 
 export default class RuntimeBackground {
@@ -37,7 +37,8 @@ export default class RuntimeBackground {
         private cipherService: CipherService, private platformUtilsService: BrowserPlatformUtilsService,
         private storageService: StorageService, private i18nService: I18nService,
         private analytics: Analytics, private notificationsService: NotificationsService,
-        private systemService: SystemService, private lockService: LockService) {
+        private systemService: SystemService, private vaultTimeoutService: VaultTimeoutService,
+        private environmentService: EnvironmentService) {
         this.isSafari = this.platformUtilsService.isSafari();
         this.runtime = this.isSafari ? {} : chrome.runtime;
 
@@ -127,7 +128,7 @@ export default class RuntimeBackground {
                 await this.main.reseedStorage();
                 break;
             case 'collectPageDetailsResponse':
-                if (await this.lockService.isLocked()) {
+                if (await this.vaultTimeoutService.isLocked()) {
                     return;
                 }
                 switch (msg.sender) {
@@ -140,7 +141,7 @@ export default class RuntimeBackground {
                         break;
                     case 'autofiller':
                     case 'autofill_cmd':
-                        const totpCode = await this.autofillService.doAutoFillForLastUsedLogin([{
+                        const totpCode = await this.autofillService.doAutoFillActiveTab([{
                             frameId: sender.frameId,
                             tab: msg.tab,
                             details: msg.details,
@@ -161,6 +162,22 @@ export default class RuntimeBackground {
                     default:
                         break;
                 }
+                break;
+            case 'authResult':
+                let vaultUrl = this.environmentService.webVaultUrl;
+                if (vaultUrl == null) {
+                    vaultUrl = 'https://vault.bitwarden.com';
+                }
+
+                if (msg.referrer == null || Utils.getHostname(vaultUrl) !== msg.referrer) {
+                    return;
+                }
+
+                try {
+                    BrowserApi.createNewTab('popup/index.html?uilocation=popout#/sso?code=' +
+                        msg.code + '&state=' + msg.state);
+                }
+                catch { }
                 break;
             default:
                 break;
@@ -183,7 +200,7 @@ export default class RuntimeBackground {
     }
 
     private async saveAddLogin(tab: any) {
-        if (await this.lockService.isLocked()) {
+        if (await this.vaultTimeoutService.isLocked()) {
             return;
         }
 
@@ -223,7 +240,7 @@ export default class RuntimeBackground {
     }
 
     private async saveChangePassword(tab: any) {
-        if (await this.lockService.isLocked()) {
+        if (await this.vaultTimeoutService.isLocked()) {
             return;
         }
 
@@ -276,7 +293,7 @@ export default class RuntimeBackground {
     }
 
     private async addLogin(loginInfo: any, tab: any) {
-        if (await this.lockService.isLocked()) {
+        if (await this.vaultTimeoutService.isLocked()) {
             return;
         }
 
@@ -322,7 +339,7 @@ export default class RuntimeBackground {
     }
 
     private async changedPassword(changeData: any, tab: any) {
-        if (await this.lockService.isLocked()) {
+        if (await this.vaultTimeoutService.isLocked()) {
             return;
         }
 
@@ -400,10 +417,16 @@ export default class RuntimeBackground {
     }
 
     private async setDefaultSettings() {
-        // Default lock options to "on restart".
-        const currentLockOption = await this.storageService.get<number>(ConstantsService.lockOptionKey);
-        if (currentLockOption == null) {
-            await this.storageService.save(ConstantsService.lockOptionKey, -1);
+        // Default timeout option to "on restart".
+        const currentVaultTimeout = await this.storageService.get<number>(ConstantsService.vaultTimeoutKey);
+        if (currentVaultTimeout == null) {
+            await this.storageService.save(ConstantsService.vaultTimeoutKey, -1);
+        }
+
+        // Default action to "lock".
+        const currentVaultTimeoutAction = await this.storageService.get<string>(ConstantsService.vaultTimeoutActionKey);
+        if (currentVaultTimeoutAction == null) {
+            await this.storageService.save(ConstantsService.vaultTimeoutActionKey, 'lock');
         }
     }
 

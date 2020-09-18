@@ -37,6 +37,7 @@ export class OptionsComponent implements OnInit {
     uriMatchOptions: any[];
     clearClipboard: number;
     clearClipboardOptions: any[];
+    disableLockIcon = false;
 
     constructor(private analytics: Angulartics2, private messagingService: MessagingService,
         private platformUtilsService: PlatformUtilsService, private storageService: StorageService,
@@ -89,6 +90,8 @@ export class OptionsComponent implements OnInit {
 
         this.disableFavicon = await this.storageService.get<boolean>(ConstantsService.disableFaviconKey);
 
+        this.disableLockIcon = await this.storageService.get<boolean>(ConstantsService.disableLockIcon);
+
         this.theme = await this.storageService.get<string>(ConstantsService.themeKey);
 
         const defaultUriMatch = await this.storageService.get<UriMatchType>(ConstantsService.defaultUriMatch);
@@ -130,6 +133,12 @@ export class OptionsComponent implements OnInit {
         await this.storageService.save(ConstantsService.disableFaviconKey, this.disableFavicon);
         await this.stateService.save(ConstantsService.disableFaviconKey, this.disableFavicon);
         this.callAnalytics('Favicon', !this.disableFavicon);
+    }
+
+    async updateDisableLockIcon() {
+        await this.storageService.save(ConstantsService.disableLockIcon, this.disableLockIcon);
+        await this.stateService.save(ConstantsService.disableLockIcon, this.disableLockIcon);
+        this.callAnalytics('LockIcon', !this.disableFavicon);
     }
 
     async updateShowCards() {

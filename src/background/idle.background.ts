@@ -1,8 +1,8 @@
 import { ConstantsService } from 'jslib/services/constants.service';
 
 import {
-    LockService,
     StorageService,
+    VaultTimeoutService,
 } from 'jslib/abstractions';
 import { NotificationsService } from 'jslib/abstractions/notifications.service';
 
@@ -13,9 +13,12 @@ export default class IdleBackground {
     private idleTimer: number = null;
     private idleState = 'active';
 
-    constructor(private lockService: LockService, private storageService: StorageService,
+    constructor(private vaultTimeoutService: VaultTimeoutService, private storageService: StorageService,
         private notificationsService: NotificationsService) {
         this.idle = chrome.idle || (browser != null ? browser.idle : null);
+
+        // Set default state
+        this.storageService.save(ConstantsService.idleStateKey, this.idleState);
     }
 
     async init() {
@@ -39,12 +42,32 @@ export default class IdleBackground {
 
         if (this.idle.onStateChanged) {
             this.idle.onStateChanged.addListener(async (newState: string) => {
-                if (newState === 'locked') {
-                    const lockOption = await this.storageService.get<number>(ConstantsService.lockOptionKey);
-                    if (lockOption === -2) {
-                        this.lockService.lock(true);
+                if (newState === 'locked') { // If the screen is locked or the screensaver activates
+                    const timeout = await this.storageService.get<number>(ConstantsService.vaultTimeoutKey);
+                    if (timeout === -2) { // On System Lock vault timeout option
+                        const action = await this.storageService.get<string>(ConstantsService.vaultTimeoutActionKey);
+                        if (action === 'logOut') {
+                            await this.vaultTimeoutService.logOut();
+                        } else {
+                            await this.vaultTimeoutService.lock(true);
+                        }
+                    }
+
+                    const lockOnSystemLock = await this.storageService.get<boolean>(ConstantsService.lockOnSystemLockKey);
+                    if (lockOnSystemLock) {
+                        this.lockServvaultTimeoutServiceice.lock(true);
+                    }
+                } else if (newState === 'idle') {
+                    const lockAfterIdle = await this.storageService.get<boolean>(ConstantsService.lockAfterIdleKey);
+                    if (lockAfterIdle) {
+                        // Subtract the 5 minute time idle time interval from the last active time
+                        const now = (new Date()).getTime() - 5 * 60 * 1000;
+
+                        this.storageService.save(ConstantsService.lastActiveKey, now);
                     }
                 }
+
+                this.storageService.save(ConstantsService.idleStateKey, newState);
             });
         }
     }

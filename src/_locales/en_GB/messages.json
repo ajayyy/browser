@@ -19,6 +19,9 @@
   "login": {
     "message": "Log in"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Enterprise single sign-on"
+  },
   "cancel": {
     "message": "Cancel"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "Vault is locked."
+  },
+  "vaultLoggedOut": {
+    "message": "Vault is logged out."
   },
   "autoFillInfo": {
     "message": "There are no logins available to auto-fill for the current browser tab."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Invalid master password"
   },
-  "lockOptions": {
-    "message": "Lock options"
+  "vaultTimeout": {
+    "message": "Vault timeout"
   },
   "lockNow": {
     "message": "Lock now"
@@ -495,7 +501,7 @@
     "message": "Are you sure you want to delete this item?"
   },
   "deletedItem": {
-    "message": "Deleted item"
+    "message": "Sent item to bin"
   },
   "overwritePassword": {
     "message": "Overwrite password"
@@ -876,6 +882,12 @@
   "experimentalFeature": {
     "message": "This is currently an experimental feature. Use at your own risk."
   },
+  "commandOpenPopup": {
+    "message": "Open vault popup"
+  },
+  "commandOpenSidebar": {
+    "message": "Open vault in sidebar"
+  },
   "commandAutofillDesc": {
     "message": "Auto-fill the last used login for the current website."
   },
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Toggle options"
   },
+  "toggleCurrentUris": {
+    "message": "Toggle current URIs",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Current URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organisation",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "You must select at least one collection."
+  },
+  "cloneItem": {
+    "message": "Clone item"
+  },
+  "clone": {
+    "message": "Clone"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "One or more organisation policies are affecting your generator settings."
+  },
+  "vaultTimeoutAction": {
+    "message": "Vault timeout action"
+  },
+  "lock": {
+    "message": "Lock",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Bin",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Search bin"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Permanently delete item"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Are you sure you want to permanently delete this item?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Permanently deleted item"
+  },
+  "restoreItem": {
+    "message": "Restore item"
+  },
+  "restoreItemConfirmation": {
+    "message": "Are you sure you want to restore this item?"
+  },
+  "restoredItem": {
+    "message": "Restored item"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Logging out will remove all access to your vault and requires online authentication after the timeout period. Are you sure you want to use this setting?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Timeout action confirmation"
+  },
+  "autoFillAndSave": {
+    "message": "Auto-fill and save"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Auto-filled item and saved URI"
+  },
+  "autoFillSuccess": {
+    "message": "Auto-filled item"
+  },
+  "setMasterPassword": {
+    "message": "Set master password"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "One or more organisation policies require your master password to meet the following requirements:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minimum complexity score of $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minimum length of $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Contain one or more uppercase characters"
+  },
+  "policyInEffectLowercase": {
+    "message": "Contain one or more lowercase characters"
+  },
+  "policyInEffectNumbers": {
+    "message": "Contain one or more numbers"
+  },
+  "policyInEffectSpecial": {
+    "message": "Contain one or more of the following special characters $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Your new master password does not meet the policy requirements."
   }
 }

@@ -2,8 +2,6 @@
 
 THIS IS AN UNOFFICIAL FORK!
 
-The fork is available in the `custom-build`(https://github.com/ajayyy/browser/tree/custom-build) branch.
-
 This version has:
 
 - Global edit history (instead of just passwords)

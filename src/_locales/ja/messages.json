@@ -19,6 +19,9 @@
   "login": {
     "message": "ログイン"
   },
+  "enterpriseSingleSignOn": {
+    "message": "組織のシングルサインオン"
+  },
   "cancel": {
     "message": "キャンセル"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "保管庫がロックされています。"
+  },
+  "vaultLoggedOut": {
+    "message": "保管庫はログアウトされています。"
   },
   "autoFillInfo": {
     "message": "現在のブラウザタブに自動入力するログイン情報はありません。"
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "マスターパスワードが間違っています"
   },
-  "lockOptions": {
-    "message": "ロックオプション"
+  "vaultTimeout": {
+    "message": "保管庫のタイムアウト"
   },
   "lockNow": {
     "message": "今すぐロック"
@@ -486,10 +492,10 @@
     "message": "新しい URI"
   },
   "addedItem": {
-    "message": "追加されたアイテム"
+    "message": "追加しました"
   },
   "editedItem": {
-    "message": "編集されたアイテム"
+    "message": "編集しました"
   },
   "deleteItemConfirmation": {
     "message": "このアイテムを削除しますか？"
@@ -513,7 +519,7 @@
     "message": "検索の種類"
   },
   "noneFolder": {
-    "message": "フォルダなし",
+    "message": "フォルダーなし",
     "description": "This is the folder for uncategorized items"
   },
   "disableAddLoginNotification": {
@@ -622,7 +628,7 @@
     "message": "共有"
   },
   "sharedItem": {
-    "message": "共有されたアイテム"
+    "message": "共有しました"
   },
   "shareDesc": {
     "message": "このアイテムを共有する組織を選択してください。共有するとアイテムの所有権は組織に移行し、あなたはもはやこのアイテムの直接のオーナーではなくなります。"
@@ -875,6 +881,12 @@
   },
   "experimentalFeature": {
     "message": "これは現在、実験的な機能です。自己責任で使用してください。"
+  },
+  "commandOpenPopup": {
+    "message": "ポップアップで保管庫を開く"
+  },
+  "commandOpenSidebar": {
+    "message": "サイドバーで保管庫を開く"
   },
   "commandAutofillDesc": {
     "message": "現在のウェブサイトで前回使用されたログイン情報を自動入力します。"
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "オプションの切り替え"
   },
+  "toggleCurrentUris": {
+    "message": "現在の URI を切り替え",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "現在の URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "組織",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1225,12 +1245,113 @@
     "message": "PIN の確認"
   },
   "yourVaultIsLockedPinCode": {
-    "message": "保管庫がロックされています。PIN コードで確認してください。"
+    "message": "保管庫がロックされています。PIN コードで認証してください。"
   },
   "lockWithMasterPassOnRestart": {
     "message": "ブラウザー再起動時にマスターパスワードでロック"
   },
   "selectOneCollection": {
     "message": "最低でも一つのコレクションを選んでください。"
+  },
+  "cloneItem": {
+    "message": "アイテムを複製"
+  },
+  "clone": {
+    "message": "複製"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "一つ以上の組織のポリシーがパスワード生成の設定に影響しています。"
+  },
+  "vaultTimeoutAction": {
+    "message": "保管庫タイムアウト時のアクション"
+  },
+  "lock": {
+    "message": "ロック",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "ごみ箱",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "ごみ箱を検索"
+  },
+  "permanentlyDeleteItem": {
+    "message": "アイテムを完全に削除"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "このアイテムを完全に削除してもよろしいですか？"
+  },
+  "permanentlyDeletedItem": {
+    "message": "完全に削除されたアイテム"
+  },
+  "restoreItem": {
+    "message": "アイテムをリストア"
+  },
+  "restoreItemConfirmation": {
+    "message": "このアイテムをリストアしますか？"
+  },
+  "restoredItem": {
+    "message": "リストアされたアイテム"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "ログアウトすると保管庫へのすべてのアクセスが制限され、タイムアウト期間後にオンライン認証が必要になります。 この設定を使用してもよろしいですか？"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "タイムアウトアクションの確認"
+  },
+  "autoFillAndSave": {
+    "message": "自動入力して保存"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "アイテムを自動入力して URI を保存しました"
+  },
+  "autoFillSuccess": {
+    "message": "アイテムを自動入力しました"
+  },
+  "setMasterPassword": {
+    "message": "マスターパスワードを設定"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "組織が求めるマスターパスワードの要件："
+  },
+  "policyInEffectMinComplexity": {
+    "message": "複雑度は最低$SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "長さは最低$LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "大文字が最低１つ必要"
+  },
+  "policyInEffectLowercase": {
+    "message": "小文字が最低１つ必要"
+  },
+  "policyInEffectNumbers": {
+    "message": "数字が最低１つ必要"
+  },
+  "policyInEffectSpecial": {
+    "message": "次の記号から１つ以上：$CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "新しいマスターパスワードは最低要件を満たしていません。"
   }
 }

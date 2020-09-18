@@ -19,6 +19,9 @@
   "login": {
     "message": "התחבר"
   },
+  "enterpriseSingleSignOn": {
+    "message": "כניסה אחודה ארגונית"
+  },
   "cancel": {
     "message": "בטל"
   },
@@ -91,6 +94,9 @@
   "vaultLocked": {
     "message": "הכספת נעולה."
   },
+  "vaultLoggedOut": {
+    "message": "בוצעה יציאה מהכספת."
+  },
   "autoFillInfo": {
     "message": "לא נמצאו פרטי כניסה להשלמה אוטומטית בלשונית הנוכחית בדפדפן."
   },
@@ -145,7 +151,7 @@
     "message": "שמור"
   },
   "addFolder": {
-    "message": "הוסף תיקיה"
+    "message": "הוסף תיקייה"
   },
   "name": {
     "message": "שם"
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "סיסמה ראשית שגויה"
   },
-  "lockOptions": {
-    "message": "אפשרויות נעילה"
+  "vaultTimeout": {
+    "message": "משך זמן מירבי עבור חיבור לכספת"
   },
   "lockNow": {
     "message": "נעל עכשיו"
@@ -434,7 +440,7 @@
     "message": "דרוש שם."
   },
   "addedFolder": {
-    "message": "נוספה תיקיה"
+    "message": "נוספה תיקייה"
   },
   "changeMasterPass": {
     "message": "החלף סיסמה ראשית"
@@ -446,13 +452,13 @@
     "message": "התחברות בשני-שלבים הופכת את החשבון שלך למאובטח יותר בכך שאתה נדרש לוודא בכל כניסה בעזרת מכשיר אחר כדוגמת מפתח אבטחה, תוכנת אימות, SMS, שיחת טלפון, או אימייל. ניתן להפעיל את \"התחברות בשני-שלבים\" בכספת שבאתר bitwarden.com. האם ברצונך לפתוח את האתר כעת?"
   },
   "editedFolder": {
-    "message": "תיקיה שנערכה"
+    "message": "תיקייה שנערכה"
   },
   "deleteFolderConfirmation": {
     "message": "האם אתה בטוח שברצונך למחוק את התיקייה?"
   },
   "deletedFolder": {
-    "message": "תיקיה שנמחקה"
+    "message": "תיקייה שנמחקה"
   },
   "gettingStartedTutorial": {
     "message": "מדריך שימוש ראשוני"
@@ -495,7 +501,7 @@
     "message": "האם אתה בטוח שברצונך למחוק פריט זה?"
   },
   "deletedItem": {
-    "message": "פריט שנמחק"
+    "message": "פריט נשלח לסל המחזור"
   },
   "overwritePassword": {
     "message": "דרוס סיסמה"
@@ -513,7 +519,7 @@
     "message": "חפש סוג"
   },
   "noneFolder": {
-    "message": "ללא תיקיה",
+    "message": "ללא תיקייה",
     "description": "This is the folder for uncategorized items"
   },
   "disableAddLoginNotification": {
@@ -876,6 +882,12 @@
   "experimentalFeature": {
     "message": "זוהי אופציה נסיונית. השימוש באופציה זו על אחריותך."
   },
+  "commandOpenPopup": {
+    "message": "פתיחת כספת בחלונית צפה"
+  },
+  "commandOpenSidebar": {
+    "message": "פתיחת כספת בסרגל צד"
+  },
   "commandAutofillDesc": {
     "message": "השתמש בהשלמה-האוטומטית האחרונה שבוצעה באתר זה."
   },
@@ -910,7 +922,7 @@
     "message": "אמת או שקר"
   },
   "popup2faCloseMessage": {
-    "message": "לחיצה מחוץ לחלון שנפתח בכדי לבדוק את פרטי האימות תגרום לחלון שנפתח, להסגר. האם ברצונך להציג את המידע בחלון חדש שאינו נסגר?"
+    "message": "לחיצה מחוץ לחלונית הצפה שנפתחה בכדי לבדוק את פרטי האימות תגרום לחלונית שנפתחה, להסגר. האם ברצונך להציג את המידע בחלון שאינו נסגר?"
   },
   "popupU2fCloseMessage": {
     "message": "דפדפן זה לא יכול לעבד בקשות U2F בחלון צף זה. האם ברצונך לפתוח את החלון הצף כחלון חדש רגיל כדי שתוכל להכנס באמצעות U2F?"
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "הצגה\\הסתרה של אפשרויות"
   },
+  "toggleCurrentUris": {
+    "message": "החלפת הכתובות המלאות הנוכחיות",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "כתובת מלאה נוכחית",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "ארגון",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "עליך לבחור לפחות אוסף אחד."
+  },
+  "cloneItem": {
+    "message": "שכפול פריט"
+  },
+  "clone": {
+    "message": "שכפול"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "מדיניות ארגונית אחת או יותר משפיעה על הגדרות המחולל שלך."
+  },
+  "vaultTimeoutAction": {
+    "message": "פעולה לביצוע בכספת בתום זמן החיבור"
+  },
+  "lock": {
+    "message": "נעילה",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "סל המחזור",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "חפש בסל המחזור"
+  },
+  "permanentlyDeleteItem": {
+    "message": "מחק לצמיתות פריט שנבחר"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "האם אתה בטוח שברצונך למחוק את הפריט הזה?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "פריט שנמחק לצמיתות"
+  },
+  "restoreItem": {
+    "message": "שחזר פריט"
+  },
+  "restoreItemConfirmation": {
+    "message": "האם אתה בטוח שברצונך לשחזר פריט זה?"
+  },
+  "restoredItem": {
+    "message": "פריט ששוחזר"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "יציאה מהחשבון תסיר את כל הגישה לכספת ויידרש אימות מקוון לאחר משך הזמן שהוקצב. האם אתה בטוח שברצונך להשתמש בהגדרה זו?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "אישור פעולת אימות לאחר חוסר פעילות"
+  },
+  "autoFillAndSave": {
+    "message": "השלמה אוטומטית ושמירה"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "פריט שמולא אוטומטית וכתובת מלאה שנשמרה"
+  },
+  "autoFillSuccess": {
+    "message": "פריט שמולא אוטומטית"
+  },
+  "setMasterPassword": {
+    "message": "הגדרת סיסמה ראשית"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "אחד או יותר מאילוצי המדיניות של הארגון דורשים שהסיסמה הראשית שלך תעמוד בדרישות הבאות:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "ניקוד מורכבות מזערי של $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "אורך מזערי של $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "תכיל אות גדולה אחת או יותר"
+  },
+  "policyInEffectLowercase": {
+    "message": "תכיל אות קטנה אחת או יותר"
+  },
+  "policyInEffectNumbers": {
+    "message": "תכיל ספרה אחת או יותר"
+  },
+  "policyInEffectSpecial": {
+    "message": "תכיל תו מיוחד אחד או יותר מבין התווים האלו $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "הסיסמה הראשית החדשה השלך לא עומדת בדרישות המדיניות."
   }
 }

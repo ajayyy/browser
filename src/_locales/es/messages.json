@@ -19,6 +19,9 @@
   "login": {
     "message": "Identificarse"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Inicio de sesión único empresarial"
+  },
   "cancel": {
     "message": "Cancelar"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "La caja fuerte está bloqueada."
+  },
+  "vaultLoggedOut": {
+    "message": "La caja fuerte está desconectada."
   },
   "autoFillInfo": {
     "message": "No hay entradas disponibles para autorellenar en la pestaña actual del navegador."
@@ -222,10 +228,10 @@
     "message": "Mínimo de números"
   },
   "minSpecial": {
-    "message": "Mínimo de carácteres especiales"
+    "message": "Mínimo de caracteres especiales"
   },
   "avoidAmbChar": {
-    "message": "Evitar carácteres ambiguos"
+    "message": "Evitar caracteres ambiguos"
   },
   "searchVault": {
     "message": "Buscar en caja fuerte"
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Contraseña maestra no válida"
   },
-  "lockOptions": {
-    "message": "Opciones de bloqueo"
+  "vaultTimeout": {
+    "message": "Tiempo de espera de la caja fuerte"
   },
   "lockNow": {
     "message": "Bloquear"
@@ -437,7 +443,7 @@
     "message": "Carpeta añadida"
   },
   "changeMasterPass": {
-    "message": "Cambiar la contraseña maestra"
+    "message": "Cambiar contraseña maestra"
   },
   "changeMasterPasswordConfirmation": {
     "message": "Puedes cambiar tu contraseña maestra en la caja fuerte web de bitwarden.com. ¿Quieres visitar ahora el sitio web?"
@@ -523,7 +529,7 @@
     "message": "La opción \"Notificación para añadir entradas\" pregunta automáticamente si quieres guardar nuevas entradas en tu caja fuerte cuando te identificas en un sitio web por primera vez."
   },
   "dontShowCardsCurrentTab": {
-    "message": "No mostrar tarjetas en la página de ficha"
+    "message": "No mostrar tarjetas en la pestaña"
   },
   "dontShowCardsCurrentTabDesc": {
     "message": "Elementos de la tarjeta de su caja fuerte están listados en la página 'Ficha Actual' para el acceso fácil del autorellenado."
@@ -876,8 +882,14 @@
   "experimentalFeature": {
     "message": "Esta es una característica experimental. Úsala bajo tu propio riesgo."
   },
+  "commandOpenPopup": {
+    "message": "Abrir ventana emergente de la caja fuerte"
+  },
+  "commandOpenSidebar": {
+    "message": "Abrir caja fuerte en la barra lateral"
+  },
   "commandAutofillDesc": {
-    "message": "Autorellenar la última entrada utilizada para la página actual."
+    "message": "Autorrellenar la última entrada utilizada para la página actual."
   },
   "commandGeneratePasswordDesc": {
     "message": "Generar y copiar una nueva contraseña aleatoria al portapapeles."
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Alternar opciones"
   },
+  "toggleCurrentUris": {
+    "message": "Alternar URIs actuales",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "URI actual",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organización",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Debes seleccionar al menos una colección."
+  },
+  "cloneItem": {
+    "message": "Clonar objeto"
+  },
+  "clone": {
+    "message": "Clonar"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Una o más políticas de la organización están afectando la configuración del generador"
+  },
+  "vaultTimeoutAction": {
+    "message": "Acción de tiempo de espera de la caja fuerte"
+  },
+  "lock": {
+    "message": "Bloquear",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Papelera",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Buscar en la Papelera"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Eliminar elemento de forma permanente"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "¿Estás seguro de eliminar de forma permanente este elemento?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Elemento eliminado de forma permanente"
+  },
+  "restoreItem": {
+    "message": "Restaurar elemento"
+  },
+  "restoreItemConfirmation": {
+    "message": "¿Estás seguro de que quieres restaurar este elemento?"
+  },
+  "restoredItem": {
+    "message": "Elemento restaurado"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Cerrar sesión eliminará todo el acceso a tu caja fuerte y requerirá autenticación en línea después del tiempo de espera. ¿Estás seguro de que quieres usar esta configuración?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Confirmación de la acción del tiempo de espera"
+  },
+  "autoFillAndSave": {
+    "message": "Autorellenar y guardar"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Objeto autorellenado y URI guardada"
+  },
+  "autoFillSuccess": {
+    "message": "Objeto autorellenado"
+  },
+  "setMasterPassword": {
+    "message": "Establecer contraseña maestra"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Una o más políticas de la organización requieren que su contraseña maestra cumpla con los siguientes requisitos:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Puntuación mínima de complejidad de $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Longitud mínima de $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Contiene uno o más caracteres en mayúsculas"
+  },
+  "policyInEffectLowercase": {
+    "message": "Contiene uno o más caracteres en minúsculas"
+  },
+  "policyInEffectNumbers": {
+    "message": "Contiene uno o más números"
+  },
+  "policyInEffectSpecial": {
+    "message": "Contiene uno o más de los siguientes caracteres especiales $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Su nueva contraseña maestra no cumple con los requisitos de la política."
   }
 }

@@ -19,6 +19,9 @@
   "login": {
     "message": "登入"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Enterprise Single Sign-On"
+  },
   "cancel": {
     "message": "取消"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "密碼庫已鎖定"
+  },
+  "vaultLoggedOut": {
+    "message": "密碼庫已登出。"
   },
   "autoFillInfo": {
     "message": "目前瀏覽器分頁中沒有可以自動填入登入資料的位置。"
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "無效的主密碼"
   },
-  "lockOptions": {
-    "message": "自動鎖定時間"
+  "vaultTimeout": {
+    "message": "密碼庫逾時"
   },
   "lockNow": {
     "message": "立即鎖定"
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "目前這是一項實驗性功能。要使用需自行承擔風險。"
   },
+  "commandOpenPopup": {
+    "message": "在彈出式視窗中開啟密碼庫"
+  },
+  "commandOpenSidebar": {
+    "message": "在側邊欄中開啟密碼庫"
+  },
   "commandAutofillDesc": {
     "message": "自動使用最後一次登入的帳戶填入目前網站"
   },
   "commandGeneratePasswordDesc": {
-    "message": "產生並將一個新的隨機密碼複製到剪貼簿中。"
+    "message": "產生一組新的隨機密碼並將它複製到剪貼簿中。"
   },
   "privateModeMessage": {
     "message": "很遺憾，在瀏覽器的隱私模式下，此視窗無法使用。"
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "切換選項"
   },
+  "toggleCurrentUris": {
+    "message": "切換目前 URL",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "目前 URL",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "組織",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "您必須至少選擇一個收藏。"
+  },
+  "cloneItem": {
+    "message": "複製項目"
+  },
+  "clone": {
+    "message": "複製"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "密碼產生器設定受一組以上組織原則影響。"
+  },
+  "vaultTimeoutAction": {
+    "message": "密碼庫逾時動作"
+  },
+  "lock": {
+    "message": "鎖定",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "垃圾桶",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "搜尋垃圾桶"
+  },
+  "permanentlyDeleteItem": {
+    "message": "永久刪除項目"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Are you sure you want to permanently delete this item?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Permanently Deleted item"
+  },
+  "restoreItem": {
+    "message": "恢復項目"
+  },
+  "restoreItemConfirmation": {
+    "message": "Are you sure you want to restore this item?"
+  },
+  "restoredItem": {
+    "message": "恢復的項目"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Logging out will remove all access to your vault and requires online authentication after the timeout period. Are you sure you want to use this setting?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "逾時動作確認"
+  },
+  "autoFillAndSave": {
+    "message": "Auto-fill and Save"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Auto-filled Item and Saved URI"
+  },
+  "autoFillSuccess": {
+    "message": "Auto-filled Item"
+  },
+  "setMasterPassword": {
+    "message": "Set Master Password"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "One or more organization policies require your master password to meet the following requirements:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Minimum complexity score of $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Minimum length of $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Contain one or more uppercase characters"
+  },
+  "policyInEffectLowercase": {
+    "message": "Contain one or more lowercase characters"
+  },
+  "policyInEffectNumbers": {
+    "message": "Contain one or more numbers"
+  },
+  "policyInEffectSpecial": {
+    "message": "Contain one or more of the following special characters $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Your new master password does not meet the policy requirements."
   }
 }

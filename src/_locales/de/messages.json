@@ -19,6 +19,9 @@
   "login": {
     "message": "Anmelden"
   },
+  "enterpriseSingleSignOn": {
+    "message": "Enterprise Single Sign-On"
+  },
   "cancel": {
     "message": "Abbrechen"
   },
@@ -90,6 +93,9 @@
   },
   "vaultLocked": {
     "message": "Der Tresor ist gesperrt."
+  },
+  "vaultLoggedOut": {
+    "message": "Der Tresor ist ausgeloggt."
   },
   "autoFillInfo": {
     "message": "Für den aktuellen Browser-Tab gibt es keine passenden Zugangsdaten, welche automatisch ausgefüllt werden können."
@@ -321,8 +327,8 @@
   "invalidMasterPassword": {
     "message": "Ungültiges Master-Passwort"
   },
-  "lockOptions": {
-    "message": "Sperroptionen"
+  "vaultTimeout": {
+    "message": "Tresor-Timeout"
   },
   "lockNow": {
     "message": "Jetzt sperren"
@@ -495,7 +501,7 @@
     "message": "Soll dieser Eintrag wirklich gelöscht werden?"
   },
   "deletedItem": {
-    "message": "Eintrag gelöscht"
+    "message": "Eintrag in Papierkorb legen"
   },
   "overwritePassword": {
     "message": "Passwort ersetzen"
@@ -876,11 +882,17 @@
   "experimentalFeature": {
     "message": "Dies ist derzeit ein experimentelles Feature. Verwendung auf eigene Gefahr."
   },
+  "commandOpenPopup": {
+    "message": "Tresor-Popup öffnen"
+  },
+  "commandOpenSidebar": {
+    "message": "Tresor in der Seitenleiste öffnen"
+  },
   "commandAutofillDesc": {
-    "message": "Den zuletzt verwendeten Login für die aktuelle Webseite automatisch ausfüllen lassen."
+    "message": "Die zuletzt verwendeten Zugangsdaten für die aktuelle Website automatisch ausfüllen lassen"
   },
   "commandGeneratePasswordDesc": {
-    "message": "Generieren und ein neues zufälliges Passwort in die Zwischenablage kopieren."
+    "message": "Ein neues zufälliges Passwort generieren und in die Zwischenablage kopieren"
   },
   "privateModeMessage": {
     "message": "Leider ist dieses Fenster nicht im privaten Modus für diesen Browser verfügbar."
@@ -1145,6 +1157,14 @@
   "toggleOptions": {
     "message": "Umschaltoptionen"
   },
+  "toggleCurrentUris": {
+    "message": "Aktuelle URIs ändern",
+    "description": "Toggle the display of the URIs of the currently open tabs in the browser."
+  },
+  "currentUri": {
+    "message": "Aktuelle URI",
+    "description": "The URI of one of the current open tabs in the browser."
+  },
   "organization": {
     "message": "Organisation",
     "description": "An entity of multiple related people (ex. a team or business organization)."
@@ -1232,5 +1252,106 @@
   },
   "selectOneCollection": {
     "message": "Sie müssen mindestens eine Sammlung auswählen."
+  },
+  "cloneItem": {
+    "message": "Eintrag duplizieren"
+  },
+  "clone": {
+    "message": "Duplizieren"
+  },
+  "passwordGeneratorPolicyInEffect": {
+    "message": "Eine oder mehrere Organisationsrichtlinien beeinflussen Ihre Generator-Einstellungen."
+  },
+  "vaultTimeoutAction": {
+    "message": "Aktion bei Tresor-Timeout"
+  },
+  "lock": {
+    "message": "Sperren",
+    "description": "Verb form: to make secure or inaccesible by"
+  },
+  "trash": {
+    "message": "Papierkorb",
+    "description": "Noun: a special folder to hold deleted items"
+  },
+  "searchTrash": {
+    "message": "Papierkorb durchsuchen"
+  },
+  "permanentlyDeleteItem": {
+    "message": "Eintrag dauerhaft löschen"
+  },
+  "permanentlyDeleteItemConfirmation": {
+    "message": "Soll dieser Eintrag wirklich dauerhaft gelöscht werden?"
+  },
+  "permanentlyDeletedItem": {
+    "message": "Eintrag dauerhaft gelöscht"
+  },
+  "restoreItem": {
+    "message": "Eintrag wiederherstellen"
+  },
+  "restoreItemConfirmation": {
+    "message": "Soll dieser Eintrag wirklich wiederhergestellt werden?"
+  },
+  "restoredItem": {
+    "message": "Eintrag wiederhergestellt"
+  },
+  "vaultTimeoutLogOutConfirmation": {
+    "message": "Nach dem Ausloggen verlieren Sie jeglichen Zugriff auf Ihren Tresor und es ist nach Ablauf der Timeout-Zeit eine Online-Authentifizierung erforderlich. Sind Sie sicher, dass Sie diese Einstellung nutzen möchten?"
+  },
+  "vaultTimeoutLogOutConfirmationTitle": {
+    "message": "Bestätigung der Timeout-Aktion"
+  },
+  "autoFillAndSave": {
+    "message": "Automatisch ausfüllen und speichern"
+  },
+  "autoFillSuccessAndSavedUri": {
+    "message": "Auto-Ausgefüllter Eintrag und gespeicherte URI"
+  },
+  "autoFillSuccess": {
+    "message": "Auto-Ausgefüllter Eintrag"
+  },
+  "setMasterPassword": {
+    "message": "Masterpasswort festlegen"
+  },
+  "masterPasswordPolicyInEffect": {
+    "message": "Eine oder mehrere Organisationsrichtlinien erfordern, dass Ihr Masterpasswort die folgenden Anforderungen erfüllt:"
+  },
+  "policyInEffectMinComplexity": {
+    "message": "Kleinster Komplexitätsgrad von $SCORE$",
+    "placeholders": {
+      "score": {
+        "content": "$1",
+        "example": "4"
+      }
+    }
+  },
+  "policyInEffectMinLength": {
+    "message": "Mindestlänge von $LENGTH$",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "14"
+      }
+    }
+  },
+  "policyInEffectUppercase": {
+    "message": "Enthält einen oder mehrere Großbuchstaben"
+  },
+  "policyInEffectLowercase": {
+    "message": "Enthält einen oder mehrere Kleinbuchstaben"
+  },
+  "policyInEffectNumbers": {
+    "message": "Enthält eine oder mehrere Zahlen"
+  },
+  "policyInEffectSpecial": {
+    "message": "Enthält eines oder mehrere der folgenden Sonderzeichen $CHARS$",
+    "placeholders": {
+      "chars": {
+        "content": "$1",
+        "example": "!@#$%^&*"
+      }
+    }
+  },
+  "masterPasswordPolicyRequirementsNotMet": {
+    "message": "Ihr neues Master-Passwort entspricht nicht den Anforderungen der Richtlinie."
   }
 }

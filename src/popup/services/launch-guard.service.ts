@@ -6,19 +6,16 @@ import {
     Router,
 } from '@angular/router';
 
-import { LockService } from 'jslib/abstractions/lock.service';
 import { UserService } from 'jslib/abstractions/user.service';
+import { VaultTimeoutService } from 'jslib/abstractions/vaultTimeout.service';
 
 @Injectable()
 export class LaunchGuardService implements CanActivate {
-    constructor(private lockService: LockService, private userService: UserService, private router: Router) { }
+    constructor(private vaultTimeoutService: VaultTimeoutService, private userService: UserService,
+        private router: Router) { }
 
     async canActivate() {
         if (BrowserApi.getBackgroundPage() == null) {
-            if (BrowserApi.isEdge18) {
-                // tslint:disable-next-line
-                console.log('getBackgroundPage is null from launch guard.');
-            }
             this.router.navigate(['private-mode']);
             return false;
         }
@@ -28,7 +25,7 @@ export class LaunchGuardService implements CanActivate {
             return true;
         }
 
-        const locked = await this.lockService.isLocked();
+        const locked = await this.vaultTimeoutService.isLocked();
         if (locked) {
             this.router.navigate(['lock']);
         } else {
