@@ -21,11 +21,13 @@ import {
     UserService,
     VaultTimeoutService,
 } from 'jslib/services';
+import { ConsoleLogService } from 'jslib/services/consoleLog.service';
 import { EventService } from 'jslib/services/event.service';
 import { ExportService } from 'jslib/services/export.service';
 import { NotificationsService } from 'jslib/services/notifications.service';
 import { PolicyService } from 'jslib/services/policy.service';
 import { SearchService } from 'jslib/services/search.service';
+import { SendService } from 'jslib/services/send.service';
 import { SystemService } from 'jslib/services/system.service';
 import { WebCryptoFunctionService } from 'jslib/services/webCryptoFunction.service';
 
@@ -58,6 +60,7 @@ import { ExportService as ExportServiceAbstraction } from 'jslib/abstractions/ex
 import { NotificationsService as NotificationsServiceAbstraction } from 'jslib/abstractions/notifications.service';
 import { PolicyService as PolicyServiceAbstraction } from 'jslib/abstractions/policy.service';
 import { SearchService as SearchServiceAbstraction } from 'jslib/abstractions/search.service';
+import { SendService as SendServiceAbstraction } from 'jslib/abstractions/send.service';
 import { SystemService as SystemServiceAbstraction } from 'jslib/abstractions/system.service';
 
 import { Analytics } from 'jslib/misc';
@@ -69,6 +72,7 @@ import { SafariApp } from '../browser/safariApp';
 import CommandsBackground from './commands.background';
 import ContextMenusBackground from './contextMenus.background';
 import IdleBackground from './idle.background';
+import { NativeMessagingBackground } from './nativeMessaging.background';
 import RuntimeBackground from './runtime.background';
 import TabsBackground from './tabs.background';
 import WebRequestBackground from './webRequest.background';
@@ -90,6 +94,7 @@ export default class MainBackground {
     i18nService: I18nServiceAbstraction;
     platformUtilsService: PlatformUtilsServiceAbstraction;
     constantsService: ConstantsService;
+    consoleLogService: ConsoleLogService;
     cryptoService: CryptoServiceAbstraction;
     cryptoFunctionService: CryptoFunctionServiceAbstraction;
     tokenService: TokenServiceAbstraction;
@@ -118,6 +123,7 @@ export default class MainBackground {
     policyService: PolicyServiceAbstraction;
     analytics: Analytics;
     popupUtilsService: PopupUtilsService;
+    sendService: SendServiceAbstraction;
 
     onUpdatedRan: boolean;
     onReplacedRan: boolean;
@@ -137,6 +143,7 @@ export default class MainBackground {
     private menuOptionsLoaded: any[] = [];
     private syncTimeout: any;
     private isSafari: boolean;
+    private nativeMessagingBackground: NativeMessagingBackground;
 
     constructor() {
         // Services
@@ -146,13 +153,27 @@ export default class MainBackground {
                 if (this.systemService != null) {
                     this.systemService.clearClipboard(clipboardValue, clearMs);
                 }
+            },
+            async () => {
+                if (this.nativeMessagingBackground != null) {
+                    const promise = this.nativeMessagingBackground.getResponse();
+
+                    try {
+                        await this.nativeMessagingBackground.send({ command: 'biometricUnlock' });
+                    } catch (e) {
+                        return Promise.reject(e);
+                    }
+
+                    return promise.then((result) => result.response === 'unlocked');
+                }
             });
         this.storageService = new BrowserStorageService(this.platformUtilsService);
         this.secureStorageService = new BrowserStorageService(this.platformUtilsService);
         this.i18nService = new I18nService(BrowserApi.getUILanguage(window));
         this.cryptoFunctionService = new WebCryptoFunctionService(window, this.platformUtilsService);
+        this.consoleLogService = new ConsoleLogService(false);
         this.cryptoService = new CryptoService(this.storageService, this.secureStorageService,
-            this.cryptoFunctionService);
+            this.cryptoFunctionService, this.platformUtilsService, this.consoleLogService);
         this.tokenService = new TokenService(this.storageService);
         this.appIdService = new AppIdService(this.storageService);
         this.apiService = new ApiService(this.tokenService, this.platformUtilsService,
@@ -160,7 +181,7 @@ export default class MainBackground {
         this.userService = new UserService(this.tokenService, this.storageService);
         this.authService = new AuthService(this.cryptoService, this.apiService, this.userService,
             this.tokenService, this.appIdService, this.i18nService, this.platformUtilsService,
-            this.messagingService, this.vaultTimeoutService);
+            this.messagingService, this.vaultTimeoutService, this.consoleLogService);
         this.settingsService = new SettingsService(this.userService, this.storageService);
         this.cipherService = new CipherService(this.cryptoService, this.userService, this.settingsService,
             this.apiService, this.storageService, this.i18nService, () => this.searchService);
@@ -168,7 +189,9 @@ export default class MainBackground {
             this.storageService, this.i18nService, this.cipherService);
         this.collectionService = new CollectionService(this.cryptoService, this.userService, this.storageService,
             this.i18nService);
-        this.searchService = new SearchService(this.cipherService);
+        this.searchService = new SearchService(this.cipherService, this.consoleLogService);
+        this.sendService = new SendService(this.cryptoService, this.userService, this.apiService, this.storageService,
+            this.i18nService, this.cryptoFunctionService);
         this.stateService = new StateService();
         this.policyService = new PolicyService(this.userService, this.storageService);
         this.vaultTimeoutService = new VaultTimeoutService(this.cipherService, this.folderService,
@@ -187,7 +210,7 @@ export default class MainBackground {
             }, async () => await this.logout(false));
         this.syncService = new SyncService(this.userService, this.apiService, this.settingsService,
             this.folderService, this.cipherService, this.cryptoService, this.collectionService,
-            this.storageService, this.messagingService, this.policyService,
+            this.storageService, this.messagingService, this.policyService, this.sendService,
             async (expired: boolean) => await this.logout(expired));
         this.eventService = new EventService(this.storageService, this.apiService, this.userService,
             this.cipherService);
@@ -200,7 +223,7 @@ export default class MainBackground {
         this.auditService = new AuditService(this.cryptoFunctionService, this.apiService);
         this.exportService = new ExportService(this.folderService, this.cipherService, this.apiService);
         this.notificationsService = new NotificationsService(this.userService, this.syncService, this.appIdService,
-            this.apiService, this.vaultTimeoutService, () => this.logout(true));
+            this.apiService, this.vaultTimeoutService, () => this.logout(true), this.consoleLogService);
         this.environmentService = new EnvironmentService(this.apiService, this.storageService,
             this.notificationsService);
         this.analytics = new Analytics(window, () => BrowserApi.gaFilter(), this.platformUtilsService,
@@ -223,7 +246,9 @@ export default class MainBackground {
         this.runtimeBackground = new RuntimeBackground(this, this.autofillService, this.cipherService,
             this.platformUtilsService as BrowserPlatformUtilsService, this.storageService, this.i18nService,
             this.analytics, this.notificationsService, this.systemService, this.vaultTimeoutService,
-            this.environmentService);
+            this.environmentService, this.policyService, this.userService);
+        this.nativeMessagingBackground = new NativeMessagingBackground(this.storageService, this.cryptoService, this.cryptoFunctionService,
+            this.vaultTimeoutService, this.runtimeBackground, this.i18nService, this.userService, this.messagingService);
         this.commandsBackground = new CommandsBackground(this, this.passwordGenerationService,
             this.platformUtilsService, this.analytics, this.vaultTimeoutService);
 

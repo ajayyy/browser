@@ -16,9 +16,11 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
     private showDialogResolves = new Map<number, { resolve: (value: boolean) => void, date: Date }>();
     private deviceCache: DeviceType = null;
     private analyticsIdCache: string = null;
+    private prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     constructor(private messagingService: MessagingService,
-        private clipboardWriteCallback: (clipboardValue: string, clearMs: number) => void) { }
+        private clipboardWriteCallback: (clipboardValue: string, clearMs: number) => void,
+        private biometricCallback: () => Promise<boolean>) { }
 
     getDevice(): DeviceType {
         if (this.deviceCache) {
@@ -288,11 +290,11 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
     }
 
     supportsBiometric() {
-        return Promise.resolve(false);
+        return Promise.resolve(true);
     }
 
     authenticateBiometric() {
-        return Promise.resolve(false);
+        return this.biometricCallback();
     }
 
     sidebarViewName(): string {
@@ -305,7 +307,21 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
         return null;
     }
 
+    supportsSecureStorage(): boolean {
+        return false;
+    }
+
     private isSafariExtension(): boolean {
         return (window as any).safariAppExtension === true;
+    }
+
+    getDefaultSystemTheme() {
+        return this.prefersColorSchemeDark.matches ? 'dark' : 'light';
+    }
+
+    onDefaultSystemThemeChange(callback: ((theme: 'light' | 'dark') => unknown)) {
+        this.prefersColorSchemeDark.addListener(({ matches }) => {
+            callback(matches ? 'dark' : 'light');
+        });
     }
 }

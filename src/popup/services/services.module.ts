@@ -33,6 +33,7 @@ import { PasswordGenerationService } from 'jslib/abstractions/passwordGeneration
 import { PlatformUtilsService } from 'jslib/abstractions/platformUtils.service';
 import { PolicyService } from 'jslib/abstractions/policy.service';
 import { SearchService as SearchServiceAbstraction } from 'jslib/abstractions/search.service';
+import { SendService } from 'jslib/abstractions/send.service';
 import { SettingsService } from 'jslib/abstractions/settings.service';
 import { StateService as StateServiceAbstraction } from 'jslib/abstractions/state.service';
 import { StorageService } from 'jslib/abstractions/storage.service';
@@ -49,6 +50,7 @@ import { AuthService } from 'jslib/services/auth.service';
 import { ConstantsService } from 'jslib/services/constants.service';
 import { SearchService } from 'jslib/services/search.service';
 import { StateService } from 'jslib/services/state.service';
+import { ConsoleLogService } from 'jslib/services/consoleLog.service';
 
 import { Analytics } from 'jslib/misc/analytics';
 
@@ -68,11 +70,11 @@ export const authService = new AuthService(getBgService<CryptoService>('cryptoSe
     getBgService<ApiService>('apiService')(), getBgService<UserService>('userService')(),
     getBgService<TokenService>('tokenService')(), getBgService<AppIdService>('appIdService')(),
     getBgService<I18nService>('i18nService')(), getBgService<PlatformUtilsService>('platformUtilsService')(),
-    messagingService, getBgService<VaultTimeoutService>('vaultTimeoutService')());
+    messagingService, getBgService<VaultTimeoutService>('vaultTimeoutService')(), getBgService<ConsoleLogService>('consoleLogService')());
 export const searchService = new PopupSearchService(getBgService<SearchService>('searchService')(),
-    getBgService<CipherService>('cipherService')());
+    getBgService<CipherService>('cipherService')(), getBgService<ConsoleLogService>('consoleLogService')());
 
-export function initFactory(i18nService: I18nService, storageService: StorageService,
+export function initFactory(platformUtilsService: PlatformUtilsService, i18nService: I18nService, storageService: StorageService,
     popupUtilsService: PopupUtilsService): Function {
     return async () => {
         if (!popupUtilsService.inPopup(window)) {
@@ -92,7 +94,12 @@ export function initFactory(i18nService: I18nService, storageService: StorageSer
 
             let theme = await storageService.get<string>(ConstantsService.themeKey);
             if (theme == null) {
-                theme = 'light';
+                theme = platformUtilsService.getDefaultSystemTheme();
+
+                platformUtilsService.onDefaultSystemThemeChange((theme) => {
+                    window.document.documentElement.classList.remove('theme_light', 'theme_dark');
+                    window.document.documentElement.classList.add('theme_' + theme);
+                });
             }
             window.document.documentElement.classList.add('locale_' + i18nService.translationLocale);
             window.document.documentElement.classList.add('theme_' + theme);
@@ -159,6 +166,7 @@ export function initFactory(i18nService: I18nService, storageService: StorageSer
         { provide: AppIdService, useFactory: getBgService<AppIdService>('appIdService'), deps: [] },
         { provide: AutofillService, useFactory: getBgService<AutofillService>('autofillService'), deps: [] },
         { provide: ExportService, useFactory: getBgService<ExportService>('exportService'), deps: [] },
+        { provide: SendService, useFactory: getBgService<SendService>('sendService'), deps: [] },
         {
             provide: VaultTimeoutService,
             useFactory: getBgService<VaultTimeoutService>('vaultTimeoutService'),
@@ -172,7 +180,7 @@ export function initFactory(i18nService: I18nService, storageService: StorageSer
         {
             provide: APP_INITIALIZER,
             useFactory: initFactory,
-            deps: [I18nService, StorageService, PopupUtilsService],
+            deps: [PlatformUtilsService, I18nService, StorageService, PopupUtilsService],
             multi: true,
         },
         {

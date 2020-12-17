@@ -4,7 +4,10 @@ import {
     NgZone,
 } from '@angular/core';
 
-import { Router } from '@angular/router';
+import {
+    ActivatedRoute,
+    Router,
+} from '@angular/router';
 
 import { TwoFactorProviderType } from 'jslib/enums/twoFactorProviderType';
 
@@ -22,6 +25,7 @@ import { BroadcasterService } from 'jslib/angular/services/broadcaster.service';
 import { TwoFactorComponent as BaseTwoFactorComponent } from 'jslib/angular/components/two-factor.component';
 
 import { PopupUtilsService } from '../services/popup-utils.service';
+import { BrowserApi } from '../../browser/browserApi';
 
 const BroadcasterSubscriptionId = 'TwoFactorComponent';
 
@@ -34,13 +38,13 @@ export class TwoFactorComponent extends BaseTwoFactorComponent {
 
     constructor(authService: AuthService, router: Router,
         i18nService: I18nService, apiService: ApiService,
-        platformUtilsService: PlatformUtilsService, syncService: SyncService,
+        platformUtilsService: PlatformUtilsService, private syncService: SyncService,
         environmentService: EnvironmentService, private ngZone: NgZone,
         private broadcasterService: BroadcasterService, private changeDetectorRef: ChangeDetectorRef,
         private popupUtilsService: PopupUtilsService, stateService: StateService,
-        storageService: StorageService) {
+        storageService: StorageService, route: ActivatedRoute) {
         super(authService, router, i18nService, apiService, platformUtilsService, window, environmentService,
-            stateService, storageService);
+            stateService, storageService, route);
         super.onSuccessfulLogin = () => {
             return syncService.fullSync(true);
         };
@@ -77,6 +81,20 @@ export class TwoFactorComponent extends BaseTwoFactorComponent {
                 this.popupUtilsService.popOut(window);
             }
         }
+
+        const queryParamsSub = this.route.queryParams.subscribe(async (qParams) => {
+            if (qParams.sso === 'true') {
+                super.onSuccessfulLogin = () => {
+                    BrowserApi.reloadOpenWindows();
+                    const thisWindow = window.open('', '_self');
+                    thisWindow.close();
+                    return this.syncService.fullSync(true);
+                };
+                if (queryParamsSub != null) {
+                    queryParamsSub.unsubscribe();
+                }
+            }
+        });
     }
 
     ngOnDestroy() {

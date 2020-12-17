@@ -37,6 +37,20 @@ const UsernameFieldNames: string[] = [
     // German
     'benutzername', 'benutzer name', 'email adresse', 'e-mail adresse', 'benutzerid', 'benutzer id'];
 
+const FirstnameFieldNames: string[] = [
+    // English
+    'f-name', 'first-name', 'given-name', 'first-n',
+    // German
+    'vorname'
+];
+
+const LastnameFieldNames: string[] = [
+    // English
+    'l-name', 'last-name', 's-name', 'surname', 'family-name', 'family-n', 'last-n',
+    // German
+    'nachname', 'familienname'
+];
+
 const ExcludedAutofillTypes: string[] = ['radio', 'checkbox', 'hidden', 'file', 'button', 'image', 'reset', 'search'];
 
 // Each index represents a language. These three arrays should all be the same length.
@@ -126,7 +140,7 @@ export default class AutofillService implements AutofillServiceInterface {
     getFormsWithPasswordFields(pageDetails: AutofillPageDetails): any[] {
         const formData: any[] = [];
 
-        const passwordFields = this.loadPasswordFields(pageDetails, true, true, false);
+        const passwordFields = this.loadPasswordFields(pageDetails, true, true, false, false);
         if (passwordFields.length === 0) {
             return formData;
         }
@@ -174,6 +188,7 @@ export default class AutofillService implements AutofillServiceInterface {
                 skipUsernameOnlyFill: options.skipUsernameOnlyFill || false,
                 onlyEmptyFields: options.onlyEmptyFields || false,
                 onlyVisibleFields: options.onlyVisibleFields || false,
+                fillNewPassword: options.fillNewPassword || false,
                 cipher: options.cipher,
             });
 
@@ -230,10 +245,16 @@ export default class AutofillService implements AutofillServiceInterface {
         if (fromCommand) {
             cipher = await this.cipherService.getNextCipherForUrl(tab.url);
         } else {
-            cipher = await this.cipherService.getLastUsedForUrl(tab.url);
+            const lastLaunchedCipher = await this.cipherService.getLastLaunchedForUrl(tab.url);
+            if (lastLaunchedCipher && Date.now().valueOf() - lastLaunchedCipher.localData?.lastLaunched?.valueOf() < 30000) {
+                cipher = lastLaunchedCipher;
+            }
+            else {
+                cipher = await this.cipherService.getLastUsedForUrl(tab.url);
+            }
         }
 
-        return await this.doAutoFill({
+        const autoFillResponse = await this.doAutoFill({
             cipher: cipher,
             pageDetails: pageDetails,
             skipTotp: !fromCommand,
@@ -241,7 +262,15 @@ export default class AutofillService implements AutofillServiceInterface {
             skipUsernameOnlyFill: !fromCommand,
             onlyEmptyFields: !fromCommand,
             onlyVisibleFields: !fromCommand,
+            fillNewPassword: fromCommand,
         });
+
+        // Only update last used index if doAutoFill didn't throw an exception
+        if (fromCommand) {
+            this.cipherService.updateLastUsedIndexForUrl(tab.url);
+        }
+
+        return autoFillResponse;
     }
 
     // Helpers
@@ -326,10 +355,12 @@ export default class AutofillService implements AutofillServiceInterface {
             return fillScript;
         }
 
-        let passwordFields = this.loadPasswordFields(pageDetails, false, false, options.onlyEmptyFields);
+        let passwordFields = this.loadPasswordFields(pageDetails, false, false, options.onlyEmptyFields,
+            options.fillNewPassword);
         if (!passwordFields.length && !options.onlyVisibleFields) {
             // not able to find any viewable password fields. maybe there are some "hidden" ones?
-            passwordFields = this.loadPasswordFields(pageDetails, true, true, options.onlyEmptyFields);
+            passwordFields = this.loadPasswordFields(pageDetails, true, true, options.onlyEmptyFields,
+                options.fillNewPassword);
         }
 
         for (const formKey in pageDetails.forms) {
@@ -674,7 +705,7 @@ export default class AutofillService implements AutofillServiceInterface {
                     fillFields.name = f;
                     break;
                 } else if (!fillFields.firstName && this.isFieldMatch(f[attr],
-                    ['f-name', 'first-name', 'given-name', 'first-n'])) {
+                    FirstnameFieldNames)) {
                     fillFields.firstName = f;
                     break;
                 } else if (!fillFields.middleName && this.isFieldMatch(f[attr],
@@ -682,7 +713,7 @@ export default class AutofillService implements AutofillServiceInterface {
                     fillFields.middleName = f;
                     break;
                 } else if (!fillFields.lastName && this.isFieldMatch(f[attr],
-                    ['l-name', 'last-name', 's-name', 'surname', 'family-name', 'family-n', 'last-n'])) {
+                    LastnameFieldNames)) {
                     fillFields.lastName = f;
                     break;
                 } else if (!fillFields.title && this.isFieldMatch(f[attr],
@@ -891,7 +922,7 @@ export default class AutofillService implements AutofillServiceInterface {
     }
 
     private loadPasswordFields(pageDetails: AutofillPageDetails, canBeHidden: boolean, canBeReadOnly: boolean,
-        mustBeEmpty: boolean) {
+        mustBeEmpty: boolean, fillNewPassword: boolean) {
         const arr: AutofillField[] = [];
         pageDetails.fields.forEach((f) => {
             const isPassword = f.type === 'password';
@@ -899,16 +930,18 @@ export default class AutofillService implements AutofillServiceInterface {
                 if (value == null) {
                     return false;
                 }
-                const lowerValue = value.toLowerCase();
-                if (lowerValue.indexOf('onetimepassword') >= 0) {
+                // Removes all whitespace, _ and - characters
+                const cleanedValue = value.toLowerCase().replace(/[\s_\-]/g, '');
+
+                if (cleanedValue.indexOf('password') < 0) {
                     return false;
                 }
-                if (lowerValue.indexOf('password') < 0) {
+
+                const ignoreList = ['onetimepassword', 'captcha', 'findanything'];
+                if (ignoreList.some((i) => cleanedValue.indexOf(i) > -1)) {
                     return false;
                 }
-                if (lowerValue.indexOf('captcha') >= 0) {
-                    return false;
-                }
+
                 return true;
             };
             const isLikePassword = () => {
@@ -927,7 +960,8 @@ export default class AutofillService implements AutofillServiceInterface {
                 return false;
             };
             if (!f.disabled && (canBeReadOnly || !f.readonly) && (isPassword || isLikePassword())
-                && (canBeHidden || f.viewable) && (!mustBeEmpty || f.value == null || f.value.trim() === '')) {
+                && (canBeHidden || f.viewable) && (!mustBeEmpty || f.value == null || f.value.trim() === '')
+                && (fillNewPassword || f.autoCompleteType !== 'new-password')) {
                 arr.push(f);
             }
         });

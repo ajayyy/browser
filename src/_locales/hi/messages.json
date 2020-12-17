@@ -11,7 +11,7 @@
     "description": "Extension description"
   },
   "loginOrCreateNewAccount": {
-    "message": "Log in or create a new account to access your secure vault."
+    "message": "अपनी सुरक्षित तिजोरी में प्रवेश करने के लिए नया खाता बनाएं या लॉग इन करें।"
   },
   "createAccount": {
     "message": "Create Account"
@@ -20,16 +20,16 @@
     "message": "Log In"
   },
   "enterpriseSingleSignOn": {
-    "message": "Enterprise Single Sign-On"
+    "message": "उद्यम एकल साइन-ऑन"
   },
   "cancel": {
-    "message": "Cancel"
+    "message": "रद्द करें"
   },
   "close": {
-    "message": "Close"
+    "message": "बंद करें"
   },
   "submit": {
-    "message": "Submit"
+    "message": "जमा करें"
   },
   "emailAddress": {
     "message": "Email Address"
@@ -38,10 +38,10 @@
     "message": "Master Password"
   },
   "masterPassDesc": {
-    "message": "The master password is the password you use to access your vault. It is very important that you do not forget your master password. There is no way to recover the password in the event that you forget it."
+    "message": "मास्टर पासवर्ड वह पासवर्ड है जो तिजोरी में प्रवेश के लिए प्रयोग होता है। आप मास्टर पासवर्ड ना भूले, यह अतिआवश्यक है। भूलने की अवस्था में पासवर्ड को दोबारा पाना संभव नहीं होगा।"
   },
   "masterPassHintDesc": {
-    "message": "A master password hint can help you remember your password if you forget it."
+    "message": "मास्टर पासवर्ड संकेत आपको भूल जाने की अवस्था में पासवर्ड को याद करने में सहायता करता है।"
   },
   "reTypeMasterPass": {
     "message": "Re-type Master Password"
@@ -50,16 +50,16 @@
     "message": "Master Password Hint (optional)"
   },
   "tab": {
-    "message": "Tab"
+    "message": "टैब"
   },
   "myVault": {
     "message": "My Vault"
   },
   "tools": {
-    "message": "Tools"
+    "message": "उपकरण"
   },
   "settings": {
-    "message": "Settings"
+    "message": "सेटिंग्स"
   },
   "currentTab": {
     "message": "Current Tab"
@@ -71,7 +71,7 @@
     "message": "Copy Note"
   },
   "copyUri": {
-    "message": "Copy URI"
+    "message": "URI को कॉपी करें"
   },
   "copyUsername": {
     "message": "Copy Username"
@@ -83,22 +83,22 @@
     "message": "Copy Security Code"
   },
   "autoFill": {
-    "message": "Auto-fill"
+    "message": "स्वत:भरण"
   },
   "generatePasswordCopied": {
     "message": "Generate Password (copied)"
   },
   "noMatchingLogins": {
-    "message": "No matching logins."
+    "message": "कोई मेल-मिला लॉगिन नहीं |"
   },
   "vaultLocked": {
-    "message": "Vault is locked."
+    "message": "तिजोरी बंद है |"
   },
   "vaultLoggedOut": {
-    "message": "Vault is logged out."
+    "message": "तिजोरी को लॉग आउट किया गया ।"
   },
   "autoFillInfo": {
-    "message": "There are no logins available to auto-fill for the current browser tab."
+    "message": "इस ब्राउज़र टैब के लिए स्वत: भरण लॉगिन उपलब्ध नहीं है।"
   },
   "addLogin": {
     "message": "Add a Login"
@@ -110,19 +110,19 @@
     "message": "Password Hint"
   },
   "enterEmailToGetHint": {
-    "message": "Enter your account email address to receive your master password hint."
+    "message": "अपने मास्टर पासवर्ड संकेत प्राप्त करने के लिए अपने खाते का ईमेल पता दर्ज करें।"
   },
   "getMasterPasswordHint": {
-    "message": "Get master password hint"
+    "message": "मास्टर पासवर्ड संकेत प्राप्त करें"
   },
   "continue": {
-    "message": "Continue"
+    "message": "जारी रखें"
   },
   "verificationCode": {
     "message": "Verification Code"
   },
   "account": {
-    "message": "Account"
+    "message": "खाता"
   },
   "changeMasterPassword": {
     "message": "Change Master Password"
@@ -142,19 +142,19 @@
     "message": "Log Out"
   },
   "about": {
-    "message": "About"
+    "message": "जानकारी"
   },
   "version": {
-    "message": "Version"
+    "message": "संस्करण"
   },
   "save": {
-    "message": "Save"
+    "message": "सेव करें"
   },
   "addFolder": {
     "message": "Add Folder"
   },
   "name": {
-    "message": "Name"
+    "message": "नाम"
   },
   "editFolder": {
     "message": "Edit Folder"
@@ -163,16 +163,16 @@
     "message": "Delete Folder"
   },
   "folders": {
-    "message": "Folders"
+    "message": "फ़ोल्डर्स"
   },
   "noFolders": {
-    "message": "There are no folders to list."
+    "message": "सूचीबद्ध करने के लिए कोई फ़ोल्डर नहीं हैं।"
   },
   "helpFeedback": {
     "message": "Help & Feedback"
   },
   "sync": {
-    "message": "Sync"
+    "message": "सिंक"
   },
   "syncVaultNow": {
     "message": "Sync Vault Now"
@@ -184,7 +184,7 @@
     "message": "Password Generator"
   },
   "generator": {
-    "message": "Generator",
+    "message": "उत्पन्न करें!",
     "description": "Short for 'Password Generator'."
   },
   "passGenInfo": {
@@ -197,7 +197,7 @@
     "message": "Import Items"
   },
   "select": {
-    "message": "Select"
+    "message": "चयन करें"
   },
   "generatePassword": {
     "message": "Generate Password"
@@ -206,10 +206,10 @@
     "message": "Regenerate Password"
   },
   "options": {
-    "message": "Options"
+    "message": "विकल्प"
   },
   "length": {
-    "message": "Length"
+    "message": "लंबाई"
   },
   "numWords": {
     "message": "Number of Words"
@@ -237,40 +237,40 @@
     "message": "Search vault"
   },
   "edit": {
-    "message": "Edit"
+    "message": "संशोधन करें"
   },
   "view": {
-    "message": "View"
+    "message": "देखें"
   },
   "noItemsInList": {
-    "message": "There are no items to list."
+    "message": "सूचीबद्ध करने के लिए कोई आइटम नहीं हैं।"
   },
   "itemInformation": {
     "message": "Item Information"
   },
   "username": {
-    "message": "Username"
+    "message": "उपयोगकर्ता नाम"
   },
   "password": {
-    "message": "Password"
+    "message": "पासवर्ड"
   },
   "passphrase": {
-    "message": "Passphrase"
+    "message": "पासफ़्रेज़"
   },
   "favorite": {
     "message": "Favorite"
   },
   "notes": {
-    "message": "Notes"
+    "message": "नोट्स"
   },
   "note": {
-    "message": "Note"
+    "message": "नोट:"
   },
   "editItem": {
     "message": "Edit Item"
   },
   "folder": {
-    "message": "Folder"
+    "message": "फ़ोल्डर"
   },
   "deleteItem": {
     "message": "Delete Item"
@@ -279,25 +279,25 @@
     "message": "View Item"
   },
   "launch": {
-    "message": "Launch"
+    "message": "खोलें"
   },
   "website": {
-    "message": "Website"
+    "message": "वेबसाइट"
   },
   "toggleVisibility": {
     "message": "Toggle Visibility"
   },
   "manage": {
-    "message": "Manage"
+    "message": "प्रबंधित करना"
   },
   "other": {
-    "message": "Other"
+    "message": "अन्य"
   },
   "rateExtension": {
     "message": "Rate the Extension"
   },
   "rateExtensionDesc": {
-    "message": "Please consider helping us out with a good review!"
+    "message": "कृपया एक अच्छी समीक्षा के साथ हमारी मदत करने पर विचार करें!"
   },
   "browserNotSupportClipboard": {
     "message": "Your web browser does not support easy clipboard copying. Copy it manually instead."
@@ -425,19 +425,19 @@
     "message": "Your login session has expired."
   },
   "logOutConfirmation": {
-    "message": "Are you sure you want to log out?"
+    "message": "क्या आप वाकई लॉग आउट करना चाहते हैं?"
   },
   "yes": {
-    "message": "Yes"
+    "message": "हाँ"
   },
   "no": {
-    "message": "No"
+    "message": "नहीं"
   },
   "unexpectedError": {
     "message": "An unexpected error has occured."
   },
   "nameRequired": {
-    "message": "Name is required."
+    "message": "नाम आवश्यक है"
   },
   "addedFolder": {
     "message": "Added folder"
@@ -893,6 +893,9 @@
   },
   "commandGeneratePasswordDesc": {
     "message": "Generate and copy a new random password to the clipboard."
+  },
+  "commandLockVaultDesc": {
+    "message": "Lock the vault"
   },
   "privateModeMessage": {
     "message": "Unfortunately this window is not available in private mode for this browser."
@@ -1353,5 +1356,17 @@
   },
   "masterPasswordPolicyRequirementsNotMet": {
     "message": "Your new master password does not meet the policy requirements."
+  },
+  "acceptPolicies": {
+    "message": "By checking this box you agree to the following:"
+  },
+  "acceptPoliciesError": {
+    "message": "Terms of Service and Privacy Policy have not been acknowledged."
+  },
+  "termsOfService": {
+    "message": "Terms of Service"
+  },
+  "privacyPolicy": {
+    "message": "Privacy Policy"
   }
 }

@@ -101,7 +101,7 @@
     "message": "There are no logins available to auto-fill for the current browser tab."
   },
   "addLogin": {
-    "message": "Add a login"
+    "message": "ഒരു പ്രവേശനം ചേർക്കുക"
   },
   "addItem": {
     "message": "Add item"
@@ -136,10 +136,10 @@
     "description": "A 'fingerprint phrase' is a unique word phrase (similar to a passphrase) that a user can use to authenticate their public key with another user, for the purposes of sharing."
   },
   "twoStepLogin": {
-    "message": "Two-step login"
+    "message": "രണ്ട്-ഘട്ട പ്രവേശനം"
   },
   "logOut": {
-    "message": "Log out"
+    "message": "ലോഗ് ഔട്ട്"
   },
   "about": {
     "message": "About"
@@ -1057,7 +1057,7 @@
     "message": "City / town"
   },
   "stateProvince": {
-    "message": "County"
+    "message": "State / Union territory"
   },
   "zipPostalCode": {
     "message": "Postcode"
@@ -1361,12 +1361,12 @@
     "message": "By checking this box you agree to the following:"
   },
   "acceptPoliciesError": {
-    "message": "Terms of service and privacy policy have not been acknowledged."
+    "message": "Terms of Service and Privacy Policy have not been acknowledged."
   },
   "termsOfService": {
-    "message": "Terms of service"
+    "message": "Terms of Service"
   },
   "privacyPolicy": {
-    "message": "Privacy policy"
+    "message": "Privacy Policy"
   }
 }
