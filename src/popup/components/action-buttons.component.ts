@@ -46,7 +46,6 @@ export class ActionButtonsComponent {
     }
 
     async copy(cipher: CipherView, value: string, typeI18nKey: string, aType: string) {
-        // if (value == null) {
         if (value == null || aType === 'TOTP' && !this.displayTotpCopyButton(cipher)) {
             return;
         } else if (value === cipher.login.totp) {
