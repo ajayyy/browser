@@ -6,7 +6,7 @@ import { PlatformUtilsService } from 'jslib/abstractions/platformUtils.service';
 
 @Injectable()
 export class PopupUtilsService {
-    constructor(private platformUtilsService: PlatformUtilsService) {}
+    constructor(private platformUtilsService: PlatformUtilsService) { }
 
     inSidebar(win: Window): boolean {
         return win.location.search !== '' && win.location.search.indexOf('uilocation=sidebar') > -1;
@@ -37,8 +37,11 @@ export class PopupUtilsService {
         }
     }
 
-    popOut(win: Window): void {
-        let href = win.location.href;
+    popOut(win: Window, href: string = null): void {
+
+        if (href === null) {
+            href = win.location.href;
+        }
 
         if ((typeof chrome !== 'undefined') && chrome.windows && chrome.windows.create) {
             if (href.indexOf('?uilocation=') > -1) {
@@ -68,8 +71,6 @@ export class PopupUtilsService {
             chrome.tabs.create({
                 url: href,
             });
-        } else if ((typeof safari !== 'undefined')) {
-            // Safari can't open popup in full page tab :(
         }
     }
 }

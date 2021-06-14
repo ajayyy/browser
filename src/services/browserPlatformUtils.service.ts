@@ -6,8 +6,6 @@ import { DeviceType } from 'jslib/enums/deviceType';
 import { MessagingService } from 'jslib/abstractions/messaging.service';
 import { PlatformUtilsService } from 'jslib/abstractions/platformUtils.service';
 
-import { AnalyticsIds } from 'jslib/misc/analytics';
-
 const DialogPromiseExpiration = 600000; // 10 minutes
 
 export default class BrowserPlatformUtilsService implements PlatformUtilsService {
@@ -15,7 +13,6 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
 
     private showDialogResolves = new Map<number, { resolve: (value: boolean) => void, date: Date }>();
     private deviceCache: DeviceType = null;
-    private analyticsIdCache: string = null;
     private prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     constructor(private messagingService: MessagingService,
@@ -27,9 +24,7 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
             return this.deviceCache;
         }
 
-        if (this.isSafariExtension()) {
-            this.deviceCache = DeviceType.SafariExtension;
-        } else if (navigator.userAgent.indexOf(' Firefox/') !== -1 || navigator.userAgent.indexOf(' Gecko/') !== -1) {
+        if (navigator.userAgent.indexOf(' Firefox/') !== -1 || navigator.userAgent.indexOf(' Gecko/') !== -1) {
             this.deviceCache = DeviceType.FirefoxExtension;
         } else if ((!!(window as any).opr && !!opr.addons) || !!(window as any).opera ||
             navigator.userAgent.indexOf(' OPR/') >= 0) {
@@ -40,6 +35,8 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
             this.deviceCache = DeviceType.VivaldiExtension;
         } else if ((window as any).chrome && navigator.userAgent.indexOf(' Chrome/') !== -1) {
             this.deviceCache = DeviceType.ChromeExtension;
+        } else if (navigator.userAgent.indexOf(' Safari/') !== -1) {
+            this.deviceCache = DeviceType.SafariExtension;
         }
 
         return this.deviceCache;
@@ -82,15 +79,6 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
         return false;
     }
 
-    analyticsId(): string {
-        if (this.analyticsIdCache) {
-            return this.analyticsIdCache;
-        }
-
-        this.analyticsIdCache = (AnalyticsIds as any)[this.getDevice()];
-        return this.analyticsIdCache;
-    }
-
     async isViewOpen(): Promise<boolean> {
         if (await BrowserApi.isPopupOpen()) {
             return true;
@@ -122,16 +110,12 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
         BrowserApi.downloadFile(win, blobData, blobOptions, fileName);
     }
 
-    getApplicationVersion(): string {
-        return BrowserApi.getApplicationVersion();
+    getApplicationVersion(): Promise<string> {
+        return Promise.resolve(BrowserApi.getApplicationVersion());
     }
 
-    supportsU2f(win: Window): boolean {
-        if (win != null && (win as any).u2f != null) {
-            return true;
-        }
-
-        return this.isChrome() || this.isOpera() || this.isVivaldi();
+    supportsWebAuthn(win: Window): boolean {
+        return (typeof(PublicKeyCredential) !== 'undefined');
     }
 
     supportsDuo(): boolean {
@@ -148,26 +132,20 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
         });
     }
 
-    showDialog(text: string, title?: string, confirmText?: string, cancelText?: string, type?: string) {
+    showDialog(body: string, title?: string, confirmText?: string, cancelText?: string, type?: string,
+        bodyIsHtml: boolean = false) {
         const dialogId = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
         this.messagingService.send('showDialog', {
-            text: text,
+            text: bodyIsHtml ? null : body,
+            html: bodyIsHtml ? body : null,
             title: title,
             confirmText: confirmText,
             cancelText: cancelText,
             type: type,
             dialogId: dialogId,
         });
-        return new Promise<boolean>((resolve) => {
+        return new Promise<boolean>(resolve => {
             this.showDialogResolves.set(dialogId, { resolve: resolve, date: new Date() });
-        });
-    }
-
-    eventTrack(action: string, label?: string, options?: any) {
-        this.messagingService.send('analyticsEventTrack', {
-            action: action,
-            label: label,
-            options: options,
         });
     }
 
@@ -190,7 +168,8 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
         }
         const clearing = options ? !!options.clearing : false;
         const clearMs: number = options && options.clearMs ? options.clearMs : null;
-        if (this.isSafariExtension()) {
+
+        if (this.isSafari()) {
             SafariApp.sendMessageToApp('copyToClipboard', text).then(() => {
                 if (!clearing && this.clipboardWriteCallback != null) {
                     this.clipboardWriteCallback(text, clearMs);
@@ -244,7 +223,7 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
             doc = options.doc;
         }
 
-        if (this.isSafariExtension()) {
+        if (this.isSafari()) {
             return await SafariApp.sendMessageToApp('readFromClipboard');
         } else if (this.isFirefox() && (win as any).navigator.clipboard && (win as any).navigator.clipboard.readText) {
             return await (win as any).navigator.clipboard.readText();
@@ -284,13 +263,17 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
                 deleteIds.push(key);
             }
         });
-        deleteIds.forEach((id) => {
+        deleteIds.forEach(id => {
             this.showDialogResolves.delete(id);
         });
     }
 
-    supportsBiometric() {
-        return Promise.resolve(true);
+    async supportsBiometric() {
+        if (this.isFirefox()) {
+            return parseInt((await browser.runtime.getBrowserInfo()).version.split('.')[0], 10) >= 87;
+        }
+
+        return true;
     }
 
     authenticateBiometric() {
@@ -311,12 +294,8 @@ export default class BrowserPlatformUtilsService implements PlatformUtilsService
         return false;
     }
 
-    private isSafariExtension(): boolean {
-        return (window as any).safariAppExtension === true;
-    }
-
-    getDefaultSystemTheme() {
-        return this.prefersColorSchemeDark.matches ? 'dark' : 'light';
+    getDefaultSystemTheme(): Promise<'light' | 'dark'> {
+        return Promise.resolve(this.prefersColorSchemeDark.matches ? 'dark' : 'light');
     }
 
     onDefaultSystemThemeChange(callback: ((theme: 'light' | 'dark') => unknown)) {

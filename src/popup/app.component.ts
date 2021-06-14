@@ -4,10 +4,8 @@ import {
     BodyOutputType,
     Toast,
     ToasterConfig,
-    ToasterContainerComponent,
     ToasterService,
 } from 'angular2-toaster';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import Swal, { SweetAlertIcon } from 'sweetalert2/src/sweetalert2.js';
 
 import {
@@ -23,8 +21,6 @@ import {
     Router,
     RouterOutlet,
 } from '@angular/router';
-
-import { Angulartics2 } from 'angulartics2';
 
 import { BroadcasterService } from 'jslib/angular/services/broadcaster.service';
 
@@ -61,8 +57,7 @@ export class AppComponent implements OnInit {
 
     private lastActivity: number = null;
 
-    constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, private analytics: Angulartics2,
-        private toasterService: ToasterService, private storageService: StorageService,
+    constructor(private toasterService: ToasterService, private storageService: StorageService,
         private broadcasterService: BroadcasterService, private authService: AuthService,
         private i18nService: I18nService, private router: Router,
         private stateService: StateService, private messagingService: MessagingService,
@@ -87,7 +82,6 @@ export class AppComponent implements OnInit {
             if (msg.command === 'doneLoggingOut') {
                 this.ngZone.run(async () => {
                     this.authService.logOut(() => {
-                        this.analytics.eventTrack.next({ action: 'Logged Out' });
                         if (msg.expired) {
                             this.showToast({
                                 type: 'warning',
@@ -115,11 +109,6 @@ export class AppComponent implements OnInit {
                 this.ngZone.run(() => {
                     this.showToast(msg);
                 });
-            } else if (msg.command === 'analyticsEventTrack') {
-                this.analytics.eventTrack.next({
-                    action: msg.action,
-                    properties: { label: msg.label },
-                });
             } else if (msg.command === 'reloadProcess') {
                 const windowReload = this.platformUtilsService.isSafari() ||
                     this.platformUtilsService.isFirefox() || this.platformUtilsService.isOpera();
@@ -139,13 +128,17 @@ export class AppComponent implements OnInit {
 
         BrowserApi.messageListener('app.component', (window as any).bitwardenPopupMainMessageListener);
 
-        this.router.events.subscribe((event) => {
+        this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 const url = event.urlAfterRedirects || event.url || '';
                 if (url.startsWith('/tabs/') && (window as any).previousPopupUrl != null &&
                     (window as any).previousPopupUrl.startsWith('/tabs/')) {
                     this.stateService.remove('GroupingsComponent');
+                    this.stateService.remove('GroupingsComponentScope');
                     this.stateService.remove('CiphersComponent');
+                    this.stateService.remove('SendGroupingsComponent');
+                    this.stateService.remove('SendGroupingsComponentScope');
+                    this.stateService.remove('SendTypeComponent');
                 }
                 if (url.startsWith('/tabs/')) {
                     this.stateService.remove('addEditCipherInfo');

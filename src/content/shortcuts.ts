@@ -1,6 +1,6 @@
 import * as Mousetrap from 'mousetrap';
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', event => {
     const isSafari = (typeof safari !== 'undefined') && navigator.userAgent.indexOf(' Safari/') !== -1 &&
         navigator.userAgent.indexOf('Chrome') === -1;
     const isVivaldi = !isSafari && navigator.userAgent.indexOf(' Vivaldi/') !== -1;
@@ -45,11 +45,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             shortcut: shortcut,
         };
 
-        if (isSafari) {
-            msg.bitwardenFrameId = (window as any).__bitwardenFrameId;
-            safari.extension.dispatchMessage('bitwarden', msg);
-        } else {
-            chrome.runtime.sendMessage(msg);
-        }
+        chrome.runtime.sendMessage(msg);
     }
 });

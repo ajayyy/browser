@@ -312,7 +312,7 @@
     "message": "Ontgrendelen"
   },
   "loggedInAsOn": {
-    "message": "Ingelogd als $EMAIL$ op $HOSTNAME$.",
+    "message": "Aangemeld als $EMAIL$ op $HOSTNAME$.",
     "placeholders": {
       "email": {
         "content": "$1",
@@ -498,7 +498,7 @@
     "message": "Item is bewerkt"
   },
   "deleteItemConfirmation": {
-    "message": "Weet je zeker dat je dit item wilt verwijderen?"
+    "message": "Weet je zeker dat je dit naar de prullenbak wilt verplaatsen?"
   },
   "deletedItem": {
     "message": "Item is verwijderd"
@@ -596,6 +596,10 @@
     "message": "Licht",
     "description": "Light color"
   },
+  "solarizedDark": {
+    "message": "Solarized Dark",
+    "description": "'Solarized' is a noun and the name of a color scheme. It should not be translated."
+  },
   "exportVault": {
     "message": "Kluis exporteren"
   },
@@ -606,8 +610,17 @@
     "message": "WAARSCHUWING",
     "description": "WARNING (should stay in capitalized letters if the language permits)"
   },
+  "confirmVaultExport": {
+    "message": "Kluisexport bevestigen"
+  },
   "exportWarningDesc": {
     "message": "Deze export bevat jouw kluisgegevens in een niet-versleutelde opmaak. Je moet het geëxporteerde bestand niet opslaan of verzenden over onbeveiligde kanalen (zoals e-mail). Verwijder het exportbestand direct na gebruik."
+  },
+  "encExportKeyWarningDesc": {
+    "message": "Deze export versleutelt je gegevens met de encryptiesleutel van je account. Als je je encryptiesleutel verandert moet je opnieuw exporteren, omdat je deze export dan niet meer kunt ontcijferen."
+  },
+  "encExportAccountWarningDesc": {
+    "message": "Encryptiesleutels zijn uniek voor elk Bitwarden-gebruikersaccount. Je kunt een versleutelde export dus niet in een ander account importeren."
   },
   "exportMasterPassword": {
     "message": "Voer je hoofdwachtwoord in om de kluisgegevens te exporteren."
@@ -789,6 +802,12 @@
   "insertU2f": {
     "message": "Plaats je beveilingssleutel in de USB-poort van je computer. Als het een knop heeft, druk deze dan in."
   },
+  "webAuthnNewTab": {
+    "message": "Continue the WebAuthn 2FA verification in the new tab."
+  },
+  "webAuthnAuthenticate": {
+    "message": "Authenticate WebAutn"
+  },
   "loginUnavailable": {
     "message": "Login niet beschikbaar"
   },
@@ -828,11 +847,11 @@
     "message": "Verificatie met Duo Security middels de Duo Mobile-app, sms, spraakoproep of een U2F-beveiligingssleutel.",
     "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
   },
-  "u2fDesc": {
-    "message": "Gebruik een FIDO U2F-beveiligingssleutel om toegang te krijgen tot je account."
+  "webAuthnTitle": {
+    "message": "FIDO2 WebAuthn"
   },
-  "u2fTitle": {
-    "message": "FIDO U2F-beveiligingssleutel"
+  "webAuthnDesc": {
+    "message": "Use any WebAuthn enabled security key to access your account."
   },
   "emailTitle": {
     "message": "E-mail"
@@ -878,6 +897,12 @@
   },
   "enableAutoFillOnPageLoadDesc": {
     "message": "Als een inlogformulier wordt gedetecteerd, dan worden de inloggegevens automatisch ingevuld."
+  },
+  "enableAutoTotpCopyOnAutoFill": {
+    "message": "Automatic TOTP Copy after Page Load"
+  },
+  "enableAutoTotpCopyOnAutoFillDesc": {
+    "message": "If Auto-fill On Page Load is enabled, the TOTP verification code is automatically copied to your clipboard after loading the web page. This is overridden by Disable Automatic TOTP Copy."
   },
   "experimentalFeature": {
     "message": "Dit is momenteel een experimentele functie; gebruik hiervan is op eigen risico."
@@ -935,6 +960,12 @@
   },
   "disableFaviconDesc": {
     "message": "Websitepictogrammen geven een herkenbare afbeelding naast elk item in je kluis weer."
+  },
+  "disableBadgeCounter": {
+    "message": "Disable Badge Counter"
+  },
+  "disableBadgeCounterDesc": {
+    "message": "Badge counter indicates how many logins you have for the current page in your vault."
   },
   "cardholderName": {
     "message": "Naam kaarthouder"
@@ -1250,6 +1281,15 @@
   "yourVaultIsLockedPinCode": {
     "message": "Je kluis is vergrendeld. Voer je PIN-code in om door te gaan."
   },
+  "unlockWithBiometrics": {
+    "message": "Biometrisch ontgrendelen"
+  },
+  "awaitDesktop": {
+    "message": "Wacht op bevestiging van de desktop"
+  },
+  "awaitDesktopDesc": {
+    "message": "Bevestig het gebruik van biometrie in de Bitwarden-desktopapplicatie om biometrie voor de browser in te schakelen."
+  },
   "lockWithMasterPassOnRestart": {
     "message": "Vergrendelen met hoofdwachtwoord bij herstart browser"
   },
@@ -1368,5 +1408,315 @@
   },
   "privacyPolicy": {
     "message": "Privacybeleid"
+  },
+  "hintEqualsPassword": {
+    "message": "Je wachtwoordhint moet anders zijn dan je wachtwoord."
+  },
+  "ok": {
+    "message": "Ok"
+  },
+  "desktopSyncVerificationTitle": {
+    "message": "Desktopsynchronisatieverificatie"
+  },
+  "desktopIntegrationVerificationText": {
+    "message": "Controleer of de desktopapplicatie deze vingerafdruk weergeeft: "
+  },
+  "desktopIntegrationDisabledTitle": {
+    "message": "Browserintegratie is niet ingeschakeld"
+  },
+  "desktopIntegrationDisabledDesc": {
+    "message": "Browserintegratie is niet ingeschakeld in de Bitwarden-desktopapplicatie. Schakel deze optie in de instellingen binnen de desktop-applicatie in."
+  },
+  "startDesktopTitle": {
+    "message": "Bitwarden-desktopapplicatie opstarten"
+  },
+  "startDesktopDesc": {
+    "message": "Je moet de Bitwarden-desktopapplicatie starten om deze functie te gebruiken."
+  },
+  "errorEnableBiometricTitle": {
+    "message": "Kon biometrie niet inschakelen"
+  },
+  "errorEnableBiometricDesc": {
+    "message": "Actie is geannuleerd door de desktopapplicatie"
+  },
+  "nativeMessagingInvalidEncryptionDesc": {
+    "message": "De desktopapplicatie heeft het beveiligde communicatiekanaal ongeldig verklaard. Probeer het opnieuw"
+  },
+  "nativeMessagingInvalidEncryptionTitle": {
+    "message": "Desktopcommunicatie onderbroken"
+  },
+  "nativeMessagingWrongUserDesc": {
+    "message": "De desktopapplicatie is aangemeld bij een ander account. Zorg ervoor dat beide applicaties op hetzelfde account zijn aangemeld."
+  },
+  "nativeMessagingWrongUserTitle": {
+    "message": "Accounts komt niet overeen"
+  },
+  "biometricsNotEnabledTitle": {
+    "message": "Biometrie niet ingeschakeld"
+  },
+  "biometricsNotEnabledDesc": {
+    "message": "Voor browserbiometrie moet je eerst desktopbiometrie inschakelen in de instellingen."
+  },
+  "biometricsNotSupportedTitle": {
+    "message": "Biometrie niet ondersteund"
+  },
+  "biometricsNotSupportedDesc": {
+    "message": "Dit apparaat ondersteunt geen browserbiometrie."
+  },
+  "nativeMessaginPermissionErrorTitle": {
+    "message": "Toestemming niet verleend"
+  },
+  "nativeMessaginPermissionErrorDesc": {
+    "message": "Zonder toestemming om te communiceren met de Bitwarden Desktop-applicatie, kunnen we biometrisch inloggen in de browserextensie niet leveren. Probeer het opnieuw."
+  },
+  "nativeMessaginPermissionSidebarTitle": {
+    "message": "Fout bij toestemmingsaanvraag"
+  },
+  "nativeMessaginPermissionSidebarDesc": {
+    "message": "Deze actie kan niet worden uitgevoerd in de zijbalk, probeer de actie opnieuw in de pop-up of pop-out."
+  },
+  "personalOwnershipSubmitError": {
+    "message": "Wegens bedrijfsbeleid mag je geen wachtwoorden opslaan in je persoonlijke kluis. Verander het eigenaarschap naar een organisatie en kies uit een van de beschikbare collecties."
+  },
+  "personalOwnershipPolicyInEffect": {
+    "message": "Een organisatiebeleid heeft invloed op je eigendomsopties."
+  },
+  "excludedDomains": {
+    "message": "Uitgesloten domeinen"
+  },
+  "excludedDomainsDesc": {
+    "message": "Bitwarden zal voor deze domeinen niet vragen om inloggegevens op te slaan. Je moet de pagina vernieuwen om de wijzigingen toe te passen."
+  },
+  "excludedDomainsInvalidDomain": {
+    "message": "$DOMAIN$ is geen geldig domein",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "googlecom"
+      }
+    }
+  },
+  "send": {
+    "message": "Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "searchSends": {
+    "message": "Sends zoeken",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "addSend": {
+    "message": "Send toevoegen",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeText": {
+    "message": "Tekst"
+  },
+  "sendTypeFile": {
+    "message": "Bestand"
+  },
+  "allSends": {
+    "message": "Alle Sends",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "maxAccessCountReached": {
+    "message": "Maximum aantal keren benaderd"
+  },
+  "expired": {
+    "message": "Verlopen"
+  },
+  "pendingDeletion": {
+    "message": "Wordt verwijderd"
+  },
+  "passwordProtected": {
+    "message": "Beveiligd met wachtwoord"
+  },
+  "copySendLink": {
+    "message": "Send-link kopiëren",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "removePassword": {
+    "message": "Wachtwoord verwijderen"
+  },
+  "delete": {
+    "message": "Verwijderen"
+  },
+  "removedPassword": {
+    "message": "Verwijderd wachtwoord"
+  },
+  "deletedSend": {
+    "message": "Verwijderde Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLink": {
+    "message": "Send-link",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "disabled": {
+    "message": "Uitgeschakeld"
+  },
+  "removePasswordConfirmation": {
+    "message": "Weet je zeker dat je het wachtwoord wilt verwijderen?"
+  },
+  "deleteSend": {
+    "message": "Send verwijderen",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "deleteSendConfirmation": {
+    "message": "Weet je zeker dat je deze Send wilt verwijderen?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editSend": {
+    "message": "Send bewerken",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeHeader": {
+    "message": "Wat voor soort Send is dit?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNameDesc": {
+    "message": "Een vriendelijke naam om deze Send te beschrijven.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendFileDesc": {
+    "message": "Het bestand dat je wilt versturen."
+  },
+  "deletionDate": {
+    "message": "Verwijderingsdatum"
+  },
+  "deletionDateDesc": {
+    "message": "Deze Send wordt op de aangegeven datum en tijd definitief verwijderd.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "expirationDate": {
+    "message": "Vervaldatum"
+  },
+  "expirationDateDesc": {
+    "message": "Als dit is ingesteld verloopt deze Send op een specifieke datum en tijd.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "oneDay": {
+    "message": "1 dag"
+  },
+  "days": {
+    "message": "$DAYS$ dagen",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "custom": {
+    "message": "Aangepast"
+  },
+  "maximumAccessCount": {
+    "message": "Maximum toegangsaantal"
+  },
+  "maximumAccessCountDesc": {
+    "message": "Als dit is ingesteld kunnen gebruikers deze Send niet meer benaderen zodra het maximale aantal toegang is bereikt.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendPasswordDesc": {
+    "message": "Vereis optioneel een wachtwoord voor gebruikers om toegang te krijgen tot deze Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNotesDesc": {
+    "message": "Privénotities over deze Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisableDesc": {
+    "message": "Schakel deze Send uit zodat niemand hem kan benaderen.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendShareDesc": {
+    "message": "Kopieer de link van deze Send bij het opslaan naar het klembord.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTextDesc": {
+    "message": "De tekst die je wilt versturen."
+  },
+  "sendHideText": {
+    "message": "De tekst van deze Send standaard verbergen.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "currentAccessCount": {
+    "message": "Huidige toegangsaantal"
+  },
+  "createSend": {
+    "message": "Nieuwe Send aanmaken",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "newPassword": {
+    "message": "Nieuw wachtwoord"
+  },
+  "sendDisabled": {
+    "message": "Send uitgeschakeld",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisabledWarning": {
+    "message": "Als gevolg van een ondernemingsbeleid kun je alleen een bestaande Send verwijderen.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "createdSend": {
+    "message": "Send aangemaakt",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editedSend": {
+    "message": "Send bewerkt",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLinuxChromiumFileWarning": {
+    "message": "In order to choose a file, open the extension in the sidebar (if possible) or pop out to a new window by clicking this banner."
+  },
+  "sendFirefoxFileWarning": {
+    "message": "Om een bestand te kiezen met Firefox, open je de extensie in de zijbalk of als pop-up in een nieuw venster door op deze banner te klikken."
+  },
+  "sendSafariFileWarning": {
+    "message": "Om een bestand te kiezen met Safari, open je een nieuw pop-up-venster door op deze banner te klikken."
+  },
+  "sendFileCalloutHeader": {
+    "message": "Voor je begint"
+  },
+  "sendFirefoxCustomDatePopoutMessage1": {
+    "message": "Om een datumkiezer in kalenderstijl te gebruiken",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read '**To use a calendar style date picker ** click here to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage2": {
+    "message": "klik hier",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker **click here** to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage3": {
+    "message": "om een pop-up te openen.",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker click here **to pop out your window.**'"
+  },
+  "expirationDateIsInvalid": {
+    "message": "De opgegeven vervaldatum is niet geldig."
+  },
+  "deletionDateIsInvalid": {
+    "message": "De opgegeven verwijderdatum is niet geldig."
+  },
+  "expirationDateAndTimeRequired": {
+    "message": "Een vervaldatum en -tijd zijn vereist."
+  },
+  "deletionDateAndTimeRequired": {
+    "message": "Een verwijderingsdatum en -tijd zijn vereist."
+  },
+  "dateParsingError": {
+    "message": "Er is een fout opgetreden bij het opslaan van je verwijder- en vervaldatum."
+  },
+  "hideEmail": {
+    "message": "Hide my email address from recipients."
+  },
+  "sendOptionsPolicyInEffect": {
+    "message": "One or more organization policies are affecting your Send options."
+  },
+  "passwordPrompt": {
+    "message": "Master password re-prompt"
+  },
+  "passwordConfirmation": {
+    "message": "Master password confirmation"
+  },
+  "passwordConfirmationDesc": {
+    "message": "This action is protected. To continue, please re-enter your master password to verify your identity."
   }
 }

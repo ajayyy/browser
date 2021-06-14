@@ -246,7 +246,7 @@
     "message": "Puuduvad kirjed, mida kuvada."
   },
   "itemInformation": {
-    "message": "Kirje informatsioon"
+    "message": "Kirje andmed"
   },
   "username": {
     "message": "Kasutajanimi"
@@ -300,7 +300,7 @@
     "message": "Soovi korral võid meid positiivse hinnanguga toetada!"
   },
   "browserNotSupportClipboard": {
-    "message": "Kasutatav brauser ei toeta lihtsat lõikepuhvri kopeerimist. Kopeeri see käsitsi."
+    "message": "Kasutatav brauser ei toeta lihtsat lõikelaua kopeerimist. Kopeeri see käsitsi."
   },
   "verifyMasterPassword": {
     "message": "Kinnita ülemparooliga"
@@ -331,7 +331,7 @@
     "message": "Hoidla ajalõpp"
   },
   "lockNow": {
-    "message": "Kliki paroolihoidla lukustamiseks"
+    "message": "Lukusta paroolihoidla"
   },
   "immediately": {
     "message": "Koheselt"
@@ -403,7 +403,7 @@
     "message": "Ülemparooli vihje saadeti sinu e-postile."
   },
   "verificationCodeRequired": {
-    "message": "Nõuatav on kinnituskood."
+    "message": "Nõutav on kinnituskood."
   },
   "valueCopied": {
     "message": "$VALUE$ on kopeeritud",
@@ -535,7 +535,7 @@
     "message": "Krediit- ja teiste kaartide andmed kuvatakse vaikeseadena \"Kaart\" vaates, et neid oleks lihtsam sisestada."
   },
   "dontShowIdentitiesCurrentTab": {
-    "message": "Ära kuva \"Kaart\" vaates Identiteete"
+    "message": "Ära kuva \"Kaart\" vaates identiteete"
   },
   "dontShowIdentitiesCurrentTabDesc": {
     "message": "Identiteediandmeid kuvatakse vaikeseadena \"Kaart\" vaates, et neid oleks lihtsam sisestada."
@@ -576,11 +576,11 @@
     "message": "Parema kliki menüü abil saad kiiresti parooli genereerida ja konkreetse veebilehe kasutajakonto andmeid sisestada."
   },
   "defaultUriMatchDetection": {
-    "message": "Vaikse URL-i sobivuse tuvastamine",
+    "message": "Vaikse URI sobivuse tuvastamine",
     "description": "Default URI match detection for auto-fill."
   },
   "defaultUriMatchDetectionDesc": {
-    "message": "Vali vaikeviis, kuidas kirje ja URL-i sobivus tuvastatakse. Seda kasutatakse näiteks siis, kui lehele üritatakse automaatselt andmeid sisestada."
+    "message": "Vali vaikeviis, kuidas kirje ja URI sobivus tuvastatakse. Seda kasutatakse näiteks siis, kui lehele üritatakse automaatselt andmeid sisestada."
   },
   "theme": {
     "message": "Teema"
@@ -596,6 +596,10 @@
     "message": "Hele",
     "description": "Light color"
   },
+  "solarizedDark": {
+    "message": "Solarized Dark",
+    "description": "'Solarized' is a noun and the name of a color scheme. It should not be translated."
+  },
   "exportVault": {
     "message": "Ekspordi hoidla"
   },
@@ -606,8 +610,17 @@
     "message": "HOIATUS",
     "description": "WARNING (should stay in capitalized letters if the language permits)"
   },
+  "confirmVaultExport": {
+    "message": "Hoidla eksportimise kinnitamine"
+  },
   "exportWarningDesc": {
     "message": "Eksporditav fail sisaldab hoidla sisu, mis on krüpteeringuta. Seda faili ei tohiks kaua käidelda ning mitte mingil juhul ebaturvaliselt saata (näiteks e-postiga). Kustuta see koheselt pärast kasutamist."
+  },
+  "encExportKeyWarningDesc": {
+    "message": "Eksporditavate andmete krüpteerimiseks kasutatakse kontol olevat krüpteerimisvõtit. Kui sa peaksid seda krüpteerimise võtit roteerima, ei saa sa järgnevalt eksporditavaid andmeid enam dekrüpteerida."
+  },
+  "encExportAccountWarningDesc": {
+    "message": "Iga Bitwardeni kasutaja krüpteerimisvõti on unikaalne. Eksporditud andmeid ei saa importida teise Bitwardeni kasutajakontosse."
   },
   "exportMasterPassword": {
     "message": "Hoidlas olevate andmete eksportimiseks on vajalik ülemparooli sisestamine."
@@ -709,7 +722,7 @@
     "message": "Parooli hügieen, konto seisukord ja andmelekete raportid aitavad hoidlat turvalisena hoida."
   },
   "ppremiumSignUpTotp": {
-    "message": "TOTP kinnituskoodide (2FA) genereeria hoidlas olevatele kasutajakontodele."
+    "message": "TOTP kinnituskoodide (2FA) genereerija hoidlas olevatele kasutajakontodele."
   },
   "ppremiumSignUpSupport": {
     "message": "Kiirema kasutajatoe."
@@ -745,7 +758,7 @@
     "message": "Keela automaatne TOTP kopeerimine"
   },
   "disableAutoTotpCopyDesc": {
-    "message": "Kui sinu sisselogimise andmetele on juurde lisatud autentiseerimise võti, kopeeritakse TOTP kood automaatse täitmise kasutamisel lõikepuhvrisse."
+    "message": "Kui sinu sisselogimise andmetele on juurde lisatud autentiseerimise võti, kopeeritakse TOTP kood automaatse täitmise kasutamisel lõikelauale."
   },
   "premiumRequired": {
     "message": "Vajalik on Premium versioon"
@@ -789,6 +802,12 @@
   "insertU2f": {
     "message": "Sisesta oma turvaline võti arvuti USB porti. Kui sellel on nupp, siis vajuta seda."
   },
+  "webAuthnNewTab": {
+    "message": "Continue the WebAuthn 2FA verification in the new tab."
+  },
+  "webAuthnAuthenticate": {
+    "message": "Authenticate WebAutn"
+  },
   "loginUnavailable": {
     "message": "Sisselogimine ei ole saadaval"
   },
@@ -828,11 +847,11 @@
     "message": "Kinnita organisatsiooni jaoks Duo Security abil, kasutades selleks Duo Mobile rakendust, SMS-i, telefonikõnet või U2F turvavõtit.",
     "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
   },
-  "u2fDesc": {
-    "message": "Kasuta mistahes FIDO U2F toetavad turvalist võtit, et oma kontole ligi pääseda."
+  "webAuthnTitle": {
+    "message": "FIDO2 WebAuthn"
   },
-  "u2fTitle": {
-    "message": "FIDO U2F Turvaline võti"
+  "webAuthnDesc": {
+    "message": "Use any WebAuthn enabled security key to access your account."
   },
   "emailTitle": {
     "message": "E-post"
@@ -879,6 +898,12 @@
   "enableAutoFillOnPageLoadDesc": {
     "message": "Sisselogimise vormi tuvastamisel sisestatakse sinna kontoandmed automaatselt."
   },
+  "enableAutoTotpCopyOnAutoFill": {
+    "message": "Automatic TOTP Copy after Page Load"
+  },
+  "enableAutoTotpCopyOnAutoFillDesc": {
+    "message": "If Auto-fill On Page Load is enabled, the TOTP verification code is automatically copied to your clipboard after loading the web page. This is overridden by Disable Automatic TOTP Copy."
+  },
   "experimentalFeature": {
     "message": "See funktsioon on katsetusjärgus. Kasuta omal vastutusel."
   },
@@ -892,10 +917,10 @@
     "message": "Sisesta lehele viimati kasutatud kontoandmed."
   },
   "commandGeneratePasswordDesc": {
-    "message": "Loo ja kopeeri uus juhuslikult koostatud parool lõikepuhvrisse."
+    "message": "Loo ja kopeeri uus juhuslikult koostatud parool lõikelauale."
   },
   "commandLockVaultDesc": {
-    "message": "Lock the vault"
+    "message": "Lukusta hoidla"
   },
   "privateModeMessage": {
     "message": "Kahjuks ei toeta kasutatav brauser seda akent privaatses režiimis."
@@ -935,6 +960,12 @@
   },
   "disableFaviconDesc": {
     "message": "Ikoonid aitavad hoidlas olevaid veebilehti paremini ära tunda."
+  },
+  "disableBadgeCounter": {
+    "message": "Disable Badge Counter"
+  },
+  "disableBadgeCounterDesc": {
+    "message": "Badge counter indicates how many logins you have for the current page in your vault."
   },
   "cardholderName": {
     "message": "Kaardiomaniku nimi"
@@ -1250,6 +1281,15 @@
   "yourVaultIsLockedPinCode": {
     "message": "Hoidla on lukus. Jätkamiseks sisesta PIN kood."
   },
+  "unlockWithBiometrics": {
+    "message": "Ava biomeetriaga"
+  },
+  "awaitDesktop": {
+    "message": "Kinnituse ootamine töölaua rakenduselt"
+  },
+  "awaitDesktopDesc": {
+    "message": "Kinnitamiseks kasuta biomeetrilist lahtilukustamist Bitwardeni töölaua rakenduses."
+  },
   "lockWithMasterPassOnRestart": {
     "message": "Nõua ülemparooli, kui brauser taaskäivitatakse"
   },
@@ -1358,15 +1398,325 @@
     "message": "Uus ülemparool ei vasta eeskirjades väljatoodud tingimustele."
   },
   "acceptPolicies": {
-    "message": "By checking this box you agree to the following:"
+    "message": "Märkeruudu markeerimisel nõustud järgnevaga:"
   },
   "acceptPoliciesError": {
-    "message": "Terms of Service and Privacy Policy have not been acknowledged."
+    "message": "Kasutustingimuste ja Privaatsuspoliitikaga pole nõustutud."
   },
   "termsOfService": {
-    "message": "Terms of Service"
+    "message": "Kasutustingimused"
   },
   "privacyPolicy": {
-    "message": "Privacy Policy"
+    "message": "Privaatsuspoliitika"
+  },
+  "hintEqualsPassword": {
+    "message": "Parooli vihje ei saa olla sama mis parool ise."
+  },
+  "ok": {
+    "message": "Ok"
+  },
+  "desktopSyncVerificationTitle": {
+    "message": "Töölaua sünkroonimise kinnitamine"
+  },
+  "desktopIntegrationVerificationText": {
+    "message": "Veendu, et töölaua rakendus kuvab järgnevat sõrmejälge: "
+  },
+  "desktopIntegrationDisabledTitle": {
+    "message": "Brauseri integratsioon ei ole sisse lülitatud"
+  },
+  "desktopIntegrationDisabledDesc": {
+    "message": "Brauseri integratsioon ei ole Bitwardeni töölaua rakenduses sisse lülitatud. Palun lülita see töölaua rakenduse seadetes sisse."
+  },
+  "startDesktopTitle": {
+    "message": "Käivita Bitwardeni töölaua rakendus"
+  },
+  "startDesktopDesc": {
+    "message": "Enne selle funktsiooni sisselülitamist peab käivitama Bitwardeni töölaua rakenduse."
+  },
+  "errorEnableBiometricTitle": {
+    "message": "Biomeetria sisselülitamine nurjus"
+  },
+  "errorEnableBiometricDesc": {
+    "message": "Töölaua rakendus tühistas tegevuse"
+  },
+  "nativeMessagingInvalidEncryptionDesc": {
+    "message": "Töölaua rakendusel ei õnnestunud turvalist ühenduskanalit luua. Palun proovi uuesti"
+  },
+  "nativeMessagingInvalidEncryptionTitle": {
+    "message": "Suhtlus töölaua rakendusega katkes"
+  },
+  "nativeMessagingWrongUserDesc": {
+    "message": "Töölaua rakenduses on sisse logitud teise kasutajaga. Veendu, et oled mõlemas rakenduses sisse loginud ühe ja sama kontoga."
+  },
+  "nativeMessagingWrongUserTitle": {
+    "message": "Kontod ei ühti"
+  },
+  "biometricsNotEnabledTitle": {
+    "message": "Biomeetria ei ole sisse lülitatud"
+  },
+  "biometricsNotEnabledDesc": {
+    "message": "Biomeetria kasutamiseks brauseris peab esmalt Bitwardeni töölaua rakenduse seadetes biomeetria lubama."
+  },
+  "biometricsNotSupportedTitle": {
+    "message": "Biomeetriat ei toetata"
+  },
+  "biometricsNotSupportedDesc": {
+    "message": "Brauseri biomeetria ei ole selles seadmes toetatud"
+  },
+  "nativeMessaginPermissionErrorTitle": {
+    "message": "Luba puudub"
+  },
+  "nativeMessaginPermissionErrorDesc": {
+    "message": "Puudub luba, et suhelda Bitwardeni töölaua rakendusega. Selle tõttu ei saa brauseri lisas biomeetriat kasutada. Palun proovi uuesti."
+  },
+  "nativeMessaginPermissionSidebarTitle": {
+    "message": "Loa taotlemisel ilmnes viga"
+  },
+  "nativeMessaginPermissionSidebarDesc": {
+    "message": "Seda tegevust ei saa küljeribal sooritada. Proovi seda sooritada hüpikakna vaates."
+  },
+  "personalOwnershipSubmitError": {
+    "message": "Ettevõtte poliitika tõttu ei saa sa andmeid oma personaalsesse Hoidlasse salvestada. Vali Omanikuks organisatsioon ja vali mõni saadavaolevatest Kogumikest."
+  },
+  "personalOwnershipPolicyInEffect": {
+    "message": "Organisatsiooni poliitika on seadnud omaniku valikutele piirangu."
+  },
+  "excludedDomains": {
+    "message": "Väljajäetud domeenid"
+  },
+  "excludedDomainsDesc": {
+    "message": "Nendel domeenidel Bitwarden paroolide salvestamise valikut ei paku. Muudatuste jõustamiseks pead lehekülge värskendama."
+  },
+  "excludedDomainsInvalidDomain": {
+    "message": "$DOMAIN$ ei ole õige domeen.",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "googlecom"
+      }
+    }
+  },
+  "send": {
+    "message": "Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "searchSends": {
+    "message": "Otsi Sende",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "addSend": {
+    "message": "Lisa Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeText": {
+    "message": "Tekst"
+  },
+  "sendTypeFile": {
+    "message": "Fail"
+  },
+  "allSends": {
+    "message": "Kõik Sendid",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "maxAccessCountReached": {
+    "message": "Maksimaalne ligipääsude arv on saavutatud"
+  },
+  "expired": {
+    "message": "Aegunud"
+  },
+  "pendingDeletion": {
+    "message": "Kustutamise ootel"
+  },
+  "passwordProtected": {
+    "message": "Parooliga kaitstud"
+  },
+  "copySendLink": {
+    "message": "Kopeeri Sendi link",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "removePassword": {
+    "message": "Eemalda parool"
+  },
+  "delete": {
+    "message": "Kustuta"
+  },
+  "removedPassword": {
+    "message": "Eemaldas parooli"
+  },
+  "deletedSend": {
+    "message": "Kustutas Sendi",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLink": {
+    "message": "Sendi link",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "disabled": {
+    "message": "Keelatud"
+  },
+  "removePasswordConfirmation": {
+    "message": "Soovid kindlasti selle parooli eemaldada?"
+  },
+  "deleteSend": {
+    "message": "Kustuta Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "deleteSendConfirmation": {
+    "message": "Soovid tõesti selle Sendi kustutada?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editSend": {
+    "message": "Muuda Sendi",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeHeader": {
+    "message": "Mis tüüpi Send see on?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNameDesc": {
+    "message": "Sisesta Sendi nimi.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendFileDesc": {
+    "message": "Fail, mida soovid saata."
+  },
+  "deletionDate": {
+    "message": "Kustutamise kuupäev"
+  },
+  "deletionDateDesc": {
+    "message": "Send kustutatakse määratud kuupäeval ja kellaajal jäädavalt.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "expirationDate": {
+    "message": "Aegumiskuupäev"
+  },
+  "expirationDateDesc": {
+    "message": "Selle valimisel ei pääse sellele Sendile enam pärast määratud kuupäeva ligi.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "oneDay": {
+    "message": "1 päev"
+  },
+  "days": {
+    "message": "$DAYS$ päeva",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "custom": {
+    "message": "Kohandatud"
+  },
+  "maximumAccessCount": {
+    "message": "Maksimaalne ligipääsude arv"
+  },
+  "maximumAccessCountDesc": {
+    "message": "Selle valimisel ei saa kasutajad pärast maksimaalse ligipääsude arvu saavutamist sellele Sendile enam ligi.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendPasswordDesc": {
+    "message": "Soovi korral nõua parooli, millega Sendile ligi pääseb.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNotesDesc": {
+    "message": "Privaatne märkus selle Sendi kohta.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisableDesc": {
+    "message": "Keela see Send, et keegi ei pääseks sellele ligi.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendShareDesc": {
+    "message": "Kopeeri Sendi salvestamisel selle link lõikelauale.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTextDesc": {
+    "message": "Tekst, mida soovid saata."
+  },
+  "sendHideText": {
+    "message": "Vaikeolekus peida selle Sendi tekst.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "currentAccessCount": {
+    "message": "Hetkeline ligipääsude arv"
+  },
+  "createSend": {
+    "message": "Loo uus Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "newPassword": {
+    "message": "Uus Parool"
+  },
+  "sendDisabled": {
+    "message": "Send on väljalülitatud",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisabledWarning": {
+    "message": "Ettevõtte poliitika kohaselt saad ainult olemasolevat Sendi kustutada.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "createdSend": {
+    "message": "Send on loodud",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editedSend": {
+    "message": "Muudetud",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLinuxChromiumFileWarning": {
+    "message": "In order to choose a file, open the extension in the sidebar (if possible) or pop out to a new window by clicking this banner."
+  },
+  "sendFirefoxFileWarning": {
+    "message": "Faili valimiseks läbi Firefoxi ava Bitwardeni rakendus Firefoxi külgribal või kasuta hüpikakent (klikkides sellel bänneril)."
+  },
+  "sendSafariFileWarning": {
+    "message": "Faili valimiseks läbi Safari kasuta Bitwardeni hüpikakent (klikkides sellel bänneril)."
+  },
+  "sendFileCalloutHeader": {
+    "message": "Enne alustamist"
+  },
+  "sendFirefoxCustomDatePopoutMessage1": {
+    "message": "Kalendri stiilis kuupäeva valimiseks",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read '**To use a calendar style date picker ** click here to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage2": {
+    "message": "kliki siia,",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker **click here** to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage3": {
+    "message": "et avada Bitwarden uues aknas.",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker click here **to pop out your window.**'"
+  },
+  "expirationDateIsInvalid": {
+    "message": "Valitud aegumiskuupäev ei ole õige."
+  },
+  "deletionDateIsInvalid": {
+    "message": "Valitud kustutamise kuupäev ei ole õige."
+  },
+  "expirationDateAndTimeRequired": {
+    "message": "Nõutav on aegumiskuupäev ja kellaaeg."
+  },
+  "deletionDateAndTimeRequired": {
+    "message": "Nõutav on kustutamise kuupäev ja kellaaeg."
+  },
+  "dateParsingError": {
+    "message": "Kustutamis- ja aegumiskuupäevade salvestamisel ilmnes tõrge."
+  },
+  "hideEmail": {
+    "message": "Hide my email address from recipients."
+  },
+  "sendOptionsPolicyInEffect": {
+    "message": "One or more organization policies are affecting your Send options."
+  },
+  "passwordPrompt": {
+    "message": "Master password re-prompt"
+  },
+  "passwordConfirmation": {
+    "message": "Master password confirmation"
+  },
+  "passwordConfirmationDesc": {
+    "message": "This action is protected. To continue, please re-enter your master password to verify your identity."
   }
 }

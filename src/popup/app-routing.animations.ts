@@ -185,8 +185,15 @@ export const routerTransition = trigger('routerTransition', [
 
     transition('tabs => premium', inSlideLeft),
     transition('premium => tabs', outSlideRight),
-]);
 
-if (!BrowserApi.isSafariApi) {
-    routerTransition.definitions.push(transition('tabs => lock', inSlideDown));
-}
+    transition('tabs => lock', inSlideDown),
+
+    transition('tabs => send-type', inSlideLeft),
+    transition('send-type => tabs', outSlideRight),
+
+    transition('tabs => add-send, send-type => add-send', inSlideUp),
+    transition('add-send => tabs, add-send => send-type', outSlideDown),
+
+    transition('tabs => edit-send, send-type => edit-send', inSlideUp),
+    transition('edit-send => tabs, edit-send => send-type', outSlideDown),
+]);

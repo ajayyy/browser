@@ -498,7 +498,7 @@
     "message": "Redigerede element"
   },
   "deleteItemConfirmation": {
-    "message": "Er du sikker på, at du vil slette dette element?"
+    "message": "Er du sikker på, at du sende til papirkurven?"
   },
   "deletedItem": {
     "message": "Element sendt til papirkurven"
@@ -596,6 +596,10 @@
     "message": "Lys",
     "description": "Light color"
   },
+  "solarizedDark": {
+    "message": "Solarized Dark",
+    "description": "'Solarized' is a noun and the name of a color scheme. It should not be translated."
+  },
   "exportVault": {
     "message": "Eksportér boks"
   },
@@ -606,8 +610,17 @@
     "message": "ADVARSEL",
     "description": "WARNING (should stay in capitalized letters if the language permits)"
   },
+  "confirmVaultExport": {
+    "message": "Bekræft eksport af boks"
+  },
   "exportWarningDesc": {
     "message": "Denne eksport indeholder dine boksdata i ukrypteret form. Du bør ikke gemme eller sende den eksporterede fil over usikre kanaler (f.eks. e-mail). Slet den straks efter at du er færdig med at bruge den."
+  },
+  "encExportKeyWarningDesc": {
+    "message": "Denne eksport krypterer dine data vha. din kontos krypteringsnøgle. Roterer du på et tidspunkt denne kontokrypteringsnøgle, skal du eksportere igen, da du ikke vil kunne dekryptere denne eksportfil."
+  },
+  "encExportAccountWarningDesc": {
+    "message": "Kontokrypteringsnøgler er unikke for hver Bitwarden-brugerkonto, så du kan ikke importere en krypteret eksport til en anden konto."
   },
   "exportMasterPassword": {
     "message": "Indtast din hovedadgangskode for at eksportere dine data fra boksen."
@@ -789,6 +802,12 @@
   "insertU2f": {
     "message": "Indsæt din sikkerhedsnøgle i din computers USB-port. Hvis den har en knap, tryk på den."
   },
+  "webAuthnNewTab": {
+    "message": "Continue the WebAuthn 2FA verification in the new tab."
+  },
+  "webAuthnAuthenticate": {
+    "message": "Authenticate WebAutn"
+  },
   "loginUnavailable": {
     "message": "Login ikke tilgængelig"
   },
@@ -828,11 +847,11 @@
     "message": "Bekræft med Duo sikkerhed for din organisation ved hjælp af Duo Mobile app, SMS, telefonopkald eller U2F sikkerhedsnøgle.",
     "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
   },
-  "u2fDesc": {
-    "message": "Brug hvilken som helst FIDO U2F-aktiveret sikkerhedsnøgle til at få adgang til din konto."
+  "webAuthnTitle": {
+    "message": "FIDO2 WebAuthn"
   },
-  "u2fTitle": {
-    "message": "FIDO U2F sikkerhedsnøgle"
+  "webAuthnDesc": {
+    "message": "Use any WebAuthn enabled security key to access your account."
   },
   "emailTitle": {
     "message": "E-mail"
@@ -878,6 +897,12 @@
   },
   "enableAutoFillOnPageLoadDesc": {
     "message": "Hvis en login-formular er opdaget, så udfør automatisk en auto-udfyld når hjemmesiden indlæses."
+  },
+  "enableAutoTotpCopyOnAutoFill": {
+    "message": "Automatic TOTP Copy after Page Load"
+  },
+  "enableAutoTotpCopyOnAutoFillDesc": {
+    "message": "If Auto-fill On Page Load is enabled, the TOTP verification code is automatically copied to your clipboard after loading the web page. This is overridden by Disable Automatic TOTP Copy."
   },
   "experimentalFeature": {
     "message": "Dette er i øjeblikket en eksperimentel funktion. Brug på egen risiko."
@@ -935,6 +960,12 @@
   },
   "disableFaviconDesc": {
     "message": "Webikoner vises som et genkendeligt billede ved siden af hvert loginelement i din boks."
+  },
+  "disableBadgeCounter": {
+    "message": "Disable Badge Counter"
+  },
+  "disableBadgeCounterDesc": {
+    "message": "Badge counter indicates how many logins you have for the current page in your vault."
   },
   "cardholderName": {
     "message": "Kortindehaverens navn"
@@ -1250,6 +1281,15 @@
   "yourVaultIsLockedPinCode": {
     "message": "Din boks er låst. Bekræft din pinkode for at fortsætte."
   },
+  "unlockWithBiometrics": {
+    "message": "Lås op med biometri"
+  },
+  "awaitDesktop": {
+    "message": "Afventer bekræftelse fra skrivebordet"
+  },
+  "awaitDesktopDesc": {
+    "message": "Bekræft venligst brug af biometri i Bitwarden skrivebordsapplikationen for at aktivere biometri for browseren."
+  },
   "lockWithMasterPassOnRestart": {
     "message": "Lås med hovedadgangskode ved genstart af browseren"
   },
@@ -1368,5 +1408,315 @@
   },
   "privacyPolicy": {
     "message": "Fortrolighedspolitik"
+  },
+  "hintEqualsPassword": {
+    "message": "Dit adgangskodetip kan ikke være det samme som din adgangskode."
+  },
+  "ok": {
+    "message": "Ok"
+  },
+  "desktopSyncVerificationTitle": {
+    "message": "Verifikation af skrivebordssynkronisering"
+  },
+  "desktopIntegrationVerificationText": {
+    "message": "Bekræft venligst at skrivebordsprogrammet viser dette fingeraftryk: "
+  },
+  "desktopIntegrationDisabledTitle": {
+    "message": "Browserintegration er ikke aktiveret"
+  },
+  "desktopIntegrationDisabledDesc": {
+    "message": "Browserintegration er ikke aktiveret i Bitwarden skrivebordsapplikationen. Aktivér det i indstillingerne i skrivebordsprogrammet."
+  },
+  "startDesktopTitle": {
+    "message": "Start Bitwarden skrivebordsapplikationen"
+  },
+  "startDesktopDesc": {
+    "message": "Bitwarden skrivebordsapplikationen skal startes, før denne funktion kan bruges."
+  },
+  "errorEnableBiometricTitle": {
+    "message": "Kan ikke aktivere biometri"
+  },
+  "errorEnableBiometricDesc": {
+    "message": "Handlingen blev annulleret af skrivebordsprogrammet"
+  },
+  "nativeMessagingInvalidEncryptionDesc": {
+    "message": "Skrivebordsapplikation ugyldiggjorde den sikre kommunikationskanal. Prøv denne handling igen"
+  },
+  "nativeMessagingInvalidEncryptionTitle": {
+    "message": "Skrivebordskommunikation afbrudt"
+  },
+  "nativeMessagingWrongUserDesc": {
+    "message": "Skrivebordsapplikationen er logget ind på en anden konto. Sørg for, at begge applikationer er logget ind på den samme konto."
+  },
+  "nativeMessagingWrongUserTitle": {
+    "message": "Konto mismatch"
+  },
+  "biometricsNotEnabledTitle": {
+    "message": "Biometri ikke aktiveret"
+  },
+  "biometricsNotEnabledDesc": {
+    "message": "Browserbiometri kræver, at desktop-biometri er aktiveret i indstillingerne først."
+  },
+  "biometricsNotSupportedTitle": {
+    "message": "Biometri ikke understøttet"
+  },
+  "biometricsNotSupportedDesc": {
+    "message": "Browserbiometri understøttes ikke på denne enhed."
+  },
+  "nativeMessaginPermissionErrorTitle": {
+    "message": "Tilladelse ikke givet"
+  },
+  "nativeMessaginPermissionErrorDesc": {
+    "message": "Uden tilladelse til at kommunikere med Bitwarden skrivebordsapplikationen kan vi ikke levere biometri i browserudvidelsen. Prøv igen."
+  },
+  "nativeMessaginPermissionSidebarTitle": {
+    "message": "Fejl ved anmodning om tilladelse"
+  },
+  "nativeMessaginPermissionSidebarDesc": {
+    "message": "Denne handling kan ikke udføres i sidebjælken, prøv handlingen igen i popup tilstand eller i et nyt vindue."
+  },
+  "personalOwnershipSubmitError": {
+    "message": "På grund af en virksomhedspolitik er du begrænset til at gemme elementer i din personlige boks. Skift ejerskabsindstillingen til en organisation, og vælg blandt de tilgængelige samlinger."
+  },
+  "personalOwnershipPolicyInEffect": {
+    "message": "En organisationspolitik påvirker dine ejerskabsmuligheder."
+  },
+  "excludedDomains": {
+    "message": "Ekskluderede domæner"
+  },
+  "excludedDomainsDesc": {
+    "message": "Bitwarden vil ikke bede om at gemme login-detaljer for disse domæner. Du skal opdatere siden for at ændringerne kan træde i kraft."
+  },
+  "excludedDomainsInvalidDomain": {
+    "message": "$DOMAIN$ er ikke et gyldigt domæne",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "googlecom"
+      }
+    }
+  },
+  "send": {
+    "message": "Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "searchSends": {
+    "message": "Søg i Sends",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "addSend": {
+    "message": "Tilføj Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeText": {
+    "message": "Tekst"
+  },
+  "sendTypeFile": {
+    "message": "Fil"
+  },
+  "allSends": {
+    "message": "Alle Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "maxAccessCountReached": {
+    "message": "Maksimalt adgangsantal nået"
+  },
+  "expired": {
+    "message": "Udløbet"
+  },
+  "pendingDeletion": {
+    "message": "Afventer sletning"
+  },
+  "passwordProtected": {
+    "message": "Kodeordsbeskyttet"
+  },
+  "copySendLink": {
+    "message": "Kopiér Send link",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "removePassword": {
+    "message": "Fjern adgangskode"
+  },
+  "delete": {
+    "message": "Slet"
+  },
+  "removedPassword": {
+    "message": "Adgangskode fjernet"
+  },
+  "deletedSend": {
+    "message": "Send slettet",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLink": {
+    "message": "Send link",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "disabled": {
+    "message": "Deaktiveret"
+  },
+  "removePasswordConfirmation": {
+    "message": "Er du sikker på, at du vil fjerne adgangskoden?"
+  },
+  "deleteSend": {
+    "message": "Slet Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "deleteSendConfirmation": {
+    "message": "Er du sikker på, at du vil slette denne Send?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editSend": {
+    "message": "Redigér Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeHeader": {
+    "message": "Hvilken type Send er denne?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNameDesc": {
+    "message": "Et venligt navn til at beskrive denne Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendFileDesc": {
+    "message": "Den fil, du vil sende."
+  },
+  "deletionDate": {
+    "message": "Sletningsdato"
+  },
+  "deletionDateDesc": {
+    "message": "Send'en slettes permanent på den angivne dato og tid.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "expirationDate": {
+    "message": "Udløbsdato"
+  },
+  "expirationDateDesc": {
+    "message": "Hvis angivet, vil adgangen til denne Send udløbe på den angivne dato og tidspunkt.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "oneDay": {
+    "message": "1 dag"
+  },
+  "days": {
+    "message": "$DAYS$ dage",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "custom": {
+    "message": "Tilpasset"
+  },
+  "maximumAccessCount": {
+    "message": "Maksimalt antal tilgange"
+  },
+  "maximumAccessCountDesc": {
+    "message": "Hvis opsat, vil brugere ikke længere kunne tilgå denne Send, når det maksimale adgangsantal er nået.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendPasswordDesc": {
+    "message": "Valgfrit brugeradgangskodekrav for at tilgå denne Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNotesDesc": {
+    "message": "Private notater om denne Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisableDesc": {
+    "message": "Deaktivér denne Send, så ingen kan tilgå den.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendShareDesc": {
+    "message": "Kopiér denne Sends link til udklipsholderen når du gemmer.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTextDesc": {
+    "message": "Den tekst, du vil sende."
+  },
+  "sendHideText": {
+    "message": "Skjul denne Sends tekst som standard.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "currentAccessCount": {
+    "message": "Aktuelt antal tilgange"
+  },
+  "createSend": {
+    "message": "Opret ny Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "newPassword": {
+    "message": "Ny adgangskode"
+  },
+  "sendDisabled": {
+    "message": "Send deaktiveret",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisabledWarning": {
+    "message": "Du kan grundet en virksomhedspolitik kun slette en eksisterende Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "createdSend": {
+    "message": "Send oprettet",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editedSend": {
+    "message": "Send opdateret",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLinuxChromiumFileWarning": {
+    "message": "In order to choose a file, open the extension in the sidebar (if possible) or pop out to a new window by clicking this banner."
+  },
+  "sendFirefoxFileWarning": {
+    "message": "For at vælge en fil i Firefox skal du flytte udvidelsen til sidepanelet eller åbne i et nyt vindue ved at klikke på dette banner."
+  },
+  "sendSafariFileWarning": {
+    "message": "For at vælge en fil i Safari skal du åbne i et nyt vindue ved at klikke på dette banner."
+  },
+  "sendFileCalloutHeader": {
+    "message": "Før du starter"
+  },
+  "sendFirefoxCustomDatePopoutMessage1": {
+    "message": "For at bruge en datovælger i kalenderstil skal du",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read '**To use a calendar style date picker ** click here to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage2": {
+    "message": "klikke her",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker **click here** to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage3": {
+    "message": "for at åbne dit vindue.",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker click here **to pop out your window.**'"
+  },
+  "expirationDateIsInvalid": {
+    "message": "Den angivne udløbsdato er ikke gyldig."
+  },
+  "deletionDateIsInvalid": {
+    "message": "Den angivne sletningsdato er ikke gyldig."
+  },
+  "expirationDateAndTimeRequired": {
+    "message": "Der kræves en udløbsdato og -tid."
+  },
+  "deletionDateAndTimeRequired": {
+    "message": "En sletningsdato og -tid er påkrævet."
+  },
+  "dateParsingError": {
+    "message": "Der opstod en fejl under forsøget på at gemme dine sletnings- og udløbsdatoer."
+  },
+  "hideEmail": {
+    "message": "Hide my email address from recipients."
+  },
+  "sendOptionsPolicyInEffect": {
+    "message": "One or more organization policies are affecting your Send options."
+  },
+  "passwordPrompt": {
+    "message": "Master password re-prompt"
+  },
+  "passwordConfirmation": {
+    "message": "Master password confirmation"
+  },
+  "passwordConfirmationDesc": {
+    "message": "This action is protected. To continue, please re-enter your master password to verify your identity."
   }
 }

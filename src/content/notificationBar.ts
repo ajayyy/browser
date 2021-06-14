@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', event => {
     if (window.location.hostname.indexOf('vault.bitwarden.com') > -1) {
         return;
     }
@@ -17,71 +17,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const logInButtonNames = new Set(['log in', 'sign in', 'login', 'go', 'submit', 'continue', 'next']);
     const changePasswordButtonNames = new Set(['save password', 'update password', 'change password', 'change']);
     const changePasswordButtonContainsNames = new Set(['pass', 'change', 'contras', 'senha']);
-    let notificationBarData = null;
-    const isSafari = (typeof safari !== 'undefined') && navigator.userAgent.indexOf(' Safari/') !== -1 &&
-        navigator.userAgent.indexOf('Chrome') === -1;
     let disabledAddLoginNotification = false;
     let disabledChangedPasswordNotification = false;
 
-    if (isSafari) {
-        if ((window as any).__bitwardenFrameId == null) {
-            (window as any).__bitwardenFrameId = Math.floor(Math.random() * Math.floor(99999999));
-        }
-        if (inIframe) {
+    chrome.storage.local.get('neverDomains', (ndObj: any) => {
+        const domains = ndObj.neverDomains;
+        if (domains != null && domains.hasOwnProperty(window.location.hostname)) {
             return;
         }
 
-        const responseCommand = 'notificationBarDataResponse';
-        safari.extension.dispatchMessage('bitwarden', {
-            command: 'bgGetDataForTab',
-            responseCommand: responseCommand,
-            bitwardenFrameId: (window as any).__bitwardenFrameId,
-        });
-        safari.self.addEventListener('message', (msgEvent: any) => {
-            const msg = JSON.parse(msgEvent.message.msg);
-            if (msg.bitwardenFrameId != null && (window as any).__bitwardenFrameId !== msg.bitwardenFrameId) {
-                return;
-            }
-            if (msg.command === responseCommand && msg.data) {
-                notificationBarData = msg.data;
-                if (notificationBarData.neverDomains &&
-                    notificationBarData.neverDomains.hasOwnProperty(window.location.hostname)) {
-                    return;
-                }
-
-                disabledAddLoginNotification = notificationBarData.disabledAddLoginNotification === true;
-                disabledChangedPasswordNotification = notificationBarData.disabledChangedPasswordNotification === true;
+        chrome.storage.local.get('disableAddLoginNotification', (disAddObj: any) => {
+            disabledAddLoginNotification = disAddObj != null && disAddObj.disableAddLoginNotification === true;
+            chrome.storage.local.get('disableChangedPasswordNotification', (disChangedObj: any) => {
+                disabledChangedPasswordNotification = disChangedObj != null &&
+                    disChangedObj.disableChangedPasswordNotification === true;
                 if (!disabledAddLoginNotification || !disabledChangedPasswordNotification) {
                     collectIfNeededWithTimeout();
                 }
-            }
-
-            processMessages(msg, () => { /* do nothing on send response for Safari */ });
-        }, false);
-        return;
-    } else {
-        chrome.storage.local.get('neverDomains', (ndObj: any) => {
-            const domains = ndObj.neverDomains;
-            if (domains != null && domains.hasOwnProperty(window.location.hostname)) {
-                return;
-            }
-
-            chrome.storage.local.get('disableAddLoginNotification', (disAddObj: any) => {
-                disabledAddLoginNotification = disAddObj != null && disAddObj.disableAddLoginNotification === true;
-                chrome.storage.local.get('disableChangedPasswordNotification', (disChangedObj: any) => {
-                    disabledChangedPasswordNotification = disChangedObj != null &&
-                        disChangedObj.disableChangedPasswordNotification === true;
-                    if (!disabledAddLoginNotification || !disabledChangedPasswordNotification) {
-                        collectIfNeededWithTimeout();
-                    }
-                });
             });
         });
+    });
 
-        chrome.runtime.onMessage.addListener((msg: any, sender: any, sendResponse: Function) => {
-            processMessages(msg, sendResponse);
-        });
-    }
+    chrome.runtime.onMessage.addListener((msg: any, sender: any, sendResponse: Function) => {
+        processMessages(msg, sendResponse);
+    });
 
     function processMessages(msg: any, sendResponse: Function) {
         if (msg.command === 'openNotificationBar') {
@@ -124,7 +83,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function observeDom() {
         const bodies = document.querySelectorAll('body');
         if (bodies && bodies.length > 0) {
-            observer = new MutationObserver((mutations) => {
+            observer = new MutationObserver(mutations => {
                 if (mutations == null || mutations.length === 0 || pageHref !== window.location.href) {
                     return;
                 }
@@ -374,7 +333,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     } else {
                         const buttonText = getButtonText(getSubmitButton(form, changePasswordButtonNames));
                         const matches = Array.from(changePasswordButtonContainsNames)
-                            .filter((n) => buttonText.indexOf(n) > -1);
+                            .filter(n => buttonText.indexOf(n) > -1);
                         if (matches.length > 0) {
                             curPass = passwords[0];
                             newPass = passwords[1];
@@ -420,7 +379,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const possibleSubmitButtons = Array.from(wrappingEl.querySelectorAll('a, span, button[type="button"], ' +
                 'input[type="button"], button:not([type])')) as HTMLElement[];
             let typelessButton: HTMLElement = null;
-            possibleSubmitButtons.forEach((button) => {
+            possibleSubmitButtons.forEach(button => {
                 if (submitButton != null || button == null || button.tagName == null) {
                     return;
                 }
@@ -470,7 +429,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function closeExistingAndOpenBar(type: string, typeData: any) {
-        let barPage = (isSafari ? 'app/' : '') + 'notification/bar.html';
+        let barPage = 'notification/bar.html';
         switch (type) {
             case 'info':
                 barPage = barPage + '?info=' + typeData.text;
@@ -510,7 +469,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
 
-        const barPageUrl: string = isSafari ? (safari.extension.baseURI + barPage) : chrome.extension.getURL(barPage);
+        const barPageUrl: string = chrome.extension.getURL(barPage);
 
         const iframe = document.createElement('iframe');
         iframe.style.cssText = 'height: 42px; width: 100%; border: 0; min-height: initial;';
@@ -580,11 +539,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function sendPlatformMessage(msg: any) {
-        if (isSafari) {
-            msg.bitwardenFrameId = (window as any).__bitwardenFrameId;
-            safari.extension.dispatchMessage('bitwarden', msg);
-        } else {
-            chrome.runtime.sendMessage(msg);
-        }
+        chrome.runtime.sendMessage(msg);
     }
 });

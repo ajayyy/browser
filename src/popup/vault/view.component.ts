@@ -9,6 +9,7 @@ import {
     Router,
 } from '@angular/router';
 
+import { ApiService } from 'jslib/abstractions/api.service';
 import { AuditService } from 'jslib/abstractions/audit.service';
 import { CipherService } from 'jslib/abstractions/cipher.service';
 import { CryptoService } from 'jslib/abstractions/crypto.service';
@@ -29,6 +30,8 @@ import { BrowserApi } from '../../browser/browserApi';
 import { AutofillService } from '../../services/abstractions/autofill.service';
 import { PopupUtilsService } from '../services/popup-utils.service';
 
+import { CipherType } from 'jslib/enums';
+
 const BroadcasterSubscriptionId = 'ChildViewComponent';
 
 @Component({
@@ -41,6 +44,7 @@ export class ViewComponent extends BaseViewComponent {
     tab: any;
     loadPageDetailsTimeout: number;
     inPopout = false;
+    cipherType = CipherType;
 
     constructor(cipherService: CipherService, totpService: TotpService,
         tokenService: TokenService, i18nService: I18nService,
@@ -49,15 +53,15 @@ export class ViewComponent extends BaseViewComponent {
         private router: Router, private location: Location,
         broadcasterService: BroadcasterService, ngZone: NgZone,
         changeDetectorRef: ChangeDetectorRef, userService: UserService,
-        eventService: EventService, private autofillService: AutofillService,
+        eventService: EventService, private autofillService: AutofillService, apiService: ApiService,
         private messagingService: MessagingService, private popupUtilsService: PopupUtilsService) {
         super(cipherService, totpService, tokenService, i18nService, cryptoService, platformUtilsService,
-            auditService, window, broadcasterService, ngZone, changeDetectorRef, userService, eventService);
+            auditService, window, broadcasterService, ngZone, changeDetectorRef, userService, eventService, apiService);
     }
 
     ngOnInit() {
         this.inPopout = this.popupUtilsService.inPopout(window);
-        const queryParamsSub = this.route.queryParams.subscribe(async (params) => {
+        const queryParamsSub = this.route.queryParams.subscribe(async params => {
             if (params.cipherId) {
                 this.cipherId = params.cipherId;
             } else {
@@ -155,7 +159,7 @@ export class ViewComponent extends BaseViewComponent {
             if (this.cipher.login.uris == null) {
                 this.cipher.login.uris = [];
             } else {
-                if (this.cipher.login.uris.some((uri) => uri.uri === this.tab.url)) {
+                if (this.cipher.login.uris.some(uri => uri.uri === this.tab.url)) {
                     this.platformUtilsService.showToast('success', null,
                         this.i18nService.t('autoFillSuccessAndSavedUri'));
                     return;

@@ -75,7 +75,7 @@ const plugins = [
     new HtmlWebpackPlugin({
         template: './src/popup/index.html',
         filename: 'popup/index.html',
-        chunks: ['popup/vendor-angular', 'popup/vendor', 'popup/main'],
+        chunks: ['popup/polyfills', 'popup/vendor-angular', 'popup/vendor', 'popup/main'],
     }),
     new HtmlWebpackPlugin({
         template: './src/background.html',
@@ -130,13 +130,14 @@ const config = {
     mode: ENV,
     devtool: false,
     entry: {
+        'popup/polyfills': './src/popup/polyfills.ts',
         'popup/main': './src/popup/main.ts',
         'background': './src/background.ts',
         'content/autofill': './src/content/autofill.js',
         'content/autofiller': './src/content/autofiller.ts',
         'content/notificationBar': './src/content/notificationBar.ts',
         'content/shortcuts': './src/content/shortcuts.ts',
-        'content/sso': './src/content/sso.ts',
+        'content/message_handler': './src/content/message_handler.ts',
         'notification/bar': './src/notification/bar.js',
     },
     optimization: {

@@ -95,7 +95,7 @@
     "message": "Trezor je zamknutý."
   },
   "vaultLoggedOut": {
-    "message": "Jste odhlášeni."
+    "message": "Byli jste odhlášeni."
   },
   "autoFillInfo": {
     "message": "Pro aktuální stránku neexistují žádné přihlašovací údaje."
@@ -349,7 +349,7 @@
     "message": "Po 1 minutě"
   },
   "twoMinutes": {
-    "message": "Po 2 minutách"
+    "message": "2 minuty"
   },
   "fiveMinutes": {
     "message": "Po 5 minutách"
@@ -498,10 +498,10 @@
     "message": "Položka byla upravena"
   },
   "deleteItemConfirmation": {
-    "message": "Opravdu chcete tuto položku smazat?"
+    "message": "Opravdu chcete položku přesunout do koše?"
   },
   "deletedItem": {
-    "message": "Smazaná položka"
+    "message": "Položka byla přesunuta do koše"
   },
   "overwritePassword": {
     "message": "Přepsat heslo"
@@ -596,6 +596,10 @@
     "message": "Světlý",
     "description": "Light color"
   },
+  "solarizedDark": {
+    "message": "Solarized Dark",
+    "description": "'Solarized' is a noun and the name of a color scheme. It should not be translated."
+  },
   "exportVault": {
     "message": "Exportovat trezor"
   },
@@ -606,8 +610,17 @@
     "message": "VAROVÁNÍ",
     "description": "WARNING (should stay in capitalized letters if the language permits)"
   },
+  "confirmVaultExport": {
+    "message": "Potvrdit export trezoru"
+  },
   "exportWarningDesc": {
     "message": "Tento export obsahuje data vašeho trezoru v nezašifrovaném formátu. Soubor exportu byste neměli ukládat ani odesílat přes nezabezpečené kanály (např. e-mailem). Odstraňte jej okamžitě po jeho použití."
+  },
+  "encExportKeyWarningDesc": {
+    "message": "This export encrypts your data using your account's encryption key. If you ever rotate your account's encryption key you should export again since you will not be able to decrypt this export file."
+  },
+  "encExportAccountWarningDesc": {
+    "message": "Šifrovací klíče účtu jsou pro každý uživatelský účet Bitwarden jedinečné, tudíž nelze importovat šifrovaný export do jiného účtu."
   },
   "exportMasterPassword": {
     "message": "Zadejte své hlavní heslo pro export dat."
@@ -789,6 +802,12 @@
   "insertU2f": {
     "message": "Vložte svůj bezpečnostní klíč do USB portu vašeho počítače a pokud má tlačítko, tak jej stiskněte."
   },
+  "webAuthnNewTab": {
+    "message": "Continue the WebAuthn 2FA verification in the new tab."
+  },
+  "webAuthnAuthenticate": {
+    "message": "Authenticate WebAutn"
+  },
   "loginUnavailable": {
     "message": "Přihlášení není dostupné"
   },
@@ -828,11 +847,11 @@
     "message": "Ověřit pomocí Duo Security pro vaši organizaci prostřednictvím aplikace Duo Mobile, SMS, telefonního hovoru nebo U2F bezpečnostního kódu.",
     "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
   },
-  "u2fDesc": {
-    "message": "Použít jakýkoliv FIDO U2F bezpečnostní klíč pro přístup k vašemu trezoru."
+  "webAuthnTitle": {
+    "message": "FIDO2 WebAuthn"
   },
-  "u2fTitle": {
-    "message": "FIDO U2F bezpečnostní klíč"
+  "webAuthnDesc": {
+    "message": "Use any WebAuthn enabled security key to access your account."
   },
   "emailTitle": {
     "message": "E-mail"
@@ -879,6 +898,12 @@
   "enableAutoFillOnPageLoadDesc": {
     "message": "Pokud je zjištěn přihlašovací formulář, automaticky se při načítání webové stránky vyplní přihlašovací údaje."
   },
+  "enableAutoTotpCopyOnAutoFill": {
+    "message": "Automatic TOTP Copy after Page Load"
+  },
+  "enableAutoTotpCopyOnAutoFillDesc": {
+    "message": "If Auto-fill On Page Load is enabled, the TOTP verification code is automatically copied to your clipboard after loading the web page. This is overridden by Disable Automatic TOTP Copy."
+  },
   "experimentalFeature": {
     "message": "Toto je momentálně experimentální funkce. Použijte na vlastní riziko."
   },
@@ -889,13 +914,13 @@
     "message": "Otevřít trezor v postranním panelu"
   },
   "commandAutofillDesc": {
-    "message": "Automaticky vyplnit poslední použité přihlašovací údaje pro aktuální web."
+    "message": "Automaticky vyplnit poslední použité přihlašovací údaje pro tuto stránku."
   },
   "commandGeneratePasswordDesc": {
     "message": "Vygenerovat a zkopírovat nové náhodné heslo do schránky."
   },
   "commandLockVaultDesc": {
-    "message": "Lock the vault"
+    "message": "Zamknout trezor"
   },
   "privateModeMessage": {
     "message": "Bohužel toto okno není v tomto prohlížeči k dispozici v soukromém režimu."
@@ -935,6 +960,12 @@
   },
   "disableFaviconDesc": {
     "message": "Ikonky webových stránek zobrazí snadno rozeznatelný obrázek vedle každé položky ve vašem trezoru."
+  },
+  "disableBadgeCounter": {
+    "message": "Disable Badge Counter"
+  },
+  "disableBadgeCounterDesc": {
+    "message": "Badge counter indicates how many logins you have for the current page in your vault."
   },
   "cardholderName": {
     "message": "Jméno držitele karty"
@@ -1250,6 +1281,15 @@
   "yourVaultIsLockedPinCode": {
     "message": "Váš trezor je uzamčen. Pro pokračování musíte zadat PIN."
   },
+  "unlockWithBiometrics": {
+    "message": "Odemknout pomocí biometrie"
+  },
+  "awaitDesktop": {
+    "message": "Čeká se na potvrzení z aplikace v počítači"
+  },
+  "awaitDesktopDesc": {
+    "message": "Prosím potvrďte použití biometrie v desktopové Bitwarden aplikaci, pro povolení biometrie v prohlížeči."
+  },
   "lockWithMasterPassOnRestart": {
     "message": "Zamknout trezor při restartu prohlížeče pomocí hlavního hesla"
   },
@@ -1286,7 +1326,7 @@
     "message": "Opravdu chcete tuto položku trvale smazat?"
   },
   "permanentlyDeletedItem": {
-    "message": "Trvale smazaná položka"
+    "message": "Položka byla trvale smazána"
   },
   "restoreItem": {
     "message": "Obnovit položku"
@@ -1295,7 +1335,7 @@
     "message": "Opravdu chcete tuto položku obnovit?"
   },
   "restoredItem": {
-    "message": "Obnovená položka"
+    "message": "Položka byla obnovena"
   },
   "vaultTimeoutLogOutConfirmation": {
     "message": "Po vypršení časového limitu dojde k odhlášení. Přístup k trezoru bude odebrán a pro opětovné přihlášení bude vyžadováno online ověření. Opravdu chcete použít toto nastavení?"
@@ -1307,10 +1347,10 @@
     "message": "Automaticky vyplnit a uložit"
   },
   "autoFillSuccessAndSavedUri": {
-    "message": "Položka automaticky vyplněna a uložena"
+    "message": "Položka byla automaticky vyplněna a uloženo URI"
   },
   "autoFillSuccess": {
-    "message": "Položka automaticky vyplněna"
+    "message": "Položka byla automaticky vyplněna"
   },
   "setMasterPassword": {
     "message": "Nastavit hlavní heslo"
@@ -1355,18 +1395,328 @@
     }
   },
   "masterPasswordPolicyRequirementsNotMet": {
-    "message": "Vaše nové hlavní heslo nesplňuje požadavky zásad."
+    "message": "Vaše nové hlavní heslo nesplňuje požadavky zásad organizace."
   },
   "acceptPolicies": {
-    "message": "By checking this box you agree to the following:"
+    "message": "Zaškrtnutím tohoto políčka souhlasím s následujícím:"
   },
   "acceptPoliciesError": {
-    "message": "Terms of Service and Privacy Policy have not been acknowledged."
+    "message": "Podmínky použití a zásady ochrany osobních údajů nebyly odsouhlaseny."
   },
   "termsOfService": {
-    "message": "Terms of Service"
+    "message": "Podmínky použití"
   },
   "privacyPolicy": {
-    "message": "Privacy Policy"
+    "message": "Zásady ochrany osobních údajů"
+  },
+  "hintEqualsPassword": {
+    "message": "Nápověda k vašemu heslu nemůže být stejná jako vaše heslo."
+  },
+  "ok": {
+    "message": "OK"
+  },
+  "desktopSyncVerificationTitle": {
+    "message": "Ověření synchronizace s desktopovou aplikací"
+  },
+  "desktopIntegrationVerificationText": {
+    "message": "Ověřte, zda desktopová aplikace zobrazuje tento otisk: "
+  },
+  "desktopIntegrationDisabledTitle": {
+    "message": "Integrace prohlížeče není povolena"
+  },
+  "desktopIntegrationDisabledDesc": {
+    "message": "Integrace prohlížeče není povolena v aplikaci Bitwarden. Povolte ji prosím v nastavení v aplikaci pro počítač."
+  },
+  "startDesktopTitle": {
+    "message": "Spustit aplikaci Bitwarden"
+  },
+  "startDesktopDesc": {
+    "message": "Počítačová aplikace Bitwarden musí být spuštěna před použitím této funkce."
+  },
+  "errorEnableBiometricTitle": {
+    "message": "Nelze povolit biometrii"
+  },
+  "errorEnableBiometricDesc": {
+    "message": "Akce byla zrušena aplikací pro počítač"
+  },
+  "nativeMessagingInvalidEncryptionDesc": {
+    "message": "Aplikace pro počítač zrušila platnost zabezpečeného komunikačního kanálu. Zkuste to prosím znovu"
+  },
+  "nativeMessagingInvalidEncryptionTitle": {
+    "message": "Komunikace s počítačovou aplikací přerušena"
+  },
+  "nativeMessagingWrongUserDesc": {
+    "message": "Počítačová aplikace je přihlášena k jinému účtu. Ujistěte se, že jsou obě aplikace přihlášeny ke stejnému účtu."
+  },
+  "nativeMessagingWrongUserTitle": {
+    "message": "Neshoda účtu"
+  },
+  "biometricsNotEnabledTitle": {
+    "message": "Biometrie není povolena"
+  },
+  "biometricsNotEnabledDesc": {
+    "message": "Biometrické prvky v prohlížeči vyžadují, aby v nastavení počítačové aplikace byla povolena biometrie."
+  },
+  "biometricsNotSupportedTitle": {
+    "message": "Biometrie není podporována"
+  },
+  "biometricsNotSupportedDesc": {
+    "message": "Biometrie v prohlížeči není na tomto zařízení podporována."
+  },
+  "nativeMessaginPermissionErrorTitle": {
+    "message": "Povolení nebylo poskytnuto"
+  },
+  "nativeMessaginPermissionErrorDesc": {
+    "message": "Bez oprávnění ke komunikaci s počítačovou aplikací Bitwarden nelze v rozšíření prohlížeče používat biometrické údaje. Zkuste to prosím znovu."
+  },
+  "nativeMessaginPermissionSidebarTitle": {
+    "message": "Žádost o oprávnění selhala"
+  },
+  "nativeMessaginPermissionSidebarDesc": {
+    "message": "Tuto akci nelze provést v postranním panelu, prosím zkuste akci znovu v novém okně."
+  },
+  "personalOwnershipSubmitError": {
+    "message": "Z důvodu zásad organizace nemůžete ukládat položky do svého osobního trezoru. Změňte vlastnictví položky na organizaci a poté si vyberte z dostupných kolekcí."
+  },
+  "personalOwnershipPolicyInEffect": {
+    "message": "Zásady organizace ovlivňují možnosti vlastnictví."
+  },
+  "excludedDomains": {
+    "message": "Vyloučené domény"
+  },
+  "excludedDomainsDesc": {
+    "message": "Bitwarden nebude žádat o uložení přihlašovacích údajů pro tyto domény. Aby se změny projevily, musíte stránku obnovit."
+  },
+  "excludedDomainsInvalidDomain": {
+    "message": "$DOMAIN$ není platná doména",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "googlecom"
+      }
+    }
+  },
+  "send": {
+    "message": "Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "searchSends": {
+    "message": "Hledat Sends",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "addSend": {
+    "message": "Přidat Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeText": {
+    "message": "Text"
+  },
+  "sendTypeFile": {
+    "message": "Soubor"
+  },
+  "allSends": {
+    "message": "Všechny Sendy",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "maxAccessCountReached": {
+    "message": "Dosažen maximální počet přístupů"
+  },
+  "expired": {
+    "message": "Vypršela platnost"
+  },
+  "pendingDeletion": {
+    "message": "Čeká na smazání"
+  },
+  "passwordProtected": {
+    "message": "Chráněno heslem"
+  },
+  "copySendLink": {
+    "message": "Kopírovat Send odkaz",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "removePassword": {
+    "message": "Odstranit heslo"
+  },
+  "delete": {
+    "message": "Smazat"
+  },
+  "removedPassword": {
+    "message": "Odstraněné heslo"
+  },
+  "deletedSend": {
+    "message": "Smazaný Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLink": {
+    "message": "Odkaz tohoto Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "disabled": {
+    "message": "Zakázáno"
+  },
+  "removePasswordConfirmation": {
+    "message": "Jste si jisti, že chcete heslo odstranit?"
+  },
+  "deleteSend": {
+    "message": "Smazat Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "deleteSendConfirmation": {
+    "message": "Jste si jisti, že chcete odstranit tento Send?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editSend": {
+    "message": "Upravit Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTypeHeader": {
+    "message": "Jakého typu je tento Send?",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNameDesc": {
+    "message": "Přátelský název pro popis tohoto Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendFileDesc": {
+    "message": "Soubor, který chcete odeslat."
+  },
+  "deletionDate": {
+    "message": "Datum odstranění"
+  },
+  "deletionDateDesc": {
+    "message": "The Send will be permanently deleted on the specified date and time.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "expirationDate": {
+    "message": "Datum expirace"
+  },
+  "expirationDateDesc": {
+    "message": "If set, access to this Send will expire on the specified date and time.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "oneDay": {
+    "message": "1 den"
+  },
+  "days": {
+    "message": "$DAYS$ dní",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "custom": {
+    "message": "Vlastní"
+  },
+  "maximumAccessCount": {
+    "message": "Maximální počet přístupů"
+  },
+  "maximumAccessCountDesc": {
+    "message": "If set, users will no longer be able to access this Send once the maximum access count is reached.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendPasswordDesc": {
+    "message": "Optionally require a password for users to access this Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendNotesDesc": {
+    "message": "Soukromé poznámky o tomto Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisableDesc": {
+    "message": "Vypnout tento Send, díky čemuž k němu nebude moci nikdo přistoupit.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendShareDesc": {
+    "message": "Zkopírovat odkaz pro sdílení tohoto Sendu po uložení.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendTextDesc": {
+    "message": "Text, který chcete odeslat."
+  },
+  "sendHideText": {
+    "message": "Skrýt ve výchozím stavu obsah tohoto Sendu.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "currentAccessCount": {
+    "message": "Počet aktuálních přístupů"
+  },
+  "createSend": {
+    "message": "Vytvořit nový Send",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "newPassword": {
+    "message": "Nové heslo"
+  },
+  "sendDisabled": {
+    "message": "Send Disabled",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendDisabledWarning": {
+    "message": "Due to an enterprise policy, you are only able to delete an existing Send.",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "createdSend": {
+    "message": "Send vytvořen",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "editedSend": {
+    "message": "Send upraven",
+    "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated."
+  },
+  "sendLinuxChromiumFileWarning": {
+    "message": "In order to choose a file, open the extension in the sidebar (if possible) or pop out to a new window by clicking this banner."
+  },
+  "sendFirefoxFileWarning": {
+    "message": "In order to choose a file using Firefox, open the extension in the sidebar or pop out to a new window by clicking this banner."
+  },
+  "sendSafariFileWarning": {
+    "message": "In order to choose a file using Safari, pop out to a new window by clicking this banner."
+  },
+  "sendFileCalloutHeader": {
+    "message": "Než začnete"
+  },
+  "sendFirefoxCustomDatePopoutMessage1": {
+    "message": "To use a calendar style date picker",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read '**To use a calendar style date picker ** click here to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage2": {
+    "message": "klikněte zde",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker **click here** to pop out your window.'"
+  },
+  "sendFirefoxCustomDatePopoutMessage3": {
+    "message": "to pop out your window.",
+    "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker click here **to pop out your window.**'"
+  },
+  "expirationDateIsInvalid": {
+    "message": "Uvedené datum vypršení platnosti není platné."
+  },
+  "deletionDateIsInvalid": {
+    "message": "Uvedené datum odstranění není platné."
+  },
+  "expirationDateAndTimeRequired": {
+    "message": "Je vyžadováno datum a čas vypršení platnosti."
+  },
+  "deletionDateAndTimeRequired": {
+    "message": "Je vyžadováno datum a čas odstranění."
+  },
+  "dateParsingError": {
+    "message": "Došlo k chybě při ukládání data odstranění a vypršení platnosti."
+  },
+  "hideEmail": {
+    "message": "Hide my email address from recipients."
+  },
+  "sendOptionsPolicyInEffect": {
+    "message": "One or more organization policies are affecting your Send options."
+  },
+  "passwordPrompt": {
+    "message": "Master password re-prompt"
+  },
+  "passwordConfirmation": {
+    "message": "Master password confirmation"
+  },
+  "passwordConfirmationDesc": {
+    "message": "This action is protected. To continue, please re-enter your master password to verify your identity."
   }
 }
